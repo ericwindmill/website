@@ -1,0 +1,2858 @@
+[
+  {
+    "agent": "Antigravity",
+    "model": "Gemini 2.5 Pro",
+    "variant": "ai_tooling",
+    "tasks": [
+      {
+        "id": "cuj-01-renderflex-overflow",
+        "name": "Fix RenderFlex Overflow",
+        "category": "short_horizon",
+        "tokens": 24992,
+        "cost": 0.043,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.96,
+            "dx": 0.95
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.95,
+            "dx": 0.92
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.98,
+            "dx": 0.94
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.96,
+            "dx": 0.95
+          }
+        ]
+      },
+      {
+        "id": "cuj-02-adaptive-layout-navigation",
+        "name": "Navigation with Adaptive Layout",
+        "category": "long_horizon",
+        "tokens": 55000,
+        "cost": 0.104,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.94,
+            "dx": 0.92
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.9
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.95,
+            "dx": 0.93
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.91
+          }
+        ]
+      },
+      {
+        "id": "cuj-03-rest-api-http",
+        "name": "REST API Client: Fetch JSON with http",
+        "category": "short_horizon",
+        "tokens": 30008,
+        "cost": 0.057,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.95,
+            "dx": 0.92
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.96,
+            "dx": 0.9
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.94,
+            "dx": 0.92
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.95,
+            "dx": 0.93
+          }
+        ]
+      },
+      {
+        "id": "cuj-04-provider-state-mgmt",
+        "name": "Provider State Management",
+        "category": "short_horizon",
+        "tokens": 34760,
+        "cost": 0.065,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.94,
+            "dx": 0.9
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.88
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.95,
+            "dx": 0.92
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.94,
+            "dx": 0.91
+          }
+        ]
+      },
+      {
+        "id": "cuj-05-firebase-cloud-storage",
+        "name": "Firebase Cloud Storage",
+        "category": "long_horizon",
+        "tokens": 68816,
+        "cost": 0.13,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.88
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.86
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.9
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.89
+          }
+        ]
+      },
+      {
+        "id": "cuj-06-dart-genkit-function",
+        "name": "Dart Genkit Cloud Function",
+        "category": "long_horizon",
+        "tokens": 74360,
+        "cost": 0.141,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.88
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.89
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.85
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.87
+          }
+        ]
+      },
+      {
+        "id": "cuj-07-internationalization-i18n",
+        "name": "Internationalization (i18n)",
+        "category": "short_horizon",
+        "tokens": 26224,
+        "cost": 0.048,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.96,
+            "dx": 0.94
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.95,
+            "dx": 0.92
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.97,
+            "dx": 0.95
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.96,
+            "dx": 0.93
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "agent": "Antigravity",
+    "model": "Gemini 2.5 Pro",
+    "variant": "baseline",
+    "tasks": [
+      {
+        "id": "cuj-01-renderflex-overflow",
+        "name": "Fix RenderFlex Overflow",
+        "category": "short_horizon",
+        "tokens": 29820,
+        "cost": 0.052,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.82
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.8
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.84
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.8,
+            "quality": 0.82,
+            "dx": 0.78
+          }
+        ]
+      },
+      {
+        "id": "cuj-02-adaptive-layout-navigation",
+        "name": "Navigation with Adaptive Layout",
+        "category": "long_horizon",
+        "tokens": 65625,
+        "cost": 0.125,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.82,
+            "dx": 0.75
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.5,
+            "quality": 0.78,
+            "dx": 0.7
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.8
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.8,
+            "dx": 0.76
+          }
+        ]
+      },
+      {
+        "id": "cuj-03-rest-api-http",
+        "name": "REST API Client: Fetch JSON with http",
+        "category": "short_horizon",
+        "tokens": 35805,
+        "cost": 0.068,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.84
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.82
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.8
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.87,
+            "dx": 0.81
+          }
+        ]
+      },
+      {
+        "id": "cuj-04-provider-state-mgmt",
+        "name": "Provider State Management",
+        "category": "short_horizon",
+        "tokens": 41475,
+        "cost": 0.078,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.78
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.84,
+            "dx": 0.76
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.7,
+            "quality": 0.8,
+            "dx": 0.72
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.8
+          }
+        ]
+      },
+      {
+        "id": "cuj-05-firebase-cloud-storage",
+        "name": "Firebase Cloud Storage",
+        "category": "long_horizon",
+        "tokens": 82110,
+        "cost": 0.156,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.6,
+            "quality": 0.78,
+            "dx": 0.7
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.82,
+            "dx": 0.76
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.8,
+            "quality": 0.8,
+            "dx": 0.72
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.84,
+            "dx": 0.78
+          }
+        ]
+      },
+      {
+        "id": "cuj-06-dart-genkit-function",
+        "name": "Dart Genkit Cloud Function",
+        "category": "long_horizon",
+        "tokens": 88725,
+        "cost": 0.169,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.5,
+            "quality": 0.75,
+            "dx": 0.68
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.8,
+            "dx": 0.72
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.6,
+            "quality": 0.76,
+            "dx": 0.7
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.8,
+            "quality": 0.78,
+            "dx": 0.72
+          }
+        ]
+      },
+      {
+        "id": "cuj-07-internationalization-i18n",
+        "name": "Internationalization (i18n)",
+        "category": "short_horizon",
+        "tokens": 31290,
+        "cost": 0.058,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.85
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.82
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.86
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.84
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "agent": "Antigravity",
+    "model": "Gemini 2.5 Flash",
+    "variant": "ai_tooling",
+    "tasks": [
+      {
+        "id": "cuj-01-renderflex-overflow",
+        "name": "Fix RenderFlex Overflow",
+        "category": "short_horizon",
+        "tokens": 22492,
+        "cost": 0.016,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.9
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.88
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.91
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.89
+          }
+        ]
+      },
+      {
+        "id": "cuj-02-adaptive-layout-navigation",
+        "name": "Navigation with Adaptive Layout",
+        "category": "long_horizon",
+        "tokens": 49500,
+        "cost": 0.038,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.85
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.87,
+            "dx": 0.84
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.86
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.9,
+            "quality": 0.86,
+            "dx": 0.82
+          }
+        ]
+      },
+      {
+        "id": "cuj-03-rest-api-http",
+        "name": "REST API Client: Fetch JSON with http",
+        "category": "short_horizon",
+        "tokens": 27007,
+        "cost": 0.021,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.88
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.87
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.89
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.86
+          }
+        ]
+      },
+      {
+        "id": "cuj-04-provider-state-mgmt",
+        "name": "Provider State Management",
+        "category": "short_horizon",
+        "tokens": 31284,
+        "cost": 0.024,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.85
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.84
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.86
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.83
+          }
+        ]
+      },
+      {
+        "id": "cuj-05-firebase-cloud-storage",
+        "name": "Firebase Cloud Storage",
+        "category": "long_horizon",
+        "tokens": 61934,
+        "cost": 0.048,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.82
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.8,
+            "quality": 0.84,
+            "dx": 0.8
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.84
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.81
+          }
+        ]
+      },
+      {
+        "id": "cuj-06-dart-genkit-function",
+        "name": "Dart Genkit Cloud Function",
+        "category": "long_horizon",
+        "tokens": 66924,
+        "cost": 0.052,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.8
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.8,
+            "quality": 0.82,
+            "dx": 0.78
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.82
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.84,
+            "dx": 0.79
+          }
+        ]
+      },
+      {
+        "id": "cuj-07-internationalization-i18n",
+        "name": "Internationalization (i18n)",
+        "category": "short_horizon",
+        "tokens": 23601,
+        "cost": 0.018,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.94,
+            "dx": 0.9
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.88
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.89
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.87
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "agent": "Antigravity",
+    "model": "Gemini 2.5 Flash",
+    "variant": "baseline",
+    "tasks": [
+      {
+        "id": "cuj-01-renderflex-overflow",
+        "name": "Fix RenderFlex Overflow",
+        "category": "short_horizon",
+        "tokens": 26838,
+        "cost": 0.019,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.84,
+            "dx": 0.78
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.82,
+            "dx": 0.76
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.7,
+            "quality": 0.8,
+            "dx": 0.74
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.8
+          }
+        ]
+      },
+      {
+        "id": "cuj-02-adaptive-layout-navigation",
+        "name": "Navigation with Adaptive Layout",
+        "category": "long_horizon",
+        "tokens": 59062,
+        "cost": 0.046,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.6,
+            "quality": 0.75,
+            "dx": 0.68
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.79,
+            "dx": 0.72
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.5,
+            "quality": 0.74,
+            "dx": 0.66
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.8,
+            "quality": 0.78,
+            "dx": 0.7
+          }
+        ]
+      },
+      {
+        "id": "cuj-03-rest-api-http",
+        "name": "REST API Client: Fetch JSON with http",
+        "category": "short_horizon",
+        "tokens": 32224,
+        "cost": 0.025,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.8
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.83,
+            "dx": 0.78
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.8,
+            "quality": 0.81,
+            "dx": 0.75
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.84,
+            "dx": 0.79
+          }
+        ]
+      },
+      {
+        "id": "cuj-04-provider-state-mgmt",
+        "name": "Provider State Management",
+        "category": "short_horizon",
+        "tokens": 37327,
+        "cost": 0.029,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.82,
+            "dx": 0.75
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.7,
+            "quality": 0.78,
+            "dx": 0.7
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.83,
+            "dx": 0.77
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.8,
+            "quality": 0.8,
+            "dx": 0.72
+          }
+        ]
+      },
+      {
+        "id": "cuj-05-firebase-cloud-storage",
+        "name": "Firebase Cloud Storage",
+        "category": "long_horizon",
+        "tokens": 73899,
+        "cost": 0.057,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.5,
+            "quality": 0.72,
+            "dx": 0.65
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.6,
+            "quality": 0.74,
+            "dx": 0.66
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.78,
+            "dx": 0.7
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.5,
+            "quality": 0.7,
+            "dx": 0.62
+          }
+        ]
+      },
+      {
+        "id": "cuj-06-dart-genkit-function",
+        "name": "Dart Genkit Cloud Function",
+        "category": "long_horizon",
+        "tokens": 79852,
+        "cost": 0.062,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.4,
+            "quality": 0.68,
+            "dx": 0.6
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.6,
+            "quality": 0.72,
+            "dx": 0.64
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.8,
+            "quality": 0.75,
+            "dx": 0.68
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.5,
+            "quality": 0.7,
+            "dx": 0.62
+          }
+        ]
+      },
+      {
+        "id": "cuj-07-internationalization-i18n",
+        "name": "Internationalization (i18n)",
+        "category": "short_horizon",
+        "tokens": 28161,
+        "cost": 0.021,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.8
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.84,
+            "dx": 0.78
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.82
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.79
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "agent": "Claude Code",
+    "model": "Claude 3.7 Sonnet",
+    "variant": "ai_tooling",
+    "tasks": [
+      {
+        "id": "cuj-01-renderflex-overflow",
+        "name": "Fix RenderFlex Overflow",
+        "category": "short_horizon",
+        "tokens": 26241,
+        "cost": 0.05,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.95,
+            "dx": 0.93
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.94,
+            "dx": 0.91
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.96,
+            "dx": 0.94
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.95,
+            "dx": 0.92
+          }
+        ]
+      },
+      {
+        "id": "cuj-02-adaptive-layout-navigation",
+        "name": "Navigation with Adaptive Layout",
+        "category": "long_horizon",
+        "tokens": 57750,
+        "cost": 0.121,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.9
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.88
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.94,
+            "dx": 0.91
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.89
+          }
+        ]
+      },
+      {
+        "id": "cuj-03-rest-api-http",
+        "name": "REST API Client: Fetch JSON with http",
+        "category": "short_horizon",
+        "tokens": 31508,
+        "cost": 0.066,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.95,
+            "dx": 0.92
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.94,
+            "dx": 0.9
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.96,
+            "dx": 0.93
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.95,
+            "dx": 0.91
+          }
+        ]
+      },
+      {
+        "id": "cuj-04-provider-state-mgmt",
+        "name": "Provider State Management",
+        "category": "short_horizon",
+        "tokens": 36498,
+        "cost": 0.076,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.89
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.88
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.94,
+            "dx": 0.9
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.89
+          }
+        ]
+      },
+      {
+        "id": "cuj-05-firebase-cloud-storage",
+        "name": "Firebase Cloud Storage",
+        "category": "long_horizon",
+        "tokens": 72256,
+        "cost": 0.151,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.87
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.85
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.88
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.86
+          }
+        ]
+      },
+      {
+        "id": "cuj-06-dart-genkit-function",
+        "name": "Dart Genkit Cloud Function",
+        "category": "long_horizon",
+        "tokens": 78078,
+        "cost": 0.164,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.86
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.87
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.84
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.85
+          }
+        ]
+      },
+      {
+        "id": "cuj-07-internationalization-i18n",
+        "name": "Internationalization (i18n)",
+        "category": "short_horizon",
+        "tokens": 27535,
+        "cost": 0.056,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.96,
+            "dx": 0.93
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.94,
+            "dx": 0.91
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.95,
+            "dx": 0.92
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.95,
+            "dx": 0.91
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "agent": "Claude Code",
+    "model": "Claude 3.7 Sonnet",
+    "variant": "baseline",
+    "tasks": [
+      {
+        "id": "cuj-01-renderflex-overflow",
+        "name": "Fix RenderFlex Overflow",
+        "category": "short_horizon",
+        "tokens": 31311,
+        "cost": 0.06,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.84
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.87,
+            "dx": 0.81
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.85
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.82
+          }
+        ]
+      },
+      {
+        "id": "cuj-02-adaptive-layout-navigation",
+        "name": "Navigation with Adaptive Layout",
+        "category": "long_horizon",
+        "tokens": 68906,
+        "cost": 0.144,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.84,
+            "dx": 0.77
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.8,
+            "quality": 0.8,
+            "dx": 0.72
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.8
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.83,
+            "dx": 0.78
+          }
+        ]
+      },
+      {
+        "id": "cuj-03-rest-api-http",
+        "name": "REST API Client: Fetch JSON with http",
+        "category": "short_horizon",
+        "tokens": 37595,
+        "cost": 0.079,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.83
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.81
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.87,
+            "dx": 0.8
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.82
+          }
+        ]
+      },
+      {
+        "id": "cuj-04-provider-state-mgmt",
+        "name": "Provider State Management",
+        "category": "short_horizon",
+        "tokens": 43548,
+        "cost": 0.09,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.79
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.77
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.8,
+            "quality": 0.82,
+            "dx": 0.74
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.87,
+            "dx": 0.8
+          }
+        ]
+      },
+      {
+        "id": "cuj-05-firebase-cloud-storage",
+        "name": "Firebase Cloud Storage",
+        "category": "long_horizon",
+        "tokens": 86215,
+        "cost": 0.18,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.8,
+            "quality": 0.8,
+            "dx": 0.73
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.84,
+            "dx": 0.77
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.9,
+            "quality": 0.82,
+            "dx": 0.75
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.79
+          }
+        ]
+      },
+      {
+        "id": "cuj-06-dart-genkit-function",
+        "name": "Dart Genkit Cloud Function",
+        "category": "long_horizon",
+        "tokens": 93161,
+        "cost": 0.195,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.7,
+            "quality": 0.77,
+            "dx": 0.7
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.82,
+            "dx": 0.74
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.8,
+            "quality": 0.79,
+            "dx": 0.71
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.9,
+            "quality": 0.81,
+            "dx": 0.73
+          }
+        ]
+      },
+      {
+        "id": "cuj-07-internationalization-i18n",
+        "name": "Internationalization (i18n)",
+        "category": "short_horizon",
+        "tokens": 32854,
+        "cost": 0.067,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.86
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.83
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.87
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.84
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "agent": "Claude Code",
+    "model": "Claude 3.5 Haiku",
+    "variant": "ai_tooling",
+    "tasks": [
+      {
+        "id": "cuj-01-renderflex-overflow",
+        "name": "Fix RenderFlex Overflow",
+        "category": "short_horizon",
+        "tokens": 21992,
+        "cost": 0.018,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.88
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.86
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.89
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.87
+          }
+        ]
+      },
+      {
+        "id": "cuj-02-adaptive-layout-navigation",
+        "name": "Navigation with Adaptive Layout",
+        "category": "long_horizon",
+        "tokens": 48400,
+        "cost": 0.044,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.87,
+            "dx": 0.83
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.9,
+            "quality": 0.85,
+            "dx": 0.81
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.84
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.82
+          }
+        ]
+      },
+      {
+        "id": "cuj-03-rest-api-http",
+        "name": "REST API Client: Fetch JSON with http",
+        "category": "short_horizon",
+        "tokens": 26407,
+        "cost": 0.024,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.87
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.85
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.88
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.84
+          }
+        ]
+      },
+      {
+        "id": "cuj-04-provider-state-mgmt",
+        "name": "Provider State Management",
+        "category": "short_horizon",
+        "tokens": 30588,
+        "cost": 0.027,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.83
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.87,
+            "dx": 0.82
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.84
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.9,
+            "quality": 0.86,
+            "dx": 0.81
+          }
+        ]
+      },
+      {
+        "id": "cuj-05-firebase-cloud-storage",
+        "name": "Firebase Cloud Storage",
+        "category": "long_horizon",
+        "tokens": 60558,
+        "cost": 0.055,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.9,
+            "quality": 0.84,
+            "dx": 0.8
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.82
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.87,
+            "dx": 0.83
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.8,
+            "quality": 0.83,
+            "dx": 0.79
+          }
+        ]
+      },
+      {
+        "id": "cuj-06-dart-genkit-function",
+        "name": "Dart Genkit Cloud Function",
+        "category": "long_horizon",
+        "tokens": 65436,
+        "cost": 0.059,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.8,
+            "quality": 0.82,
+            "dx": 0.77
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.81
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.9,
+            "quality": 0.83,
+            "dx": 0.78
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.81
+          }
+        ]
+      },
+      {
+        "id": "cuj-07-internationalization-i18n",
+        "name": "Internationalization (i18n)",
+        "category": "short_horizon",
+        "tokens": 23077,
+        "cost": 0.02,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.89
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.87
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.88
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.86
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "agent": "Claude Code",
+    "model": "Claude 3.5 Haiku",
+    "variant": "baseline",
+    "tasks": [
+      {
+        "id": "cuj-01-renderflex-overflow",
+        "name": "Fix RenderFlex Overflow",
+        "category": "short_horizon",
+        "tokens": 26241,
+        "cost": 0.022,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.83,
+            "dx": 0.76
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.8,
+            "quality": 0.8,
+            "dx": 0.72
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.84,
+            "dx": 0.78
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.82,
+            "dx": 0.75
+          }
+        ]
+      },
+      {
+        "id": "cuj-02-adaptive-layout-navigation",
+        "name": "Navigation with Adaptive Layout",
+        "category": "long_horizon",
+        "tokens": 57750,
+        "cost": 0.053,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.5,
+            "quality": 0.73,
+            "dx": 0.65
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.8,
+            "quality": 0.76,
+            "dx": 0.69
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.6,
+            "quality": 0.74,
+            "dx": 0.66
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.7,
+            "quality": 0.75,
+            "dx": 0.68
+          }
+        ]
+      },
+      {
+        "id": "cuj-03-rest-api-http",
+        "name": "REST API Client: Fetch JSON with http",
+        "category": "short_horizon",
+        "tokens": 31508,
+        "cost": 0.029,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.84,
+            "dx": 0.78
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.8,
+            "quality": 0.8,
+            "dx": 0.73
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.79
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.82,
+            "dx": 0.76
+          }
+        ]
+      },
+      {
+        "id": "cuj-04-provider-state-mgmt",
+        "name": "Provider State Management",
+        "category": "short_horizon",
+        "tokens": 36498,
+        "cost": 0.033,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.8,
+            "quality": 0.79,
+            "dx": 0.71
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.82,
+            "dx": 0.75
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.7,
+            "quality": 0.77,
+            "dx": 0.69
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.81,
+            "dx": 0.74
+          }
+        ]
+      },
+      {
+        "id": "cuj-05-firebase-cloud-storage",
+        "name": "Firebase Cloud Storage",
+        "category": "long_horizon",
+        "tokens": 72256,
+        "cost": 0.066,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.4,
+            "quality": 0.68,
+            "dx": 0.6
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.6,
+            "quality": 0.72,
+            "dx": 0.64
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.8,
+            "quality": 0.75,
+            "dx": 0.68
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.5,
+            "quality": 0.7,
+            "dx": 0.62
+          }
+        ]
+      },
+      {
+        "id": "cuj-06-dart-genkit-function",
+        "name": "Dart Genkit Cloud Function",
+        "category": "long_horizon",
+        "tokens": 78078,
+        "cost": 0.071,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.4,
+            "quality": 0.65,
+            "dx": 0.58
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.6,
+            "quality": 0.7,
+            "dx": 0.62
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.7,
+            "quality": 0.72,
+            "dx": 0.65
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.5,
+            "quality": 0.68,
+            "dx": 0.6
+          }
+        ]
+      },
+      {
+        "id": "cuj-07-internationalization-i18n",
+        "name": "Internationalization (i18n)",
+        "category": "short_horizon",
+        "tokens": 27535,
+        "cost": 0.024,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.79
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.83,
+            "dx": 0.76
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.8
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.84,
+            "dx": 0.77
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "agent": "Codex",
+    "model": "GPT-4.5",
+    "variant": "ai_tooling",
+    "tasks": [
+      {
+        "id": "cuj-01-renderflex-overflow",
+        "name": "Fix RenderFlex Overflow",
+        "category": "short_horizon",
+        "tokens": 28740,
+        "cost": 0.082,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.94,
+            "dx": 0.91
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.9
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.95,
+            "dx": 0.92
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.94,
+            "dx": 0.91
+          }
+        ]
+      },
+      {
+        "id": "cuj-02-adaptive-layout-navigation",
+        "name": "Navigation with Adaptive Layout",
+        "category": "long_horizon",
+        "tokens": 63250,
+        "cost": 0.198,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.89
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.87
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.9
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.88
+          }
+        ]
+      },
+      {
+        "id": "cuj-03-rest-api-http",
+        "name": "REST API Client: Fetch JSON with http",
+        "category": "short_horizon",
+        "tokens": 34509,
+        "cost": 0.108,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.94,
+            "dx": 0.9
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.89
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.95,
+            "dx": 0.91
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.89
+          }
+        ]
+      },
+      {
+        "id": "cuj-04-provider-state-mgmt",
+        "name": "Provider State Management",
+        "category": "short_horizon",
+        "tokens": 39974,
+        "cost": 0.124,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.88
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.86
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.89
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.87
+          }
+        ]
+      },
+      {
+        "id": "cuj-05-firebase-cloud-storage",
+        "name": "Firebase Cloud Storage",
+        "category": "long_horizon",
+        "tokens": 79138,
+        "cost": 0.247,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.85
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.83
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.86
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.9,
+            "quality": 0.87,
+            "dx": 0.82
+          }
+        ]
+      },
+      {
+        "id": "cuj-06-dart-genkit-function",
+        "name": "Dart Genkit Cloud Function",
+        "category": "long_horizon",
+        "tokens": 85513,
+        "cost": 0.268,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.84
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.83
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.9,
+            "quality": 0.86,
+            "dx": 0.81
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.85
+          }
+        ]
+      },
+      {
+        "id": "cuj-07-internationalization-i18n",
+        "name": "Internationalization (i18n)",
+        "category": "short_horizon",
+        "tokens": 30157,
+        "cost": 0.092,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.95,
+            "dx": 0.92
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.9
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.94,
+            "dx": 0.91
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.94,
+            "dx": 0.9
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "agent": "Codex",
+    "model": "GPT-4.5",
+    "variant": "baseline",
+    "tasks": [
+      {
+        "id": "cuj-01-renderflex-overflow",
+        "name": "Fix RenderFlex Overflow",
+        "category": "short_horizon",
+        "tokens": 34293,
+        "cost": 0.098,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.87,
+            "dx": 0.81
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.79
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.83
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.8
+          }
+        ]
+      },
+      {
+        "id": "cuj-02-adaptive-layout-navigation",
+        "name": "Navigation with Adaptive Layout",
+        "category": "long_horizon",
+        "tokens": 75468,
+        "cost": 0.236,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.8,
+            "quality": 0.81,
+            "dx": 0.74
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.84,
+            "dx": 0.77
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.8,
+            "quality": 0.8,
+            "dx": 0.73
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.83,
+            "dx": 0.76
+          }
+        ]
+      },
+      {
+        "id": "cuj-03-rest-api-http",
+        "name": "REST API Client: Fetch JSON with http",
+        "category": "short_horizon",
+        "tokens": 41175,
+        "cost": 0.129,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.82
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.8
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.87,
+            "dx": 0.81
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.79
+          }
+        ]
+      },
+      {
+        "id": "cuj-04-provider-state-mgmt",
+        "name": "Provider State Management",
+        "category": "short_horizon",
+        "tokens": 47696,
+        "cost": 0.147,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.78
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.8,
+            "quality": 0.81,
+            "dx": 0.73
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.79
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.84,
+            "dx": 0.77
+          }
+        ]
+      },
+      {
+        "id": "cuj-05-firebase-cloud-storage",
+        "name": "Firebase Cloud Storage",
+        "category": "long_horizon",
+        "tokens": 94426,
+        "cost": 0.295,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.7,
+            "quality": 0.78,
+            "dx": 0.7
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.82,
+            "dx": 0.75
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.8,
+            "quality": 0.8,
+            "dx": 0.72
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.8,
+            "quality": 0.79,
+            "dx": 0.71
+          }
+        ]
+      },
+      {
+        "id": "cuj-06-dart-genkit-function",
+        "name": "Dart Genkit Cloud Function",
+        "category": "long_horizon",
+        "tokens": 102033,
+        "cost": 0.319,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.6,
+            "quality": 0.75,
+            "dx": 0.67
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.8,
+            "quality": 0.78,
+            "dx": 0.71
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.81,
+            "dx": 0.74
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.7,
+            "quality": 0.77,
+            "dx": 0.69
+          }
+        ]
+      },
+      {
+        "id": "cuj-07-internationalization-i18n",
+        "name": "Internationalization (i18n)",
+        "category": "short_horizon",
+        "tokens": 35983,
+        "cost": 0.11,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.85
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.82
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.86
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.83
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "agent": "Codex",
+    "model": "GPT-4o",
+    "variant": "ai_tooling",
+    "tasks": [
+      {
+        "id": "cuj-01-renderflex-overflow",
+        "name": "Fix RenderFlex Overflow",
+        "category": "short_horizon",
+        "tokens": 24992,
+        "cost": 0.037,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.89
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.87
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.9
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.88
+          }
+        ]
+      },
+      {
+        "id": "cuj-02-adaptive-layout-navigation",
+        "name": "Navigation with Adaptive Layout",
+        "category": "long_horizon",
+        "tokens": 55000,
+        "cost": 0.088,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.85
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.84
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.9,
+            "quality": 0.86,
+            "dx": 0.82
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.86
+          }
+        ]
+      },
+      {
+        "id": "cuj-03-rest-api-http",
+        "name": "REST API Client: Fetch JSON with http",
+        "category": "short_horizon",
+        "tokens": 30008,
+        "cost": 0.048,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.88
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.87
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.89
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.86
+          }
+        ]
+      },
+      {
+        "id": "cuj-04-provider-state-mgmt",
+        "name": "Provider State Management",
+        "category": "short_horizon",
+        "tokens": 34760,
+        "cost": 0.055,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.9,
+            "dx": 0.86
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.84
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.91,
+            "dx": 0.87
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.85
+          }
+        ]
+      },
+      {
+        "id": "cuj-05-firebase-cloud-storage",
+        "name": "Firebase Cloud Storage",
+        "category": "long_horizon",
+        "tokens": 68816,
+        "cost": 0.11,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.9,
+            "quality": 0.86,
+            "dx": 0.81
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.88,
+            "dx": 0.83
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.84
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.8,
+            "quality": 0.84,
+            "dx": 0.79
+          }
+        ]
+      },
+      {
+        "id": "cuj-06-dart-genkit-function",
+        "name": "Dart Genkit Cloud Function",
+        "category": "long_horizon",
+        "tokens": 74360,
+        "cost": 0.119,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.9,
+            "quality": 0.85,
+            "dx": 0.8
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.87,
+            "dx": 0.82
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.8,
+            "quality": 0.83,
+            "dx": 0.78
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.81
+          }
+        ]
+      },
+      {
+        "id": "cuj-07-internationalization-i18n",
+        "name": "Internationalization (i18n)",
+        "category": "short_horizon",
+        "tokens": 26224,
+        "cost": 0.041,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.94,
+            "dx": 0.9
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.88
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.93,
+            "dx": 0.89
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.92,
+            "dx": 0.87
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "agent": "Codex",
+    "model": "GPT-4o",
+    "variant": "baseline",
+    "tasks": [
+      {
+        "id": "cuj-01-renderflex-overflow",
+        "name": "Fix RenderFlex Overflow",
+        "category": "short_horizon",
+        "tokens": 29820,
+        "cost": 0.044,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.79
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.83,
+            "dx": 0.76
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.8,
+            "quality": 0.8,
+            "dx": 0.73
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.8
+          }
+        ]
+      },
+      {
+        "id": "cuj-02-adaptive-layout-navigation",
+        "name": "Navigation with Adaptive Layout",
+        "category": "long_horizon",
+        "tokens": 65625,
+        "cost": 0.105,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.6,
+            "quality": 0.76,
+            "dx": 0.69
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.8,
+            "quality": 0.78,
+            "dx": 0.71
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.7,
+            "quality": 0.77,
+            "dx": 0.7
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.81,
+            "dx": 0.74
+          }
+        ]
+      },
+      {
+        "id": "cuj-03-rest-api-http",
+        "name": "REST API Client: Fetch JSON with http",
+        "category": "short_horizon",
+        "tokens": 35805,
+        "cost": 0.057,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.8
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.84,
+            "dx": 0.78
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.9,
+            "quality": 0.82,
+            "dx": 0.75
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.79
+          }
+        ]
+      },
+      {
+        "id": "cuj-04-provider-state-mgmt",
+        "name": "Provider State Management",
+        "category": "short_horizon",
+        "tokens": 41475,
+        "cost": 0.066,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.8,
+            "quality": 0.8,
+            "dx": 0.73
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.83,
+            "dx": 0.76
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.8,
+            "quality": 0.81,
+            "dx": 0.74
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.84,
+            "dx": 0.78
+          }
+        ]
+      },
+      {
+        "id": "cuj-05-firebase-cloud-storage",
+        "name": "Firebase Cloud Storage",
+        "category": "long_horizon",
+        "tokens": 82110,
+        "cost": 0.131,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.5,
+            "quality": 0.72,
+            "dx": 0.65
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.8,
+            "quality": 0.76,
+            "dx": 0.69
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.6,
+            "quality": 0.74,
+            "dx": 0.66
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.5,
+            "quality": 0.7,
+            "dx": 0.63
+          }
+        ]
+      },
+      {
+        "id": "cuj-06-dart-genkit-function",
+        "name": "Dart Genkit Cloud Function",
+        "category": "long_horizon",
+        "tokens": 88725,
+        "cost": 0.142,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 0.5,
+            "quality": 0.7,
+            "dx": 0.63
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 0.7,
+            "quality": 0.73,
+            "dx": 0.66
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 0.8,
+            "quality": 0.76,
+            "dx": 0.69
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 0.6,
+            "quality": 0.72,
+            "dx": 0.65
+          }
+        ]
+      },
+      {
+        "id": "cuj-07-internationalization-i18n",
+        "name": "Internationalization (i18n)",
+        "category": "short_horizon",
+        "tokens": 31290,
+        "cost": 0.049,
+        "trials": [
+          {
+            "trialIndex": 1,
+            "outcome": 1.0,
+            "quality": 0.87,
+            "dx": 0.81
+          },
+          {
+            "trialIndex": 2,
+            "outcome": 1.0,
+            "quality": 0.85,
+            "dx": 0.79
+          },
+          {
+            "trialIndex": 3,
+            "outcome": 1.0,
+            "quality": 0.89,
+            "dx": 0.83
+          },
+          {
+            "trialIndex": 4,
+            "outcome": 1.0,
+            "quality": 0.86,
+            "dx": 0.8
+          }
+        ]
+      }
+    ]
+  }
+]
