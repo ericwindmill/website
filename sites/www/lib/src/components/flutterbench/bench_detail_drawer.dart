@@ -5,7 +5,7 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
-import '../../models/flutterbench/bench_models.dart';
+import '../../models/content/flutter_bench.dart';
 import '../../utils/bench_calculator.dart';
 import 'bench_controls.dart';
 
@@ -36,7 +36,8 @@ class BenchDetailDrawer extends StatelessComponent {
     }
 
     final currentEntry = entry!;
-    final showBoth = variant == DisplayVariant.both &&
+    final showBoth =
+        variant == DisplayVariant.both &&
         currentEntry.baselineRun != null &&
         currentEntry.aiToolingRun != null;
     final baselineMetrics = currentEntry.baselineMetrics;
@@ -268,7 +269,9 @@ class BenchDetailDrawer extends StatelessComponent {
               tbody([
                 for (final task in activeTasks)
                   tr([
-                    td([strong([.text(task.name)])]),
+                    td([
+                      strong([.text(task.name)]),
+                    ]),
                     td([
                       span(classes: 'category-tag ${task.category.value}', [
                         .text(task.category.label),

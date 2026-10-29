@@ -45,7 +45,7 @@ import 'src/pages/not_found_page.dart';
 import 'src/pages/showcase_page.dart';
 import 'src/pages/web_page.dart';
 import 'src/pages/flutterbench_page.dart';
-import 'src/pages/flutterbench_header.dart';
+import 'src/components/flutterbench/flutterbench_header.dart';
 import 'src/pages/why_flutter_page.dart';
 import 'src/utils/asset_utils.dart';
 

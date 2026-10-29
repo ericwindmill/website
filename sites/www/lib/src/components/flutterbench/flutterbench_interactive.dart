@@ -5,12 +5,12 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
-import '../components/flutterbench/bench_controls.dart';
-import '../components/flutterbench/bench_detail_drawer.dart';
-import '../components/flutterbench/bench_methodology_card.dart';
-import '../components/flutterbench/bench_table.dart';
-import '../models/flutterbench/bench_models.dart';
-import '../utils/bench_calculator.dart';
+import 'bench_controls.dart';
+import 'bench_detail_drawer.dart';
+import 'bench_methodology_card.dart';
+import 'bench_table.dart';
+import '../../models/content/flutter_bench.dart';
+import '../../utils/bench_calculator.dart';
 
 /// Client-hydrated interactive leaderboard component.
 ///
@@ -62,19 +62,20 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
   @override
   Component build(BuildContext context) {
     // Collect available filter options.
-    final availableAgents =
-        _allComparisons.map((c) => c.agent).toSet().toList()..sort();
-    final availableModels = _allComparisons
-        .where(
-          (c) =>
-              _selectedAgent == null ||
-              _selectedAgent!.isEmpty ||
-              c.agent == _selectedAgent,
-        )
-        .map((c) => c.model)
-        .toSet()
-        .toList()
+    final availableAgents = _allComparisons.map((c) => c.agent).toSet().toList()
       ..sort();
+    final availableModels =
+        _allComparisons
+            .where(
+              (c) =>
+                  _selectedAgent == null ||
+                  _selectedAgent!.isEmpty ||
+                  c.agent == _selectedAgent,
+            )
+            .map((c) => c.model)
+            .toSet()
+            .toList()
+          ..sort();
 
     // Filter comparisons.
     var filtered = _allComparisons.where((entry) {

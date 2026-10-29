@@ -64,6 +64,7 @@ To prevent benchmark saturation and maintain integrity, individual prompts and
 test suites are not public. The evaluation dataset assesses the following
 representative journey categories:
 
+<!-- TODO(ewindmill): use component -->
 | Category | CUJ Identifier | Description |
 |---|---|---|
 | Short horizon | `cuj-01-renderflex-overflow` | **Fix RenderFlex Overflow**: Diagnosing and resolving unbounded layout constraints, row/column overflow errors, and proper flex spacing. |
@@ -86,6 +87,7 @@ workspace state to account for non-deterministic model outputs.
 Rather than reducing model performance to a simple pass/fail binary, each trial
 is scored on a normalized 0.0 to 1.0 scale across three weighted dimensions:
 
+<!-- TODO(ewindmill): do something here -->
 $$\text{Result Score} = (\text{Outcome} \times 0.60) + (\text{Quality} \times 0.30) + (\text{Developer Experience} \times 0.10)$$
 
 #### 1. Outcome (60% weight)

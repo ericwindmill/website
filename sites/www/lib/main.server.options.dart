@@ -31,7 +31,7 @@ import 'package:flutter_website/src/components/sections/why_flutter_features_sec
     as _why_flutter_features_section;
 import 'package:flutter_website/src/components/sections/why_flutter_hero_section.dart'
     as _why_flutter_hero_section;
-import 'package:flutter_website/src/pages/flutterbench_interactive.dart'
+import 'package:flutter_website/src/components/flutterbench/flutterbench_interactive.dart'
     as _flutterbench_interactive;
 import 'package:jaspr_content/components/file_tree.dart' as _file_tree;
 import 'package:site_shared/components/blog/client/blog_categories.dart'

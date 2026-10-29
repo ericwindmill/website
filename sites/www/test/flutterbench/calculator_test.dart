@@ -5,7 +5,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import '../../lib/src/models/flutterbench/bench_models.dart';
+import '../../lib/src/models/content/flutter_bench.dart';
 import '../../lib/src/utils/bench_calculator.dart';
 
 void expect(dynamic actual, dynamic expected, [String message = '']) {
@@ -194,18 +194,16 @@ void main() {
     final List<dynamic> list = jsonDecode(jsonString) as List<dynamic>;
     expect(list.isNotEmpty, true, 'results.json not empty');
 
-    final runs =
-        list
-            .map((item) => BenchModelRun.fromJson(item as Map<String, Object?>))
-            .toList();
+    final runs = list
+        .map((item) => BenchModelRun.fromJson(item as Map<String, Object?>))
+        .toList();
 
     expect(runs.length, 12, '12 total model runs (6 models * 2 variants)');
 
     final comparisons = BenchCalculator.buildComparisonEntries(runs);
     expect(comparisons.length, 6, '6 unique models in launch roster');
 
-    final modelNames =
-        comparisons.map((c) => '${c.agent}: ${c.model}').toSet();
+    final modelNames = comparisons.map((c) => '${c.agent}: ${c.model}').toSet();
     expect(
       modelNames.contains('Antigravity: Gemini 2.5 Pro'),
       true,
@@ -243,8 +241,16 @@ void main() {
     final firstRunTasks = runs.first.tasks;
     final taskNames = firstRunTasks.map((t) => t.name).toList();
     expect(taskNames.contains('Fix RenderFlex Overflow'), true, 'CUJ 1');
-    expect(taskNames.contains('Navigation with Adaptive Layout'), true, 'CUJ 2');
-    expect(taskNames.contains('REST API Client: Fetch JSON with http'), true, 'CUJ 3');
+    expect(
+      taskNames.contains('Navigation with Adaptive Layout'),
+      true,
+      'CUJ 2',
+    );
+    expect(
+      taskNames.contains('REST API Client: Fetch JSON with http'),
+      true,
+      'CUJ 3',
+    );
     expect(taskNames.contains('Provider State Management'), true, 'CUJ 4');
     expect(taskNames.contains('Firebase Cloud Storage'), true, 'CUJ 5');
     expect(taskNames.contains('Dart Genkit Cloud Function'), true, 'CUJ 6');

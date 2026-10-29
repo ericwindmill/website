@@ -1,9 +1,9 @@
-// Copyright 2026, the Flutter authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that
-// can be found in the LICENSE file.
+// Copyright 2026, the Flutter authors. All rights reserved. Use of this source
+// code is governed by a BSD-style license that can be found in the LICENSE
+// file.
 
 import 'dart:math' as math;
-import '../models/flutterbench/bench_models.dart';
+import '../models/content/flutter_bench.dart';
 
 /// Calculation engine for Flutter Bench leaderboard metrics.
 class BenchCalculator {
@@ -15,20 +15,23 @@ class BenchCalculator {
 
     final totalTasks = run.tasks.length;
 
-    // Pass Rate: percentage of tasks where Outcome score is 1.0 (mean outcome == 1.0)
+    // Pass Rate: percentage of tasks where Outcome score is 1.0 (mean outcome
+    // == 1.0)
     final passedTasksCount = run.tasks.where((t) => t.passedFully).length;
     final passRate = (passedTasksCount / totalTasks) * 100.0;
 
-    // Pass@4: percentage of tasks where at least 1 of 4 trials passed (outcome == 1.0)
+    // Pass@4: percentage of tasks where at least 1 of 4 trials passed (outcome
+    // == 1.0)
     final passAt4Count = run.tasks.where((t) => t.passedAtLeastOnce).length;
     final passAt4Rate = (passAt4Count / totalTasks) * 100.0;
 
-    // Task-level Result Scores on a 0-100 scale: (Outcome * 0.60 + Quality * 0.30 + DX * 0.10) * 100
+    // Task-level Result Scores on a 0-100 scale: (Outcome * 0.60 + Quality *
+    // 0.30 + DX * 0.10) * 100
     final taskScores = run.tasks.map((t) => t.avgScore * 100.0).toList();
     final avgScore = taskScores.reduce((a, b) => a + b) / totalTasks;
 
     // Standard deviation of Result Scores (Sample SD)
-    double scoreSd = 0.0;
+    var scoreSd = 0.0;
     if (totalTasks > 1) {
       final variance =
           taskScores
@@ -72,13 +75,14 @@ class BenchCalculator {
     );
   }
 
-  /// Groups runs into comparisons containing both Baseline and AI Tooling metrics.
+  /// Groups runs into comparisons containing both Baseline and AI Tooling
+  /// metrics.
   static List<BenchComparisonEntry> buildComparisonEntries(
     List<BenchModelRun> runs,
   ) {
-    final Map<String, BenchModelRun> baselineMap = {};
-    final Map<String, BenchModelRun> aiToolingMap = {};
-    final Set<String> models = {};
+    final baselineMap = <String, BenchModelRun>{};
+    final aiToolingMap = <String, BenchModelRun>{};
+    final models = <String>{};
 
     for (final run in runs) {
       final key = run.compositeKey;
@@ -90,7 +94,7 @@ class BenchCalculator {
       }
     }
 
-    final List<BenchComparisonEntry> entries = [];
+    final entries = <BenchComparisonEntry>[];
     for (final key in models) {
       final baseline = baselineMap[key];
       final aiTooling = aiToolingMap[key];
@@ -134,8 +138,8 @@ class BenchCalculator {
   static String formatTokens(int tokens) {
     final str = tokens.toString();
     final buffer = StringBuffer();
-    int count = 0;
-    for (int i = str.length - 1; i >= 0; i--) {
+    var count = 0;
+    for (var i = str.length - 1; i >= 0; i--) {
       buffer.write(str[i]);
       count++;
       if (count % 3 == 0 && i != 0) {

@@ -5,7 +5,7 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
-import '../components/flutterbench/bench_subnav.dart';
+import 'bench_tabbar.dart';
 
 /// Shared header component for Flutter Bench pages.
 ///
@@ -20,8 +20,6 @@ class FlutterBenchHeader extends StatelessComponent {
   final String activePage;
 
   /// Creates a [FlutterBenchHeader] from markdown element attributes.
-  ///
-  /// HTML lowercases attribute names, so `activePage` becomes `activepage`.
   static FlutterBenchHeader fromAttrs(Map<String, String> attrs) =>
       FlutterBenchHeader(activePage: attrs['activepage'] ?? 'leaderboard');
 
@@ -32,6 +30,7 @@ class FlutterBenchHeader extends StatelessComponent {
         const div(classes: 'bench-header', [
           h1(classes: 'bench-title', [.text('Flutter Bench')]),
           p(classes: 'bench-subtitle', [
+            // TODO(ewindmill): can this be written into the md file?
             .text(
               'A public leaderboard measuring how effectively AI coding '
               'agents and models build Flutter and Dart applications.',

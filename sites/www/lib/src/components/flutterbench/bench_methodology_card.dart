@@ -6,17 +6,15 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 /// Methodology teaser card placed directly under the leaderboard table.
-///
-/// Contains ~100-150 words of prose summarizing dataset framing, graders,
-/// and scoring rubrics without stat chips or private links.
 class BenchMethodologyCard extends StatelessComponent {
   const BenchMethodologyCard({super.key});
 
   @override
   Component build(BuildContext context) {
-    return div(classes: 'bench-methodology-card', [
-      const h3([.text('Benchmark Methodology')]),
+    return const div(classes: 'bench-methodology-card', [
+      h3([.text('Benchmark Methodology')]),
       p([
+        // TODO(ewindmill): Can this be written into the md files?
         .text(
           'Flutter Bench rigorously evaluates AI coding agents across realistic Flutter and Dart development workflows. '
           'Our benchmark consists of balanced short-horizon tasks (such as reactive form validation and custom painters) '
@@ -28,8 +26,8 @@ class BenchMethodologyCard extends StatelessComponent {
         ),
       ]),
       a(href: '/flutterbench/methodology', classes: 'methodology-link', [
-        const span([.text('Read the complete methodology guide')]),
-        const span([.text(' →')]),
+        span([.text('Read the complete methodology guide')]),
+        span([.text(' →')]),
       ]),
     ]);
   }

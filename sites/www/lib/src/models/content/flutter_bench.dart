@@ -3,6 +3,7 @@
 // can be found in the LICENSE file.
 
 /// Variants evaluated in Flutter Bench.
+// TODO(ewindmill): ContentMapper?
 enum BenchVariant {
   baseline('baseline', 'Baseline'),
   aiTooling('ai_tooling', 'With AI tooling');
@@ -218,18 +219,19 @@ class BenchComparisonEntry {
   String get compositeKey => '$agent / $model';
 
   /// Delta in Pass Rate: AI Tooling - Baseline
-  double get passRateDelta => aiToolingMetrics.passRate - baselineMetrics.passRate;
+  double get passRateDelta =>
+      aiToolingMetrics.passRate - baselineMetrics.passRate;
 
   /// Delta in Pass@4 Rate: AI Tooling - Baseline
   double get passAt4Delta =>
       aiToolingMetrics.passAt4Rate - baselineMetrics.passAt4Rate;
 
   /// Delta in Avg Score: AI Tooling - Baseline
-  double get avgScoreDelta => aiToolingMetrics.avgScore - baselineMetrics.avgScore;
+  double get avgScoreDelta =>
+      aiToolingMetrics.avgScore - baselineMetrics.avgScore;
 
   /// Delta in Tokens: AI Tooling - Baseline
-  int get tokensDelta =>
-      aiToolingMetrics.avgTokens - baselineMetrics.avgTokens;
+  int get tokensDelta => aiToolingMetrics.avgTokens - baselineMetrics.avgTokens;
 
   /// Delta in Cost: AI Tooling - Baseline
   double get costDelta => aiToolingMetrics.avgCost - baselineMetrics.avgCost;

@@ -5,7 +5,7 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
-import '../../models/flutterbench/bench_models.dart';
+import '../../models/content/flutter_bench.dart';
 import '../../utils/bench_calculator.dart';
 import 'bench_controls.dart';
 
@@ -60,13 +60,15 @@ class BenchTable extends StatelessComponent {
                 label: 'Pass@4 Rate (%)',
                 column: SortColumn.passAt4,
                 isNum: true,
-                title: 'Percentage of tasks where at least 1 of 4 trials passed (K = 4)',
+                title:
+                    'Percentage of tasks where at least 1 of 4 trials passed (K = 4)',
               ),
               _buildHeader(
                 label: 'Avg Score (%)',
                 column: SortColumn.avgScore,
                 isNum: true,
-                title: 'Mean Result Score: Outcome (60%) + Quality (30%) + DX (10%) (mean ± SD)',
+                title:
+                    'Mean Result Score: Outcome (60%) + Quality (30%) + DX (10%) (mean ± SD)',
               ),
               _buildHeader(
                 label: 'Avg Tokens',
@@ -170,7 +172,9 @@ class BenchTable extends StatelessComponent {
     String? title,
   }) {
     final isSelected = sortColumn == column;
-    final arrow = isSelected ? (sortAscending ? ' ▲' : ' ▼') : '';
+    final arrow = isSelected
+        ? (sortAscending ? ' ▲' : ' ▼')
+        : ''; // TODO(ewindmill): Is this okay?
 
     return th(
       classes: isNum ? 'num' : '',
@@ -195,11 +199,15 @@ class BenchTable extends StatelessComponent {
       case DisplayVariant.both:
         return div(classes: 'both-cell-container', [
           div(classes: 'variant-item', [
-            const span(classes: 'variant-badge badge-ai', [.text('AI Tooling')]),
+            const span(classes: 'variant-badge badge-ai', [
+              .text('AI Tooling'),
+            ]),
             span([.text(aiVal)]),
           ]),
           div(classes: 'variant-item', [
-            const span(classes: 'variant-badge badge-baseline', [.text('Base')]),
+            const span(classes: 'variant-badge badge-baseline', [
+              .text('Base'),
+            ]),
             span([.text(baselineVal)]),
           ]),
         ]);

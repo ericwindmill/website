@@ -1,6 +1,6 @@
-// Copyright 2026, the Flutter authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that
-// can be found in the LICENSE file.
+// Copyright 2026, the Flutter authors. All rights reserved. Use of this source
+// code is governed by a BSD-style license that can be found in the LICENSE
+// file.
 
 import '../models/layout/nav_content.dart';
 
@@ -18,6 +18,7 @@ final List<NavItem> headerNavItems = [
     ],
     secondColumn: [
       NavLink(label: 'AI', href: '/ai'),
+      NavLink(label: 'Flutter Bench', href: '/flutterbench'),
       NavLink(label: 'Google integrations', href: '/google-integrations'),
       NavLink(label: 'Game development', href: '/games'),
       NavLink(label: 'Monetization', href: '/monetization'),
@@ -83,20 +84,6 @@ final List<NavItem> headerNavItems = [
       NavLink(
         label: 'DevTools',
         href: 'https://docs.flutter.dev/tools/devtools',
-      ),
-    ],
-  ),
-  NavItem(
-    label: 'Flutter Bench',
-    href: '/flutterbench',
-    items: [
-      NavLink(
-        label: 'Methodology',
-        href: '/flutterbench/methodology',
-      ),
-      NavLink(
-        label: 'Archive',
-        href: '/flutterbench/archive',
       ),
     ],
   ),
