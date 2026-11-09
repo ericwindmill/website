@@ -5,12 +5,12 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+import '../../models/content/flutter_bench.dart';
+import '../../utils/bench_calculator.dart';
 import 'bench_controls.dart';
 import 'bench_detail_drawer.dart';
 import 'bench_methodology_card.dart';
 import 'bench_table.dart';
-import '../../models/content/flutter_bench.dart';
-import '../../utils/bench_calculator.dart';
 
 /// Client-hydrated interactive leaderboard component.
 ///
@@ -54,7 +54,7 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
 
   void _recomputeComparisons() {
     final runs = component.rawRunsJson
-        .map((json) => BenchModelRun.fromJson(json))
+        .map(BenchModelRun.fromJson)
         .toList();
     _allComparisons = BenchCalculator.buildComparisonEntries(runs);
   }
@@ -78,7 +78,7 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
           ..sort();
 
     // Filter comparisons.
-    var filtered = _allComparisons.where((entry) {
+    final filtered = _allComparisons.where((entry) {
       if (_selectedAgent != null &&
           _selectedAgent!.isNotEmpty &&
           entry.agent != _selectedAgent) {
@@ -94,7 +94,7 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
 
     // Sort comparisons.
     filtered.sort((a, b) {
-      int cmp = 0;
+      var cmp = 0;
       switch (_sortColumn) {
         case SortColumn.agentModel:
           cmp = a.compositeKey.compareTo(b.compositeKey);
@@ -189,8 +189,8 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
         const BenchMethodologyCard(),
 
         // Metric Legend Card (plain-language definitions and calculations)
-        div(classes: 'bench-legend-card', [
-          const h4([.text('Metric Definitions & Formulas')]),
+        const div(classes: 'bench-legend-card', [
+          h4([.text('Metric Definitions & Formulas')]),
           ul(classes: 'legend-list', [
             li([
               strong([.text('Pass Rate (%): ')]),

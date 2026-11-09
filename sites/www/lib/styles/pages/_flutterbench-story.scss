@@ -21,13 +21,17 @@ $color-llm: #7c3aed; // Violet
 $color-quality: #6366f1; // Indigo
 $color-dx: #d97706; // Amber
 $color-grey: #64748b; // Slate
+$color-heuristic: #2563eb; // Blue
+$color-white: #ffffff;
 
 $tint-bg: 0.12;
 $tint-border: 0.25;
 
 $font-size-xs: 0.75rem;
+$font-size-code: 0.875em;
 $line-height-tight: 1.2;
 $line-height-body: 1.75;
+$line-height-card: 1.5;
 $letter-spacing-caps: 0.05em;
 $spacing-xs: 0.25rem;
 $spacing-md: 1rem;
@@ -35,9 +39,26 @@ $spacing-lg: 1.5rem;
 $radius-pill: 9999px;
 $transition-normal: 0.2s ease;
 $prose-max-width: 760px;
+$icon-size: 2.75rem;
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+$bench-dark-gradient: linear-gradient(135deg, var(--blue-10), var(--blue-9));
+
+// Category accent colors used by card icons and badges.
+$category-colors: (
+  outcome: $color-outcome,
+  quality: $color-quality,
+  dx: $color-dx,
+);
 
 // Chapters cycle through the Flutter Bench category colors.
-$chapter-colors: ($color-functional, $color-outcome, $color-llm, $color-quality, $color-dx, $color-grey);
+$chapter-colors: (
+  $color-functional,
+  $color-outcome,
+  $color-llm,
+  $color-quality,
+  $color-dx,
+  $color-grey
+);
 
 @function _pad-chapter-number($i) {
   @if $i < 10 {
@@ -62,6 +83,10 @@ $chapter-colors: ($color-functional, $color-outcome, $color-llm, $color-quality,
 // Nested under the same selector as the generic Flutter Bench prose styles
 // in _flutterbench.scss so these rules take precedence.
 body.flutterbench-methodology section.content {
+  ul {
+      // overwrite the global style that turns off list-style
+      list-style: disc !important;
+    }
   .story-chapter {
     position: relative;
     padding-block: var(--gutter);
@@ -87,9 +112,9 @@ body.flutterbench-methodology section.content {
       content: '';
       position: absolute;
       inset: 0 calc(-1 * var(--spacer-md));
-      background:
-        radial-gradient(650px circle at 50% 0%, rgba(var(--chapter-accent-rgb), $tint-bg), transparent 90%),
-        radial-gradient(650px circle at 50% 100%, rgba(var(--chapter-next-rgb), $tint-bg), transparent 90%);
+      // background:
+        //   radial-gradient(1250px circle at 50% 0%, rgba(var(--chapter-accent-rgb), $tint-bg), transparent 30%),
+        //     radial-gradient(1250px circle at 50% 100%, rgba(var(--chapter-next-rgb), $tint-bg), transparent 30%);
       pointer-events: none;
       z-index: 0;
     }
@@ -144,7 +169,7 @@ body.flutterbench-methodology section.content {
         }
       }
 
-      > .header-wrapper {
+            >.header-wrapper {
         margin: 0;
 
         h2 {
@@ -166,17 +191,18 @@ body.flutterbench-methodology section.content {
       gap: var(--spacer-sm);
       width: 100%;
 
-      > p,
-      > ul,
-      > ol,
-      > blockquote {
+      >p,
+        >ul,
+        >ol,
+        >blockquote {
         width: 100%;
         max-width: $prose-max-width;
         margin-block: 0 $spacing-xs;
         line-height: $line-height-body;
+
       }
 
-      > .table-wrapper {
+            >.table-wrapper {
         width: 100%;
         overflow-x: auto;
         margin-block: $spacing-xs $spacing-md;
@@ -193,14 +219,14 @@ body.flutterbench-methodology section.content {
         }
       }
 
-      > h3 {
+            >h3 {
         font-size: var(--font-size-heading-4);
         font-weight: var(--font-weight-bold);
         color: var(--blue-10);
         margin-block: var(--spacer-md) $spacing-xs;
       }
 
-      > h4 {
+            >h4 {
         font-size: var(--font-size-heading-5);
         font-weight: var(--font-weight-bold);
         color: var(--chapter-accent);
@@ -249,9 +275,271 @@ body.flutterbench-methodology section.content {
 
 @media (prefers-reduced-motion: reduce) {
   body.flutterbench-methodology section.content .story-chapter {
+
     &,
     .heading-link {
       transition: none;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Methodology cards
+// -----------------------------------------------------------------------------
+// Ported from flutter/website's
+// sites/www/lib/styles/pages/flutter_bench/_methodology.scss.
+// Nested under `.chapter-content` to take precedence over the generic
+// Flutter Bench prose styles in _flutterbench.scss.
+
+@mixin _card-body-text {
+  font-size: var(--font-size-default);
+  line-height: $line-height-card;
+  color: var(--site-base-fgColor-alt);
+  overflow-wrap: anywhere;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin: 0 0 var(--spacer-sm);
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+  }
+
+  ul,
+  ol {
+    margin: 0;
+    padding-left: 1.1rem;
+
+    li {
+      margin-bottom: $spacing-xs;
+      font-size: inherit;
+      line-height: inherit;
+      color: inherit;
+    }
+  }
+
+  code {
+    font-size: $font-size-code;
+    background-color: var(--site-raised-bgColor);
+    padding: 0.1em 0.35em;
+    border-radius: var(--ui-border-radius-sm);
+  }
+}
+
+body.flutterbench-methodology section.content .chapter-content {
+
+  // Plain-text formulas
+  >p.formula {
+    max-width: $prose-max-width;
+    margin-block: $spacing-xs $spacing-md;
+    padding: $spacing-md $spacing-lg;
+    background-color: var(--site-base-bgColor);
+    border: 1px solid var(--ui-border-color);
+    border-left: 3px solid var(--chapter-accent);
+    border-radius: var(--ui-border-radius-sm);
+    font-family: var(--font-code);
+    font-size: var(--font-size-default);
+    line-height: $line-height-card;
+    color: var(--site-base-fgColor);
+  }
+
+  .rollup-cards-grid .rollup-card .card-body p.formula {
+    margin: 0;
+    font-family: var(--font-code);
+    font-size: 0.8125rem;
+    color: var(--site-base-fgColor);
+    overflow-wrap: normal;
+  }
+
+  .rollup-cards-grid .rollup-card.highlight .card-body p.formula {
+    color: var(--grey-3);
+  }
+
+  // Scoring dimension cards
+  .dimension-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: $spacing-md;
+    width: 100%;
+    margin-block: $spacing-xs $spacing-md;
+
+    .dimension-card {
+      display: flex;
+      flex-direction: column;
+      padding: $spacing-md;
+      background-color: var(--site-inset-bgColor);
+      border: 1px solid var(--site-inset-borderColor);
+      border-radius: var(--ui-border-radius-sm);
+
+      .card-header-row {
+        display: flex;
+        align-items: center;
+        gap: $spacing-md;
+        margin-bottom: $spacing-md;
+
+        .card-icon-wrap {
+          display: flex;
+          flex-shrink: 0;
+          align-items: center;
+          justify-content: center;
+          width: $icon-size;
+          height: $icon-size;
+          border-radius: var(--ui-border-radius-sm);
+
+          .material-symbols {
+            font-size: var(--font-size-heading-3);
+          }
+        }
+
+        h4 {
+          margin: 0;
+          font-size: var(--font-size-heading-5);
+          font-weight: var(--font-weight-bold);
+          color: var(--site-base-fgColor);
+        }
+      }
+
+      .card-body {
+        @include _card-body-text;
+        flex-grow: 1;
+      }
+
+      .card-footer-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--spacer-sm);
+        margin-top: $spacing-md;
+        padding-top: var(--spacer-sm);
+        border-top: 1px solid var(--site-inset-borderColor);
+        font-size: $font-size-xs;
+        color: var(--site-base-fgColor-lighter);
+
+        .badge {
+          margin-left: auto;
+          padding: $spacing-xs var(--spacer-sm);
+          border-radius: var(--ui-border-radius-sm);
+          font-size: $font-size-xs;
+          font-weight: var(--font-weight-bold);
+        }
+      }
+
+      @each $category, $color in $category-colors {
+
+        .card-icon-wrap.#{$category},
+        .badge.#{$category} {
+          background-color: rgba($color, $tint-bg);
+          color: $color;
+        }
+      }
+    }
+  }
+
+  // Rollup metric cards
+  .rollup-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: $spacing-md;
+    width: 100%;
+    margin-block: $spacing-xs $spacing-md;
+
+    .rollup-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacer-sm);
+      padding: $spacing-lg;
+      background-color: var(--site-inset-bgColor);
+      border: 1px solid var(--site-inset-borderColor);
+      border-radius: var(--ui-border-radius-sm);
+
+      .rollup-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--spacer-sm);
+
+        .tag {
+          display: flex;
+          align-items: center;
+          gap: $spacing-xs;
+          font-size: $font-size-xs;
+          font-weight: var(--font-weight-bolder);
+          text-transform: uppercase;
+          letter-spacing: $letter-spacing-caps;
+          color: var(--site-primary-color);
+
+          .material-symbols {
+            font-size: var(--font-size-heading-5);
+          }
+        }
+
+        .math-pill {
+          margin-left: auto;
+          padding: $spacing-xs var(--spacer-sm);
+          border-radius: var(--ui-border-radius-sm);
+          background-color: var(--blue-1);
+          font-family: var(--font-code);
+          font-size: var(--font-size-default);
+          font-weight: var(--font-weight-bolder);
+          color: var(--site-primary-color);
+          white-space: nowrap;
+        }
+      }
+
+      h4 {
+        margin: 0;
+        font-size: var(--font-size-heading-4);
+        font-weight: var(--font-weight-bold);
+        color: var(--site-base-fgColor);
+      }
+
+      .card-body {
+        @include _card-body-text;
+
+        strong,
+        em {
+          color: var(--site-base-fgColor);
+        }
+      }
+
+      &.highlight {
+        background: $bench-dark-gradient;
+        border-color: rgba($color-heuristic, $tint-border);
+        box-shadow: $shadow-sm;
+
+        .rollup-header {
+          .tag {
+            color: var(--yellow);
+          }
+
+          .math-pill {
+            background-color: rgba($color-heuristic, $tint-bg);
+            border: 1px solid rgba($color-white, $tint-border);
+            color: var(--blue-2);
+          }
+        }
+
+        h4 {
+          color: $color-white;
+        }
+
+        .card-body {
+          color: var(--grey-3);
+
+          strong,
+          em {
+            color: $color-white;
+          }
+
+          code {
+            background-color: rgba($color-white, 0.12);
+            color: $color-white;
+          }
+        }
+      }
     }
   }
 }

@@ -46,6 +46,7 @@ import 'src/pages/showcase_page.dart';
 import 'src/pages/web_page.dart';
 import 'src/pages/flutterbench_page.dart';
 import 'src/components/flutterbench/flutterbench_header.dart';
+import 'src/components/flutterbench/methodology_cards.dart';
 import 'src/components/flutterbench/story_chapter.dart';
 import 'src/pages/why_flutter_page.dart';
 import 'src/utils/asset_utils.dart';
@@ -139,6 +140,13 @@ void main() {
             FlutterBenchHeader.fromAttrs,
           ),
           defineComponentWithChild('StoryChapter', StoryChapter.fromAttrs),
+          defineComponentWithChild(
+            'ScoreDimensions',
+            ScoreDimensions.fromAttrs,
+          ),
+          defineComponentWithChild('DimensionCard', DimensionCard.fromAttrs),
+          defineComponentWithChild('RollupMetrics', RollupMetrics.fromAttrs),
+          defineComponentWithChild('RollupCard', RollupCard.fromAttrs),
           defineComponentWithAttrs('Image', Image.fromAttrs),
 
           CustomComponent(

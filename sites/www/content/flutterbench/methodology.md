@@ -28,14 +28,14 @@ Dart and Flutter applications.
 Flutter Bench is designed to answer three key questions for developers,
 enterprises, and AI researchers:
 
-1. **Functional correctness**: Can the model produce code that compiles without
+* **Functional correctness**: Can the model produce code that compiles without
    errors, runs cleanly, and satisfies user acceptance criteria across mobile,
    web, and desktop form factors?
-2. **Architectural fidelity & code quality**: Does the generated code follow
+* **Architectural fidelity & code quality**: Does the generated code follow
    idiomatic Flutter conventions ([Effective Dart](https://dart.dev/effective-dart)
    and standard architectural patterns like layered state isolation), or does it
    introduce anti-patterns, memory leaks, and brittle workarounds?
-3. **Harness impact**: How significantly do specialized Flutter developer
+* **Harness impact**: How significantly do specialized Flutter developer
    tooling—specifically model context protocol (MCP) servers and agentic
    skills—improve agent success rates compared to raw, unaugmented models?
 
@@ -79,7 +79,7 @@ representative journey categories:
 
 <StoryChapter number="03" title="Grading & scoring design" id="grading-scoring-design">
 
-Every task evaluation is executed **4 independent times** ($K = 4$) from a clean
+Every task evaluation is executed **4 independent times** (*K* = 4) from a clean
 workspace state to account for non-deterministic model outputs.
 
 ### Triple-metric evaluation rubric
@@ -87,20 +87,27 @@ workspace state to account for non-deterministic model outputs.
 Rather than reducing model performance to a simple pass/fail binary, each trial
 is scored on a normalized 0.0 to 1.0 scale across three weighted dimensions:
 
-<!-- TODO(ewindmill): do something here -->
-$$\text{Result Score} = (\text{Outcome} \times 0.60) + (\text{Quality} \times 0.30) + (\text{Developer Experience} \times 0.10)$$
+<p class="formula">Result Score = (Outcome × 0.60) + (Quality × 0.30) + (Developer Experience × 0.10)</p>
 
-#### 1. Outcome (60% weight)
+<ScoreDimensions>
+
+<DimensionCard title="1. Outcome" icon="check_circle" category="outcome" badge="60% weight">
+
 Outcome measures whether the application compiles and completely fulfills the
 functional requirements of the CUJ.
+
 - **Automated test suites**: Unit, widget, and integration test executions.
 - **Visual & interaction verification**: Golden file rendering comparisons and
   driver automation confirming UI responsiveness and layout constraints.
 - A score of `1.0` indicates that all requirements and assertions passed cleanly.
 
-#### 2. Code Quality (30% weight)
+</DimensionCard>
+
+<DimensionCard title="2. Code Quality" icon="code" category="quality" badge="30% weight">
+
 Code quality measures whether the implementation adheres to production-grade
 engineering standards.
+
 - **Static analysis & lints**: Measured via `dart analyze` with strict rules
   from `package:flutter_lints` and `package:dart_flutter_team_lints`.
 - **Architectural adherence**: Evaluated using automated AST inspection and
@@ -108,12 +115,20 @@ engineering standards.
 - Penalties are applied for dead code, raw unchecked mutations, missing type
   annotations, and widget rebuild anti-patterns.
 
-#### 3. Developer Experience (10% weight)
+</DimensionCard>
+
+<DimensionCard title="3. Developer Experience" icon="bolt" category="dx" badge="10% weight">
+
 Developer experience evaluates the ergonomics and efficiency of the agent during
 the run:
+
 - Token economy and context utilization.
 - Turn count efficiency and tool call precision.
 - Absence of thrashing, hallucinated file paths, or circular compilation fixes.
+
+</DimensionCard>
+
+</ScoreDimensions>
 
 ### Grader architecture
 
@@ -130,12 +145,27 @@ Grades are assigned through three complementary verification tiers:
 
 The leaderboard aggregates task-level trials into three primary metrics:
 
-- **Pass Rate (%)**:
-  $$\text{Pass Rate} = \frac{\sum [\text{Tasks with Outcome} = 1.0]}{\text{Total Tasks}} \times 100$$
-- **Pass@4 Rate (%)**:
-  $$\text{Pass@4} = \frac{\sum [\text{Tasks with at least 1 trial passed}]}{\text{Total Tasks}} \times 100$$
-- **Average Score (%)**:
-  $$\text{Average Score} = \frac{\sum \text{Task Result Scores}}{\text{Total Tasks}} \times 100 \quad (\pm \text{Standard Deviation})$$
+<RollupMetrics>
+
+<RollupCard title="Pass Rate (%)" pill="Outcome = 1.0" highlight="true">
+
+<p class="formula">Pass Rate = (Tasks with Outcome = 1.0 ÷ Total Tasks) × 100</p>
+
+</RollupCard>
+
+<RollupCard title="Pass@4 Rate (%)" pill="pass@4">
+
+<p class="formula">Pass@4 = (Tasks with at least 1 trial passed ÷ Total Tasks) × 100</p>
+
+</RollupCard>
+
+<RollupCard title="Average Score (%)" pill="± SD">
+
+<p class="formula">Average Score = (Sum of Task Result Scores ÷ Total Tasks) × 100 (± Standard Deviation)</p>
+
+</RollupCard>
+
+</RollupMetrics>
 
 ### Baseline vs. With AI Tooling
 
@@ -156,18 +186,18 @@ under two distinct environments:
 While Flutter Bench provides a standardized assessment of agent performance,
 several caveats should be considered when interpreting results:
 
-1. **Dataset contamination**: Leading foundation models are periodically
+* **Dataset contamination**: Leading foundation models are periodically
    trained on public GitHub repositories. Although task prompts and CUJs in
    Flutter Bench are novel and proprietary, foundational APIs (such as
    `StatefulWidget` or `AnimationController`) are ubiquitous in training corpora.
-2. **Cost and token variance**: Inference costs fluctuate based on vendor
+* **Cost and token variance**: Inference costs fluctuate based on vendor
    pricing models and prompt caching optimizations. Reported costs represent
    standard public API token rates at the time of evaluation.
-3. **Synthetic boundary conditions**: Real-world application engineering involves
+* **Synthetic boundary conditions**: Real-world application engineering involves
    ambiguous stakeholder requests and legacy technical debt. Flutter Bench CUJs
    provide clear specifications, which may not capture an agent's ability to
    clarify underspecified human intent.
-4. **Platform-specific runtime nuances**: Benchmark runs are conducted on Linux
+* **Platform-specific runtime nuances**: Benchmark runs are conducted on Linux
    and macOS build runners. Certain platform-specific plugins (such as native
    Android NDK or iOS Metal shaders) are evaluated via abstraction layers rather
    than physical mobile device farms.
