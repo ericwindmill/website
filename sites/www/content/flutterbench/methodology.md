@@ -8,7 +8,7 @@ description: >-
 
 <FlutterBenchHeader activePage="methodology" />
 
-## Overview & goals
+<StoryChapter number="01" title="Overview & goals" id="overview-goals">
 
 As AI coding agents and large language models increasingly assist software
 engineers, measuring their real-world competence on multi-platform application
@@ -39,9 +39,9 @@ enterprises, and AI researchers:
    tooling—specifically model context protocol (MCP) servers and agentic
    skills—improve agent success rates compared to raw, unaugmented models?
 
----
+</StoryChapter>
 
-## Dataset design
+<StoryChapter number="02" title="Dataset design">
 
 The Flutter Bench dataset is constructed from real-world Critical User Journeys
 (CUJs) identified across production Flutter codebases. Tasks are intentionally
@@ -75,9 +75,9 @@ representative journey categories:
 | Long horizon | `cuj-06-dart-genkit-function` | **Dart Genkit Cloud Function**: Authoring serverless Dart AI agent workflows utilizing Firebase Functions and the Genkit Dart SDK. |
 | Short horizon | `cuj-07-internationalization-i18n` | **Internationalization (i18n)**: Configuring localization with `.arb` translation catalogs, locale delegates, and localized parameter interpolation. |
 
----
+</StoryChapter>
 
-## Grading & scoring design
+<StoryChapter number="03" title="Grading & scoring design" id="grading-scoring-design">
 
 Every task evaluation is executed **4 independent times** ($K = 4$) from a clean
 workspace state to account for non-deterministic model outputs.
@@ -149,9 +149,9 @@ under two distinct environments:
   `dart-run-static-analysis`, and `flutter-add-widget-test`) and the official
   Dart Tooling Daemon MCP server.
 
----
+</StoryChapter>
 
-## Limitations & caveats
+<StoryChapter number="04" title="Limitations & caveats" id="limitations-caveats">
 
 While Flutter Bench provides a standardized assessment of agent performance,
 several caveats should be considered when interpreting results:
@@ -172,7 +172,6 @@ several caveats should be considered when interpreting results:
    Android NDK or iOS Metal shaders) are evaluated via abstraction layers rather
    than physical mobile device farms.
 
----
-
 To review active agent scores, consult the [Flutter Bench Leaderboard](/flutterbench).
 
+</StoryChapter>

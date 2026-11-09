@@ -1,0 +1,257 @@
+// Copyright 2026, the Flutter authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that
+// can be found in the LICENSE file.
+
+// Numbered "story chapter" treatment for long-form Flutter Bench pages,
+// ported from the FlutterBench methodology page in flutter/website
+// (sites/www/lib/styles/pages/_flutterbench-story.scss).
+//
+// Renders the `StoryChapter` component: a numbered kicker, chapter heading,
+// and a soft per-chapter accent tint behind each section.
+
+@use 'sass:color';
+@use 'sass:list';
+
+// -----------------------------------------------------------------------------
+// Tokens
+// -----------------------------------------------------------------------------
+$color-functional: #0284c7; // Sky blue
+$color-outcome: #059669; // Green
+$color-llm: #7c3aed; // Violet
+$color-quality: #6366f1; // Indigo
+$color-dx: #d97706; // Amber
+$color-grey: #64748b; // Slate
+
+$tint-bg: 0.12;
+$tint-border: 0.25;
+
+$font-size-xs: 0.75rem;
+$line-height-tight: 1.2;
+$line-height-body: 1.75;
+$letter-spacing-caps: 0.05em;
+$spacing-xs: 0.25rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$radius-pill: 9999px;
+$transition-normal: 0.2s ease;
+$prose-max-width: 760px;
+
+// Chapters cycle through the Flutter Bench category colors.
+$chapter-colors: ($color-functional, $color-outcome, $color-llm, $color-quality, $color-dx, $color-grey);
+
+@function _pad-chapter-number($i) {
+  @if $i < 10 {
+    @return '0#{$i}';
+  }
+
+  @return '#{$i}';
+}
+
+// Returns a color's channels as "r, g, b" so it can be used in
+// `rgba(var(--chapter-accent-rgb), $alpha)`.
+@function _rgb-channels($c) {
+  $r: color.channel($c, 'red', $space: rgb);
+  $g: color.channel($c, 'green', $space: rgb);
+  $b: color.channel($c, 'blue', $space: rgb);
+  @return '#{$r}, #{$g}, #{$b}';
+}
+
+// -----------------------------------------------------------------------------
+// Chapter layout
+// -----------------------------------------------------------------------------
+// Nested under the same selector as the generic Flutter Bench prose styles
+// in _flutterbench.scss so these rules take precedence.
+body.flutterbench-methodology section.content {
+  .story-chapter {
+    position: relative;
+    padding-block: var(--gutter);
+
+    // Default accent colors, overridden per chapter below.
+    --chapter-accent: #{list.nth($chapter-colors, 1)};
+    --chapter-accent-rgb: #{_rgb-channels(list.nth($chapter-colors, 1))};
+    --chapter-next-rgb: #{_rgb-channels(list.nth($chapter-colors, 2))};
+
+    @for $i from 0 through 20 {
+      $curr: list.nth($chapter-colors, ($i % list.length($chapter-colors)) + 1);
+      $next: list.nth($chapter-colors, (($i + 1) % list.length($chapter-colors)) + 1);
+
+      &[data-chapter='#{_pad-chapter-number($i)}'] {
+        --chapter-accent: #{$curr};
+        --chapter-accent-rgb: #{_rgb-channels($curr)};
+        --chapter-next-rgb: #{_rgb-channels($next)};
+      }
+    }
+
+    // Ambient tint that blends from this chapter's accent into the next.
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0 calc(-1 * var(--spacer-md));
+      background:
+        radial-gradient(650px circle at 50% 0%, rgba(var(--chapter-accent-rgb), $tint-bg), transparent 90%),
+        radial-gradient(650px circle at 50% 100%, rgba(var(--chapter-next-rgb), $tint-bg), transparent 90%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    &:first-of-type {
+      padding-top: clamp(1rem, 3vh, 2rem);
+    }
+
+    &:last-of-type {
+      padding-bottom: clamp(4rem, 10vh, 8rem);
+    }
+
+    // Chapter kicker and heading
+    .chapter-header-group {
+      position: relative;
+      z-index: 1;
+      padding-block: $spacing-md var(--spacer-sm);
+      margin-bottom: var(--spacer-md);
+      border-bottom: 1px solid var(--site-outline-variant);
+
+      .chapter-kicker {
+        display: flex;
+        align-items: center;
+        gap: $spacing-md;
+        margin-bottom: $spacing-xs;
+        text-transform: uppercase;
+        letter-spacing: $letter-spacing-caps;
+        font-size: $font-size-xs;
+        font-weight: var(--font-weight-bolder);
+        color: var(--chapter-accent);
+
+        .chapter-number {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: $spacing-xs var(--spacer-sm);
+          border-radius: $radius-pill;
+          background: rgba(var(--chapter-accent-rgb), $tint-bg);
+          border: 1px solid rgba(var(--chapter-accent-rgb), $tint-border);
+          font-family: var(--font-code);
+          font-size: $font-size-xs;
+          line-height: $line-height-tight;
+          color: var(--chapter-accent);
+        }
+
+        .chapter-rule {
+          display: inline-block;
+          width: 2rem;
+          height: 1px;
+          background: currentColor;
+          opacity: 0.35;
+        }
+      }
+
+      > .header-wrapper {
+        margin: 0;
+
+        h2 {
+          margin: 0;
+          font-size: var(--font-size-heading-3);
+          font-weight: var(--font-weight-bolder);
+          letter-spacing: -0.01em;
+          color: var(--blue-10);
+        }
+      }
+    }
+
+    // Chapter body
+    .chapter-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacer-sm);
+      width: 100%;
+
+      > p,
+      > ul,
+      > ol,
+      > blockquote {
+        width: 100%;
+        max-width: $prose-max-width;
+        margin-block: 0 $spacing-xs;
+        line-height: $line-height-body;
+      }
+
+      > .table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        margin-block: $spacing-xs $spacing-md;
+        background: var(--site-base-bgColor);
+        border: 1px solid var(--ui-border-color);
+        border-radius: var(--ui-border-radius-sm);
+
+        table {
+          margin: 0;
+        }
+
+        tr:last-child td {
+          border-bottom: none;
+        }
+      }
+
+      > h3 {
+        font-size: var(--font-size-heading-4);
+        font-weight: var(--font-weight-bold);
+        color: var(--blue-10);
+        margin-block: var(--spacer-md) $spacing-xs;
+      }
+
+      > h4 {
+        font-size: var(--font-size-heading-5);
+        font-weight: var(--font-weight-bold);
+        color: var(--chapter-accent);
+        margin-block: $spacing-lg 0;
+      }
+
+      > :first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  // Heading anchor links, matching article.content in components/_content.scss.
+  .story-chapter .header-wrapper {
+    display: flex;
+    align-items: center;
+
+    .heading-link {
+      margin-left: var(--spacer-sm);
+      font-size: var(--font-size-heading-4);
+      line-height: 1;
+      color: var(--site-base-fgColor-alt);
+      opacity: 0;
+      text-decoration: none;
+      transition: all $transition-normal;
+
+      &:hover {
+        color: var(--site-link-fgColor);
+        text-decoration: none;
+      }
+
+      &:focus {
+        opacity: 1;
+      }
+
+      &:active {
+        color: var(--site-link-fgColor-active);
+      }
+    }
+
+    &:hover .heading-link {
+      opacity: 1;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.flutterbench-methodology section.content .story-chapter {
+    &,
+    .heading-link {
+      transition: none;
+    }
+  }
+}
