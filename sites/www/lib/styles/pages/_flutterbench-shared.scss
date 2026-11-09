@@ -1,0 +1,151 @@
+// Copyright 2026, the Flutter authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that
+// can be found in the LICENSE file.
+
+// Shared Flutter Bench design tokens and mixins.
+//
+// These capture the visual language of the leaderboard page
+// (_flutterbench.scss) so the methodology and archive pages
+// (_flutterbench-story.scss) render with the same surfaces, type,
+// pills, and tables. Change a value here to update every page.
+
+@use 'sass:map';
+
+// -----------------------------------------------------------------------------
+// Tokens
+// -----------------------------------------------------------------------------
+$transition: 150ms ease;
+$code-radius: 4px;
+$pill-radius: 12px;
+$label-letter-spacing: 0.5px;
+$light-card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+// Text colors.
+$text-color: var(--grey-6);
+$muted-color: var(--grey-5);
+$heading-color: var(--blue-10);
+$strong-color: var(--blue-9);
+$link-color: var(--blue-6);
+$link-hover-color: var(--blue-7);
+
+// Score category colors, matching the leaderboard's breakdown pills.
+$category-colors: (
+  outcome: (
+    bg: var(--blue-2),
+    fg: var(--blue-8),
+  ),
+  quality: (
+    bg: var(--green-2),
+    fg: #0b695e,
+  ),
+  dx: (
+    bg: var(--violet-1),
+    fg: var(--violet-3),
+  ),
+);
+
+/// Returns the [key] (`bg` or `fg`) color for [category].
+@function category-color($category, $key) {
+  @return map.get($category-colors, $category, $key);
+}
+
+// -----------------------------------------------------------------------------
+// Mixins
+// -----------------------------------------------------------------------------
+
+/// White card surface used by the leaderboard table and legend cards.
+@mixin card-surface($shadow: false) {
+  background: #ffffff;
+  border: 1px solid var(--ui-border-color);
+  border-radius: var(--ui-border-radius-sm);
+
+  @if $shadow {
+    box-shadow: var(--ui-drop-shadow-sm);
+  }
+}
+
+/// Card title, as on the leaderboard legend card.
+@mixin card-title {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: var(--font-weight-bold);
+  color: $heading-color;
+}
+
+/// Small uppercase label, as on the leaderboard summary metric cards.
+@mixin label {
+  font-size: 12px;
+  font-weight: var(--font-weight-bold);
+  color: $muted-color;
+  text-transform: uppercase;
+  letter-spacing: $label-letter-spacing;
+}
+
+/// Rounded pill, as on the leaderboard breakdown cards.
+@mixin pill {
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  padding: 3px 10px;
+  border-radius: $pill-radius;
+  text-transform: uppercase;
+}
+
+/// Pill and icon tint for a score [category]: `outcome`, `quality`, or `dx`.
+@mixin category-tint($category) {
+  background: category-color($category, bg);
+  color: category-color($category, fg);
+}
+
+/// Inline code, as in the leaderboard legend.
+@mixin inline-code {
+  background: var(--grey-2);
+  padding: 2px 6px;
+  border-radius: $code-radius;
+  font-family: var(--font-code);
+  font-size: 12px;
+  color: var(--blue-8);
+}
+
+/// Table header cell, as on the leaderboard table.
+@mixin table-head-cell {
+  padding: 16px 20px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: var(--font-weight-bold);
+  color: $heading-color;
+}
+
+/// Full table treatment matching the leaderboard table, for
+/// non-interactive tables (no sorting or row hover).
+@mixin table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+
+  thead {
+    background: var(--grey-1);
+    border-bottom: 2px solid var(--ui-border-color);
+
+    th {
+      @include table-head-cell;
+      border: none;
+      vertical-align: bottom;
+    }
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--ui-border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  td {
+    padding: 16px 20px;
+    border: none;
+    vertical-align: top;
+    color: $text-color;
+  }
+}

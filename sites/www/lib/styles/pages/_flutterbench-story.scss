@@ -2,63 +2,31 @@
 // Use of this source code is governed by a BSD-style license that
 // can be found in the LICENSE file.
 
-// Numbered "story chapter" treatment for long-form Flutter Bench pages,
-// ported from the FlutterBench methodology page in flutter/website
-// (sites/www/lib/styles/pages/_flutterbench-story.scss).
+// Long-form Flutter Bench pages (methodology): numbered story chapters and
+// the cards ported from the FlutterBench methodology page in flutter/website.
 //
-// Renders the `StoryChapter` component: a numbered kicker, chapter heading,
-// and a soft per-chapter accent tint behind each section.
+// Visual tokens (surfaces, type, pills, code, tables) come from
+// _flutterbench-shared.scss so these elements match the leaderboard page.
+// Base prose styles for this page live in _flutterbench.scss.
 
 @use 'sass:color';
 @use 'sass:list';
+@use 'sass:map';
+@use 'flutterbench-shared' as bench;
 
 // -----------------------------------------------------------------------------
 // Tokens
 // -----------------------------------------------------------------------------
-$color-functional: #0284c7; // Sky blue
-$color-outcome: #059669; // Green
-$color-llm: #7c3aed; // Violet
-$color-quality: #6366f1; // Indigo
-$color-dx: #d97706; // Amber
-$color-grey: #64748b; // Slate
-$color-heuristic: #2563eb; // Blue
-$color-white: #ffffff;
-
+$prose-max-width: 760px;
+$icon-size: 2.75rem;
+$accent-bar-width: 3px;
 $tint-bg: 0.12;
 $tint-border: 0.25;
 
-$font-size-xs: 0.75rem;
-$font-size-code: 0.875em;
-$line-height-tight: 1.2;
-$line-height-body: 1.75;
-$line-height-card: 1.5;
-$letter-spacing-caps: 0.05em;
-$spacing-xs: 0.25rem;
-$spacing-md: 1rem;
-$spacing-lg: 1.5rem;
-$radius-pill: 9999px;
-$transition-normal: 0.2s ease;
-$prose-max-width: 760px;
-$icon-size: 2.75rem;
-$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-$bench-dark-gradient: linear-gradient(135deg, var(--blue-10), var(--blue-9));
-
-// Category accent colors used by card icons and badges.
-$category-colors: (
-  outcome: $color-outcome,
-  quality: $color-quality,
-  dx: $color-dx,
-);
-
-// Chapters cycle through the Flutter Bench category colors.
-$chapter-colors: (
-  $color-functional,
-  $color-outcome,
-  $color-llm,
-  $color-quality,
-  $color-dx,
-  $color-grey
-);
+// Chapters cycle through hues already used on the leaderboard:
+// blue (--blue-6), teal (quality pill), violet (--violet-3),
+// and the short/long-horizon task tag colors.
+$chapter-colors: (#0468d7, #0b695e, #796ceb, #0369a1, #92400e);
 
 @function _pad-chapter-number($i) {
   @if $i < 10 {
@@ -77,11 +45,51 @@ $chapter-colors: (
   @return '#{$r}, #{$g}, #{$b}';
 }
 
+// Body text inside cards, matching leaderboard card copy (14px, grey-6).
+@mixin _card-body-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: bench.$text-color;
+  overflow-wrap: anywhere;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin: 0 0 var(--spacer-sm);
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+  }
+
+  ul,
+  ol {
+    margin: 0;
+    padding-left: 1.1rem;
+
+    li {
+      margin-bottom: 4px;
+      font-size: inherit;
+      line-height: inherit;
+      color: inherit;
+    }
+  }
+
+  strong {
+    color: bench.$strong-color;
+  }
+
+  code {
+    @include bench.inline-code;
+  }
+}
+
 // -----------------------------------------------------------------------------
 // Chapter layout
 // -----------------------------------------------------------------------------
-// Nested under the same selector as the generic Flutter Bench prose styles
-// in _flutterbench.scss so these rules take precedence.
+// Nested under the same selector as the base prose styles in
+// _flutterbench.scss so these rules take precedence.
 body.flutterbench-methodology section.content {
   ul {
     // Overwrite the global style that turns off list-style.
@@ -132,32 +140,23 @@ body.flutterbench-methodology section.content {
     .chapter-header-group {
       position: relative;
       z-index: 1;
-      padding-block: $spacing-md var(--spacer-sm);
+      padding-block: 16px var(--spacer-sm);
       margin-bottom: var(--spacer-md);
-      border-bottom: 1px solid var(--site-outline-variant);
+      border-bottom: 1px solid var(--ui-border-color);
 
       .chapter-kicker {
         display: flex;
         align-items: center;
-        gap: $spacing-md;
-        margin-bottom: $spacing-xs;
-        text-transform: uppercase;
-        letter-spacing: $letter-spacing-caps;
-        font-size: $font-size-xs;
-        font-weight: var(--font-weight-bolder);
+        gap: 12px;
+        margin-bottom: 4px;
         color: var(--chapter-accent);
 
         .chapter-number {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          padding: $spacing-xs var(--spacer-sm);
-          border-radius: $radius-pill;
+          @include bench.pill;
           background: rgba(var(--chapter-accent-rgb), $tint-bg);
           border: 1px solid rgba(var(--chapter-accent-rgb), $tint-border);
           font-family: var(--font-code);
-          font-size: $font-size-xs;
-          line-height: $line-height-tight;
+          letter-spacing: bench.$label-letter-spacing;
           color: var(--chapter-accent);
         }
 
@@ -170,7 +169,7 @@ body.flutterbench-methodology section.content {
         }
       }
 
-      >.header-wrapper {
+      > .header-wrapper {
         margin: 0;
 
         h2 {
@@ -178,7 +177,7 @@ body.flutterbench-methodology section.content {
           font-size: var(--font-size-heading-3);
           font-weight: var(--font-weight-bolder);
           letter-spacing: -0.01em;
-          color: var(--blue-10);
+          color: bench.$heading-color;
         }
       }
     }
@@ -192,45 +191,32 @@ body.flutterbench-methodology section.content {
       gap: var(--spacer-sm);
       width: 100%;
 
-      >p,
-      >ul,
-      >ol,
-      >blockquote {
+      > p,
+      > ul,
+      > ol,
+      > blockquote {
         width: 100%;
         max-width: $prose-max-width;
-        margin-block: 0 $spacing-xs;
-        line-height: $line-height-body;
+        margin-block: 0 4px;
       }
 
-      >.table-wrapper {
+      > .table-wrapper {
         width: 100%;
-        overflow-x: auto;
-        margin-block: $spacing-xs $spacing-md;
-        background: var(--site-base-bgColor);
-        border: 1px solid var(--ui-border-color);
-        border-radius: var(--ui-border-radius-sm);
-
-        table {
-          margin: 0;
-        }
-
-        tr:last-child td {
-          border-bottom: none;
-        }
+        margin-block: 4px 16px;
       }
 
-      >h3 {
+      > h3 {
         font-size: var(--font-size-heading-4);
         font-weight: var(--font-weight-bold);
-        color: var(--blue-10);
-        margin-block: var(--spacer-md) $spacing-xs;
+        color: bench.$heading-color;
+        margin-block: var(--spacer-md) 4px;
       }
 
-      >h4 {
+      > h4 {
         font-size: var(--font-size-heading-5);
         font-weight: var(--font-weight-bold);
-        color: var(--chapter-accent);
-        margin-block: $spacing-lg 0;
+        color: bench.$strong-color;
+        margin-block: 24px 0;
       }
 
       > :first-child {
@@ -238,7 +224,6 @@ body.flutterbench-methodology section.content {
       }
     }
   }
-
 
   // Heading anchor links, matching article.content in components/_content.scss.
   .story-chapter .header-wrapper {
@@ -249,13 +234,13 @@ body.flutterbench-methodology section.content {
       margin-left: var(--spacer-sm);
       font-size: var(--font-size-heading-4);
       line-height: 1;
-      color: var(--site-base-fgColor-alt);
+      color: bench.$muted-color;
       opacity: 0;
       text-decoration: none;
-      transition: all $transition-normal;
+      transition: color bench.$transition, opacity bench.$transition;
 
       &:hover {
-        color: var(--site-link-fgColor);
+        color: bench.$link-color;
         text-decoration: none;
       }
 
@@ -264,7 +249,7 @@ body.flutterbench-methodology section.content {
       }
 
       &:active {
-        color: var(--site-link-fgColor-active);
+        color: bench.$link-hover-color;
       }
     }
 
@@ -276,7 +261,6 @@ body.flutterbench-methodology section.content {
 
 @media (prefers-reduced-motion: reduce) {
   body.flutterbench-methodology section.content .story-chapter {
-
     &,
     .heading-link {
       transition: none;
@@ -287,79 +271,22 @@ body.flutterbench-methodology section.content {
 // -----------------------------------------------------------------------------
 // Methodology cards
 // -----------------------------------------------------------------------------
-// Ported from flutter/website's
-// sites/www/lib/styles/pages/flutter_bench/_methodology.scss.
-// Nested under `.chapter-content` to take precedence over the generic
-// Flutter Bench prose styles in _flutterbench.scss.
-
-@mixin _card-body-text {
-  font-size: var(--font-size-default);
-  line-height: $line-height-card;
-  color: var(--site-base-fgColor-alt);
-  overflow-wrap: anywhere;
-
-  > :last-child {
-    margin-bottom: 0;
-  }
-
-  p {
-    margin: 0 0 var(--spacer-sm);
-    font-size: inherit;
-    line-height: inherit;
-    color: inherit;
-  }
-
-  ul,
-  ol {
-    margin: 0;
-    padding-left: 1.1rem;
-
-    li {
-      margin-bottom: $spacing-xs;
-      font-size: inherit;
-      line-height: inherit;
-      color: inherit;
-    }
-  }
-
-  code {
-    font-size: $font-size-code;
-    background-color: var(--site-raised-bgColor);
-    padding: 0.1em 0.35em;
-    border-radius: var(--ui-border-radius-sm);
-  }
-}
-
+// Nested under `.chapter-content` to take precedence over the base prose
+// styles in _flutterbench.scss.
 body.flutterbench-methodology section.content .chapter-content {
-
-  // Plain-text formulas
-  >p.formula {
+  // Plain-text formulas, styled like the leaderboard legend card.
+  > p.formula {
+    @include bench.card-surface;
     max-width: $prose-max-width;
-    margin-block: $spacing-xs $spacing-md;
-    padding: $spacing-md $spacing-lg;
-    background-color: var(--site-base-bgColor);
-    border: 1px solid var(--ui-border-color);
-    border-left: 3px solid var(--chapter-accent);
-    border-radius: var(--ui-border-radius-sm);
+    margin-block: 4px 16px;
+    padding: 16px 24px;
     font-family: var(--font-code);
-    font-size: var(--font-size-default);
-    line-height: $line-height-card;
-    color: var(--site-base-fgColor);
+    font-size: 14px;
+    line-height: 1.5;
+    color: bench.$heading-color;
   }
 
-  .rollup-cards-grid .rollup-card .card-body p.formula {
-    margin: 0;
-    font-family: var(--font-code);
-    font-size: 0.8125rem;
-    color: var(--site-base-fgColor);
-    overflow-wrap: normal;
-  }
-
-  .rollup-cards-grid .rollup-card.highlight .card-body p.formula {
-    color: var(--grey-3);
-  }
-
-  // Scoring dimensions: one box with a stacked row per dimension.
+  // Scoring dimensions: one card with a stacked row per dimension.
   //
   // Each row is a grid:
   //   [icon] [title          ] [badge]
@@ -367,16 +294,13 @@ body.flutterbench-methodology section.content .chapter-content {
   // The header and footer wrappers use `display: contents` so their
   // children can be placed directly on the row's grid.
   .dimension-cards-grid {
+    @include bench.card-surface($shadow: true);
     width: 100%;
-    margin-block: $spacing-xs $spacing-md;
+    margin-block: 4px 16px;
     overflow: hidden;
-    background-color: var(--site-inset-bgColor);
-    border: 1px solid var(--site-inset-borderColor);
-    border-radius: var(--ui-border-radius-sm);
-    box-shadow: $shadow-sm;
 
     .dimension-card {
-      --dimension-accent: var(--site-primary-color);
+      --dimension-accent: #{bench.$link-color};
 
       position: relative;
       display: grid;
@@ -386,12 +310,12 @@ body.flutterbench-methodology section.content .chapter-content {
         'icon title badge'
         '.    body  body';
       align-items: center;
-      column-gap: $spacing-md;
+      column-gap: 16px;
       row-gap: var(--spacer-sm);
-      padding: $spacing-lg $spacing-lg $spacing-lg calc(#{$spacing-lg} + 3px);
+      padding: 20px 24px 20px calc(24px + #{$accent-bar-width});
 
-      &+.dimension-card {
-        border-top: 1px solid var(--site-inset-borderColor);
+      & + .dimension-card {
+        border-top: 1px solid var(--ui-border-color);
       }
 
       // Accent bar along the leading edge of each row.
@@ -400,7 +324,7 @@ body.flutterbench-methodology section.content .chapter-content {
         position: absolute;
         inset-block: 0;
         inset-inline-start: 0;
-        width: 3px;
+        width: $accent-bar-width;
         background-color: var(--dimension-accent);
       }
 
@@ -424,28 +348,22 @@ body.flutterbench-methodology section.content .chapter-content {
       }
 
       h4 {
+        @include bench.card-title;
         grid-area: title;
         margin: 0;
-        font-size: var(--font-size-heading-5);
-        font-weight: var(--font-weight-bold);
-        color: var(--site-base-fgColor);
       }
 
       .badge {
+        @include bench.pill;
         grid-area: badge;
         justify-self: end;
-        padding: $spacing-xs var(--spacer-sm);
-        border-radius: var(--ui-border-radius-sm);
-        font-size: $font-size-xs;
-        font-weight: var(--font-weight-bold);
         white-space: nowrap;
       }
 
       // Optional footer text, shown under the body.
-      .card-footer-info>span:not(.badge) {
+      .card-footer-info > span:not(.badge) {
+        @include bench.label;
         grid-column: 2 / -1;
-        font-size: $font-size-xs;
-        color: var(--site-base-fgColor-lighter);
       }
 
       .card-body {
@@ -455,15 +373,14 @@ body.flutterbench-methodology section.content .chapter-content {
         max-width: $prose-max-width;
       }
 
-      @each $category, $color in $category-colors {
+      @each $category in map.keys(bench.$category-colors) {
         &.#{$category} {
-          --dimension-accent: #{$color};
+          --dimension-accent: #{bench.category-color($category, fg)};
         }
 
         .card-icon-wrap.#{$category},
         .badge.#{$category} {
-          background-color: rgba($color, $tint-bg);
-          color: $color;
+          @include bench.category-tint($category);
         }
       }
 
@@ -475,8 +392,8 @@ body.flutterbench-methodology section.content .chapter-content {
           'icon  title'
           'badge badge'
           'body  body';
-        padding-inline: $spacing-md;
-        padding-inline-start: calc(#{$spacing-md} + 3px);
+        padding-inline: 16px;
+        padding-inline-start: calc(16px + #{$accent-bar-width});
 
         .badge {
           justify-self: start;
@@ -485,23 +402,21 @@ body.flutterbench-methodology section.content .chapter-content {
     }
   }
 
-
-  // Rollup metric cards
+  // Rollup metric cards, styled like the leaderboard breakdown cards.
   .rollup-cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-    gap: $spacing-md;
+    gap: 12px;
     width: 100%;
-    margin-block: $spacing-xs $spacing-md;
+    margin-block: 4px 16px;
 
     .rollup-card {
+      @include bench.card-surface;
       display: flex;
       flex-direction: column;
       gap: var(--spacer-sm);
-      padding: $spacing-lg;
-      background-color: var(--site-inset-bgColor);
-      border: 1px solid var(--site-inset-borderColor);
-      border-radius: var(--ui-border-radius-sm);
+      padding: 16px;
+      box-shadow: bench.$light-card-shadow;
 
       .rollup-header {
         display: flex;
@@ -510,14 +425,10 @@ body.flutterbench-methodology section.content .chapter-content {
         gap: var(--spacer-sm);
 
         .tag {
+          @include bench.label;
           display: flex;
           align-items: center;
-          gap: $spacing-xs;
-          font-size: $font-size-xs;
-          font-weight: var(--font-weight-bolder);
-          text-transform: uppercase;
-          letter-spacing: $letter-spacing-caps;
-          color: var(--site-primary-color);
+          gap: 4px;
 
           .material-symbols {
             font-size: var(--font-size-heading-5);
@@ -525,67 +436,37 @@ body.flutterbench-methodology section.content .chapter-content {
         }
 
         .math-pill {
+          @include bench.inline-code;
           margin-left: auto;
-          padding: $spacing-xs var(--spacer-sm);
-          border-radius: var(--ui-border-radius-sm);
-          background-color: var(--blue-1);
-          font-family: var(--font-code);
-          font-size: var(--font-size-default);
-          font-weight: var(--font-weight-bolder);
-          color: var(--site-primary-color);
+          font-weight: var(--font-weight-bold);
           white-space: nowrap;
         }
       }
 
       h4 {
+        @include bench.card-title;
         margin: 0;
-        font-size: var(--font-size-heading-4);
-        font-weight: var(--font-weight-bold);
-        color: var(--site-base-fgColor);
       }
 
       .card-body {
         @include _card-body-text;
 
-        strong,
-        em {
-          color: var(--site-base-fgColor);
+        p.formula {
+          margin: 0;
+          font-family: var(--font-code);
+          font-size: 13px;
+          color: bench.$heading-color;
+          overflow-wrap: normal;
         }
       }
 
+      // Featured card: the leaderboard's hover/selection tint.
       &.highlight {
-        background: $bench-dark-gradient;
-        border-color: rgba($color-heuristic, $tint-border);
-        box-shadow: $shadow-sm;
+        background: var(--blue-1);
+        border-color: var(--blue-2);
 
-        .rollup-header {
-          .tag {
-            color: var(--yellow);
-          }
-
-          .math-pill {
-            background-color: rgba($color-heuristic, $tint-bg);
-            border: 1px solid rgba($color-white, $tint-border);
-            color: var(--blue-2);
-          }
-        }
-
-        h4 {
-          color: $color-white;
-        }
-
-        .card-body {
-          color: var(--grey-3);
-
-          strong,
-          em {
-            color: $color-white;
-          }
-
-          code {
-            background-color: rgba($color-white, 0.12);
-            color: $color-white;
-          }
+        .rollup-header .math-pill {
+          background: #ffffff;
         }
       }
     }
@@ -595,104 +476,83 @@ body.flutterbench-methodology section.content .chapter-content {
 // -----------------------------------------------------------------------------
 // Interactive detail card (4-axis evaluation matrix)
 // -----------------------------------------------------------------------------
-// Ported from flutter/website's
-// sites/www/lib/styles/pages/flutter_bench/_methodology.scss.
-
-$color-perfect: $color-outcome;
-$detail-card-variants: (
-  functional: $color-functional,
-  blue: $color-functional,
-  quality: $color-quality,
-  purple: $color-quality,
-  dx: $color-dx,
-  amber: $color-dx,
-  perfect: $color-perfect,
-  green: $color-perfect,
-);
-
+// Card surface and tabs match the leaderboard's legend card and
+// Baseline / With AI Tooling segmented toggle.
 body.flutterbench-methodology section.content .chapter-content {
   .interactive-detail-card {
+    @include bench.card-surface;
     width: 100%;
-    margin-block: $spacing-xs $spacing-md;
-    padding: $spacing-lg;
-    background-color: var(--site-inset-bgColor);
-    border: 1px solid var(--site-inset-borderColor);
-    border-radius: var(--ui-border-radius-sm);
+    margin-block: 4px 16px;
+    padding: 20px 24px;
 
     .card-header-area {
-      margin-bottom: $spacing-md;
+      margin-bottom: 16px;
 
       h3 {
-        margin: 0 0 $spacing-xs;
-        font-size: var(--font-size-heading-4);
-        font-weight: var(--font-weight-bold);
-        color: var(--site-base-fgColor);
+        @include bench.card-title;
+        margin: 0 0 4px;
       }
 
       p {
         margin: 0;
-        font-size: var(--font-size-default);
-        line-height: $line-height-card;
-        color: var(--site-base-fgColor-alt);
+        font-size: 14px;
+        line-height: 1.5;
+        color: bench.$text-color;
       }
     }
 
+    // Segmented control, like `.bench-variant-toggle` on the leaderboard.
     .card-tabs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
-      gap: var(--spacer-sm);
-      margin-bottom: $spacing-md;
+      gap: 2px;
+      margin-bottom: 16px;
+      padding: 3px;
+      background: var(--grey-2);
+      border: 1px solid var(--ui-border-color);
+      border-radius: var(--ui-border-radius-sm);
 
       .card-tab-btn {
-        padding: var(--spacer-sm) $spacing-md;
-        background-color: var(--site-base-bgColor);
-        border: 1px solid var(--site-inset-borderColor);
-        border-radius: var(--ui-border-radius-sm);
+        padding: 8px 14px;
+        background: transparent;
+        border: none;
+        border-radius: calc(var(--ui-border-radius-sm) - 2px);
         font-family: var(--font-ui);
         text-align: left;
+        color: bench.$text-color;
         cursor: pointer;
-        opacity: 0.75;
-        transition: $transition-normal;
-
-        &:hover,
-        &:focus-visible {
-          opacity: 1;
-        }
+        transition: all 200ms ease;
 
         .tab-primary-label {
-          font-size: var(--font-size-default);
-          font-weight: var(--font-weight-bolder);
+          font-size: 13px;
+          font-weight: var(--font-weight-bold);
         }
 
         .tab-secondary-label {
-          margin-top: $spacing-xs;
-          font-size: $font-size-xs;
-          font-weight: var(--font-weight-bold);
-          color: var(--site-base-fgColor);
+          margin-top: 2px;
+          font-size: 12px;
+          color: bench.$muted-color;
         }
 
-        @each $variant, $color in $detail-card-variants {
-          &.variant-#{$variant} {
-            .tab-primary-label {
-              color: $color;
-            }
+        &:hover:not(.active) {
+          color: bench.$strong-color;
+        }
 
-            &.active {
-              border: 2px solid $color;
-              background-color: rgba($color, $tint-bg);
-              opacity: 1;
-            }
-          }
+        &.active {
+          background: #ffffff;
+          color: bench.$link-color;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
         }
       }
     }
 
+    // Panel, like the leaderboard drawer's summary cards.
     .card-panels-container {
       position: relative;
       min-height: 220px;
-      padding: $spacing-md;
-      background-color: var(--site-base-bgColor);
-      border: 1px solid var(--site-inset-borderColor);
+      padding: 16px 20px;
+      background: var(--grey-1);
+      border: 1px solid var(--ui-border-color);
       border-radius: var(--ui-border-radius-sm);
 
       .card-panel {
@@ -711,70 +571,54 @@ body.flutterbench-methodology section.content .chapter-content {
           gap: var(--spacer-sm);
 
           h4 {
+            @include bench.card-title;
             margin: 0;
-            font-size: var(--font-size-heading-5);
-            font-weight: var(--font-weight-bolder);
-            color: var(--site-base-fgColor);
           }
 
           .panel-badge {
-            padding: $spacing-xs var(--spacer-sm);
-            border-radius: var(--ui-border-radius-sm);
-            font-size: $font-size-xs;
-            font-weight: var(--font-weight-bold);
+            @include bench.pill;
+            background: var(--blue-2);
+            color: var(--blue-8);
             white-space: nowrap;
-
-            @each $variant, $color in $detail-card-variants {
-              &.badge-#{$variant} {
-                background-color: rgba($color, $tint-bg);
-                color: $color;
-              }
-            }
           }
         }
 
         .panel-overview {
           margin: 0;
-          font-size: var(--font-size-default);
-          line-height: $line-height-card;
-          color: var(--site-base-fgColor-alt);
+          font-size: 14px;
+          line-height: 1.6;
+          color: bench.$text-color;
         }
 
         .panel-items-section {
           padding-top: var(--spacer-sm);
-          border-top: 1px solid var(--site-inset-borderColor);
+          border-top: 1px solid var(--ui-border-color);
 
           .items-label {
-            margin-bottom: $spacing-xs;
-            font-size: $font-size-xs;
-            font-weight: var(--font-weight-bolder);
-            text-transform: uppercase;
-            color: var(--site-base-fgColor);
+            @include bench.label;
+            margin-bottom: 4px;
           }
 
           ul {
             margin: 0;
-            padding-left: $spacing-md;
+            padding-left: 16px;
 
             li {
-              margin-bottom: $spacing-xs;
-              font-size: var(--font-size-default);
-              line-height: $line-height-card;
-              color: var(--site-base-fgColor);
+              margin-bottom: 4px;
+              font-size: 14px;
+              line-height: 1.6;
+              color: bench.$text-color;
 
               &:last-child {
                 margin-bottom: 0;
               }
 
               strong {
-                color: var(--site-primary-color);
+                color: bench.$strong-color;
               }
 
               code {
-                font-size: $font-size-code;
-                background-color: var(--site-raised-bgColor);
-                padding: $spacing-xs;
-                border-radius: var(--ui-border-radius-sm);
+                @include bench.inline-code;
               }
             }
           }
@@ -782,10 +626,10 @@ body.flutterbench-methodology section.content .chapter-content {
 
         .panel-footer-text {
           margin: var(--spacer-sm) 0 0;
-          font-size: var(--font-size-default);
+          font-size: 13px;
           font-style: italic;
-          line-height: $line-height-card;
-          color: var(--site-base-fgColor-alt);
+          line-height: 1.5;
+          color: bench.$text-color;
         }
       }
     }

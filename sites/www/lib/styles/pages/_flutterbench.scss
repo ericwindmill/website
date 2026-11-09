@@ -3,6 +3,7 @@
 // can be found in the LICENSE file.
 
 @use '../core/breakpoints';
+@use 'flutterbench-shared' as bench;
 
 .flutterbench-page {
   padding-block: var(--spacer-lg) var(--spacer-xl);
@@ -159,10 +160,7 @@
   }
 
   .bench-table-card {
-    background: #ffffff;
-    border: 1px solid var(--ui-border-color);
-    border-radius: var(--ui-border-radius-sm);
-    box-shadow: var(--ui-drop-shadow-sm);
+    @include bench.card-surface($shadow: true);
     overflow: hidden;
     margin-bottom: var(--spacer-md);
 
@@ -183,11 +181,7 @@
         border-bottom: 2px solid var(--ui-border-color);
 
         th {
-          padding: 16px 20px;
-          font-family: var(--font-ui);
-          font-size: 13px;
-          font-weight: var(--font-weight-bold);
-          color: var(--blue-10);
+          @include bench.table-head-cell;
           white-space: nowrap;
           cursor: pointer;
           user-select: none;
@@ -313,17 +307,12 @@
   }
 
   .bench-legend-card {
-    background: #ffffff;
-    border: 1px solid var(--ui-border-color);
-    border-radius: var(--ui-border-radius-sm);
+    @include bench.card-surface;
     padding: 20px 24px;
     margin-bottom: var(--spacer-md);
 
     h4 {
-      font-family: var(--font-ui);
-      font-size: 15px;
-      font-weight: var(--font-weight-bold);
-      color: var(--blue-10);
+      @include bench.card-title;
       margin-bottom: 12px;
     }
 
@@ -349,12 +338,7 @@
         }
 
         code {
-          background: var(--grey-2);
-          padding: 2px 6px;
-          border-radius: 4px;
-          font-family: var(--font-code);
-          font-size: 12px;
-          color: var(--blue-8);
+          @include bench.inline-code;
         }
       }
     }
@@ -525,11 +509,7 @@
           justify-content: space-between;
 
           .card-label {
-            font-size: 12px;
-            font-weight: var(--font-weight-bold);
-            color: var(--grey-5);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            @include bench.label;
             margin-bottom: 8px;
           }
 
@@ -563,25 +543,12 @@
 
           .pill-label {
             align-self: flex-start;
-            font-size: 11px;
-            font-weight: var(--font-weight-bold);
-            padding: 3px 10px;
-            border-radius: 12px;
-            text-transform: uppercase;
+            @include bench.pill;
 
-            &.pill-outcome {
-              background: var(--blue-2);
-              color: var(--blue-8);
-            }
-
-            &.pill-quality {
-              background: var(--green-2);
-              color: #0b695e;
-            }
-
-            &.pill-dx {
-              background: var(--violet-1);
-              color: var(--violet-3);
+            @each $category in (outcome, quality, dx) {
+              &.pill-#{$category} {
+                @include bench.category-tint($category);
+              }
             }
           }
 
@@ -728,44 +695,48 @@ body.flutterbench-archive {
     margin-right: auto;
     max-width: var(--max-width);
     padding-bottom: 0;
-    color: var(--site-base-fgColor);
-    line-height: 1.75;
+    font-family: var(--font-body);
+    color: bench.$text-color;
+    line-height: 1.6;
 
     h2 {
-      font-size: 1.5rem;
+      font-size: var(--font-size-heading-3);
       font-weight: var(--font-weight-bolder);
       margin-top: 2.5rem;
       margin-bottom: 0.75rem;
-      color: var(--grey-10);
+      color: bench.$heading-color;
       letter-spacing: -0.01em;
     }
 
     h3 {
-      font-size: 1.2rem;
+      font-size: var(--font-size-heading-4);
       font-weight: var(--font-weight-bold);
       margin-top: 2rem;
       margin-bottom: 0.5rem;
-      color: var(--grey-9);
+      color: bench.$heading-color;
     }
 
     h4 {
-      font-size: 1.05rem;
+      font-size: var(--font-size-heading-5);
       font-weight: var(--font-weight-bold);
       margin-top: 1.5rem;
       margin-bottom: 0.5rem;
-      color: var(--grey-8);
+      color: bench.$heading-color;
     }
 
     p {
       margin-bottom: 1.25rem;
-      line-height: 1.75;
-      color: var(--grey-7);
+      font-size: var(--font-size-heading-5);
+      line-height: 1.6;
+      color: bench.$text-color;
     }
 
     a {
-      color: var(--site-primary-color);
+      color: bench.$link-color;
+      text-decoration: none;
 
       &:hover {
+        color: bench.$link-hover-color;
         text-decoration: underline;
       }
     }
@@ -777,8 +748,9 @@ body.flutterbench-archive {
 
       li {
         margin-bottom: 0.5rem;
-        line-height: 1.7;
-        color: var(--grey-7);
+        font-size: var(--font-size-heading-5);
+        line-height: 1.6;
+        color: bench.$text-color;
       }
     }
 
@@ -788,41 +760,25 @@ body.flutterbench-archive {
       border-top: 1px solid var(--ui-border-color);
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 1.5rem;
-      font-size: 0.875rem;
+    // Markdown tables render as leaderboard-style table cards.
+    .table-wrapper {
+      @include bench.card-surface($shadow: true);
+      overflow-x: auto;
+      margin-bottom: var(--spacer-md);
 
-      th,
-      td {
-        text-align: left;
-        padding: 10px 12px;
-        border-bottom: 1px solid var(--ui-border-color);
-      }
-
-      th {
-        font-weight: var(--font-weight-bold);
-        color: var(--grey-8);
-        background: var(--grey-1);
-      }
-
-      td {
-        color: var(--grey-7);
+      table {
+        @include bench.table;
+        margin: 0;
       }
     }
 
     code {
-      font-size: 0.875em;
-      padding: 2px 6px;
-      background: var(--grey-1);
-      border-radius: 4px;
-      color: var(--grey-8);
+      @include bench.inline-code;
     }
 
     strong {
       font-weight: var(--font-weight-bold);
-      color: var(--grey-9);
+      color: bench.$strong-color;
     }
   }
 }
