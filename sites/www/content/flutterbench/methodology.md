@@ -64,7 +64,6 @@ To prevent benchmark saturation and maintain integrity, individual prompts and
 test suites are not public. The evaluation dataset assesses the following
 representative journey categories:
 
-<!-- TODO(ewindmill): use component -->
 | Category | CUJ Identifier | Description |
 |---|---|---|
 | Short horizon | `cuj-01-renderflex-overflow` | **Fix RenderFlex Overflow**: Diagnosing and resolving unbounded layout constraints, row/column overflow errors, and proper flex spacing. |
@@ -81,6 +80,8 @@ representative journey categories:
 
 Every task evaluation is executed **4 independent times** (*K* = 4) from a clean
 workspace state to account for non-deterministic model outputs.
+
+<EvaluationMatrix />
 
 ### Triple-metric evaluation rubric
 

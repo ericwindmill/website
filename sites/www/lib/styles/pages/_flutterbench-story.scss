@@ -84,9 +84,10 @@ $chapter-colors: (
 // in _flutterbench.scss so these rules take precedence.
 body.flutterbench-methodology section.content {
   ul {
-      // overwrite the global style that turns off list-style
-      list-style: disc !important;
-    }
+    // Overwrite the global style that turns off list-style.
+    list-style: disc !important;
+  }
+
   .story-chapter {
     position: relative;
     padding-block: var(--gutter);
@@ -113,8 +114,8 @@ body.flutterbench-methodology section.content {
       position: absolute;
       inset: 0 calc(-1 * var(--spacer-md));
       // background:
-        //   radial-gradient(1250px circle at 50% 0%, rgba(var(--chapter-accent-rgb), $tint-bg), transparent 30%),
-        //     radial-gradient(1250px circle at 50% 100%, rgba(var(--chapter-next-rgb), $tint-bg), transparent 30%);
+      //   radial-gradient(1250px circle at 50% 0%, rgba(var(--chapter-accent-rgb), $tint-bg), transparent 30%),
+      //   radial-gradient(1250px circle at 50% 100%, rgba(var(--chapter-next-rgb), $tint-bg), transparent 30%);
       pointer-events: none;
       z-index: 0;
     }
@@ -169,7 +170,7 @@ body.flutterbench-methodology section.content {
         }
       }
 
-            >.header-wrapper {
+      >.header-wrapper {
         margin: 0;
 
         h2 {
@@ -192,17 +193,16 @@ body.flutterbench-methodology section.content {
       width: 100%;
 
       >p,
-        >ul,
-        >ol,
-        >blockquote {
+      >ul,
+      >ol,
+      >blockquote {
         width: 100%;
         max-width: $prose-max-width;
         margin-block: 0 $spacing-xs;
         line-height: $line-height-body;
-
       }
 
-            >.table-wrapper {
+      >.table-wrapper {
         width: 100%;
         overflow-x: auto;
         margin-block: $spacing-xs $spacing-md;
@@ -219,14 +219,14 @@ body.flutterbench-methodology section.content {
         }
       }
 
-            >h3 {
+      >h3 {
         font-size: var(--font-size-heading-4);
         font-weight: var(--font-weight-bold);
         color: var(--blue-10);
         margin-block: var(--spacer-md) $spacing-xs;
       }
 
-            >h4 {
+      >h4 {
         font-size: var(--font-size-heading-5);
         font-weight: var(--font-weight-bold);
         color: var(--chapter-accent);
@@ -238,6 +238,7 @@ body.flutterbench-methodology section.content {
       }
     }
   }
+
 
   // Heading anchor links, matching article.content in components/_content.scss.
   .story-chapter .header-wrapper {
@@ -358,76 +359,106 @@ body.flutterbench-methodology section.content .chapter-content {
     color: var(--grey-3);
   }
 
-  // Scoring dimension cards
+  // Scoring dimensions: one box with a stacked row per dimension.
+  //
+  // Each row is a grid:
+  //   [icon] [title          ] [badge]
+  //   [    ] [body                    ]
+  // The header and footer wrappers use `display: contents` so their
+  // children can be placed directly on the row's grid.
   .dimension-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-    gap: $spacing-md;
     width: 100%;
     margin-block: $spacing-xs $spacing-md;
+    overflow: hidden;
+    background-color: var(--site-inset-bgColor);
+    border: 1px solid var(--site-inset-borderColor);
+    border-radius: var(--ui-border-radius-sm);
+    box-shadow: $shadow-sm;
 
     .dimension-card {
-      display: flex;
-      flex-direction: column;
-      padding: $spacing-md;
-      background-color: var(--site-inset-bgColor);
-      border: 1px solid var(--site-inset-borderColor);
-      border-radius: var(--ui-border-radius-sm);
+      --dimension-accent: var(--site-primary-color);
 
-      .card-header-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: $icon-size minmax(0, 1fr) auto;
+      grid-template-rows: minmax($icon-size, auto) auto;
+      grid-template-areas:
+        'icon title badge'
+        '.    body  body';
+      align-items: center;
+      column-gap: $spacing-md;
+      row-gap: var(--spacer-sm);
+      padding: $spacing-lg $spacing-lg $spacing-lg calc(#{$spacing-lg} + 3px);
+
+      &+.dimension-card {
+        border-top: 1px solid var(--site-inset-borderColor);
+      }
+
+      // Accent bar along the leading edge of each row.
+      &::before {
+        content: '';
+        position: absolute;
+        inset-block: 0;
+        inset-inline-start: 0;
+        width: 3px;
+        background-color: var(--dimension-accent);
+      }
+
+      .card-header-row,
+      .card-footer-info {
+        display: contents;
+      }
+
+      .card-icon-wrap {
+        grid-area: icon;
         display: flex;
         align-items: center;
-        gap: $spacing-md;
-        margin-bottom: $spacing-md;
+        justify-content: center;
+        width: $icon-size;
+        height: $icon-size;
+        border-radius: var(--ui-border-radius-sm);
 
-        .card-icon-wrap {
-          display: flex;
-          flex-shrink: 0;
-          align-items: center;
-          justify-content: center;
-          width: $icon-size;
-          height: $icon-size;
-          border-radius: var(--ui-border-radius-sm);
-
-          .material-symbols {
-            font-size: var(--font-size-heading-3);
-          }
+        .material-symbols {
+          font-size: var(--font-size-heading-3);
         }
+      }
 
-        h4 {
-          margin: 0;
-          font-size: var(--font-size-heading-5);
-          font-weight: var(--font-weight-bold);
-          color: var(--site-base-fgColor);
-        }
+      h4 {
+        grid-area: title;
+        margin: 0;
+        font-size: var(--font-size-heading-5);
+        font-weight: var(--font-weight-bold);
+        color: var(--site-base-fgColor);
+      }
+
+      .badge {
+        grid-area: badge;
+        justify-self: end;
+        padding: $spacing-xs var(--spacer-sm);
+        border-radius: var(--ui-border-radius-sm);
+        font-size: $font-size-xs;
+        font-weight: var(--font-weight-bold);
+        white-space: nowrap;
+      }
+
+      // Optional footer text, shown under the body.
+      .card-footer-info>span:not(.badge) {
+        grid-column: 2 / -1;
+        font-size: $font-size-xs;
+        color: var(--site-base-fgColor-lighter);
       }
 
       .card-body {
         @include _card-body-text;
-        flex-grow: 1;
-      }
-
-      .card-footer-info {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: var(--spacer-sm);
-        margin-top: $spacing-md;
-        padding-top: var(--spacer-sm);
-        border-top: 1px solid var(--site-inset-borderColor);
-        font-size: $font-size-xs;
-        color: var(--site-base-fgColor-lighter);
-
-        .badge {
-          margin-left: auto;
-          padding: $spacing-xs var(--spacer-sm);
-          border-radius: var(--ui-border-radius-sm);
-          font-size: $font-size-xs;
-          font-weight: var(--font-weight-bold);
-        }
+        grid-area: body;
+        align-self: start;
+        max-width: $prose-max-width;
       }
 
       @each $category, $color in $category-colors {
+        &.#{$category} {
+          --dimension-accent: #{$color};
+        }
 
         .card-icon-wrap.#{$category},
         .badge.#{$category} {
@@ -435,8 +466,25 @@ body.flutterbench-methodology section.content .chapter-content {
           color: $color;
         }
       }
+
+      // On narrow screens, stack the badge and let the body span the row.
+      @media (max-width: 600px) {
+        grid-template-columns: $icon-size minmax(0, 1fr);
+        grid-template-rows: minmax($icon-size, auto) auto auto;
+        grid-template-areas:
+          'icon  title'
+          'badge badge'
+          'body  body';
+        padding-inline: $spacing-md;
+        padding-inline-start: calc(#{$spacing-md} + 3px);
+
+        .badge {
+          justify-self: start;
+        }
+      }
     }
   }
+
 
   // Rollup metric cards
   .rollup-cards-grid {
@@ -538,6 +586,206 @@ body.flutterbench-methodology section.content .chapter-content {
             background-color: rgba($color-white, 0.12);
             color: $color-white;
           }
+        }
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Interactive detail card (4-axis evaluation matrix)
+// -----------------------------------------------------------------------------
+// Ported from flutter/website's
+// sites/www/lib/styles/pages/flutter_bench/_methodology.scss.
+
+$color-perfect: $color-outcome;
+$detail-card-variants: (
+  functional: $color-functional,
+  blue: $color-functional,
+  quality: $color-quality,
+  purple: $color-quality,
+  dx: $color-dx,
+  amber: $color-dx,
+  perfect: $color-perfect,
+  green: $color-perfect,
+);
+
+body.flutterbench-methodology section.content .chapter-content {
+  .interactive-detail-card {
+    width: 100%;
+    margin-block: $spacing-xs $spacing-md;
+    padding: $spacing-lg;
+    background-color: var(--site-inset-bgColor);
+    border: 1px solid var(--site-inset-borderColor);
+    border-radius: var(--ui-border-radius-sm);
+
+    .card-header-area {
+      margin-bottom: $spacing-md;
+
+      h3 {
+        margin: 0 0 $spacing-xs;
+        font-size: var(--font-size-heading-4);
+        font-weight: var(--font-weight-bold);
+        color: var(--site-base-fgColor);
+      }
+
+      p {
+        margin: 0;
+        font-size: var(--font-size-default);
+        line-height: $line-height-card;
+        color: var(--site-base-fgColor-alt);
+      }
+    }
+
+    .card-tabs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+      gap: var(--spacer-sm);
+      margin-bottom: $spacing-md;
+
+      .card-tab-btn {
+        padding: var(--spacer-sm) $spacing-md;
+        background-color: var(--site-base-bgColor);
+        border: 1px solid var(--site-inset-borderColor);
+        border-radius: var(--ui-border-radius-sm);
+        font-family: var(--font-ui);
+        text-align: left;
+        cursor: pointer;
+        opacity: 0.75;
+        transition: $transition-normal;
+
+        &:hover,
+        &:focus-visible {
+          opacity: 1;
+        }
+
+        .tab-primary-label {
+          font-size: var(--font-size-default);
+          font-weight: var(--font-weight-bolder);
+        }
+
+        .tab-secondary-label {
+          margin-top: $spacing-xs;
+          font-size: $font-size-xs;
+          font-weight: var(--font-weight-bold);
+          color: var(--site-base-fgColor);
+        }
+
+        @each $variant, $color in $detail-card-variants {
+          &.variant-#{$variant} {
+            .tab-primary-label {
+              color: $color;
+            }
+
+            &.active {
+              border: 2px solid $color;
+              background-color: rgba($color, $tint-bg);
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+
+    .card-panels-container {
+      position: relative;
+      min-height: 220px;
+      padding: $spacing-md;
+      background-color: var(--site-base-bgColor);
+      border: 1px solid var(--site-inset-borderColor);
+      border-radius: var(--ui-border-radius-sm);
+
+      .card-panel {
+        display: none;
+        flex-direction: column;
+        gap: var(--spacer-sm);
+
+        &.active {
+          display: flex;
+        }
+
+        .panel-heading {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--spacer-sm);
+
+          h4 {
+            margin: 0;
+            font-size: var(--font-size-heading-5);
+            font-weight: var(--font-weight-bolder);
+            color: var(--site-base-fgColor);
+          }
+
+          .panel-badge {
+            padding: $spacing-xs var(--spacer-sm);
+            border-radius: var(--ui-border-radius-sm);
+            font-size: $font-size-xs;
+            font-weight: var(--font-weight-bold);
+            white-space: nowrap;
+
+            @each $variant, $color in $detail-card-variants {
+              &.badge-#{$variant} {
+                background-color: rgba($color, $tint-bg);
+                color: $color;
+              }
+            }
+          }
+        }
+
+        .panel-overview {
+          margin: 0;
+          font-size: var(--font-size-default);
+          line-height: $line-height-card;
+          color: var(--site-base-fgColor-alt);
+        }
+
+        .panel-items-section {
+          padding-top: var(--spacer-sm);
+          border-top: 1px solid var(--site-inset-borderColor);
+
+          .items-label {
+            margin-bottom: $spacing-xs;
+            font-size: $font-size-xs;
+            font-weight: var(--font-weight-bolder);
+            text-transform: uppercase;
+            color: var(--site-base-fgColor);
+          }
+
+          ul {
+            margin: 0;
+            padding-left: $spacing-md;
+
+            li {
+              margin-bottom: $spacing-xs;
+              font-size: var(--font-size-default);
+              line-height: $line-height-card;
+              color: var(--site-base-fgColor);
+
+              &:last-child {
+                margin-bottom: 0;
+              }
+
+              strong {
+                color: var(--site-primary-color);
+              }
+
+              code {
+                font-size: $font-size-code;
+                background-color: var(--site-raised-bgColor);
+                padding: $spacing-xs;
+                border-radius: var(--ui-border-radius-sm);
+              }
+            }
+          }
+        }
+
+        .panel-footer-text {
+          margin: var(--spacer-sm) 0 0;
+          font-size: var(--font-size-default);
+          font-style: italic;
+          line-height: $line-height-card;
+          color: var(--site-base-fgColor-alt);
         }
       }
     }

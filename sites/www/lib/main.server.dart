@@ -17,6 +17,10 @@ import 'package:site_shared/page_extensions.dart';
 import 'main.server.options.dart';
 import 'src/components/common/dash_image.dart';
 import 'src/components/common/image.dart';
+import 'src/components/flutterbench/evaluation_matrix.dart';
+import 'src/components/flutterbench/flutterbench_header.dart';
+import 'src/components/flutterbench/methodology_cards.dart';
+import 'src/components/flutterbench/story_chapter.dart';
 import 'src/extensions/same_page_link_extension.dart';
 import 'src/layouts/blog_layout.dart';
 import 'src/layouts/consultants_tos_layout.dart';
@@ -34,6 +38,7 @@ import 'src/pages/ecosystem_page.dart';
 import 'src/pages/embedded_page.dart';
 import 'src/pages/events_page.dart';
 import 'src/pages/flip_page.dart';
+import 'src/pages/flutterbench_page.dart';
 import 'src/pages/games_page.dart';
 import 'src/pages/google_integrations_page.dart';
 import 'src/pages/home_page.dart';
@@ -44,10 +49,6 @@ import 'src/pages/news_page.dart';
 import 'src/pages/not_found_page.dart';
 import 'src/pages/showcase_page.dart';
 import 'src/pages/web_page.dart';
-import 'src/pages/flutterbench_page.dart';
-import 'src/components/flutterbench/flutterbench_header.dart';
-import 'src/components/flutterbench/methodology_cards.dart';
-import 'src/components/flutterbench/story_chapter.dart';
 import 'src/pages/why_flutter_page.dart';
 import 'src/utils/asset_utils.dart';
 
@@ -147,6 +148,7 @@ void main() {
           defineComponentWithChild('DimensionCard', DimensionCard.fromAttrs),
           defineComponentWithChild('RollupMetrics', RollupMetrics.fromAttrs),
           defineComponentWithChild('RollupCard', RollupCard.fromAttrs),
+          defineComponent('EvaluationMatrix', const EvaluationMatrix()),
           defineComponentWithAttrs('Image', Image.fromAttrs),
 
           CustomComponent(

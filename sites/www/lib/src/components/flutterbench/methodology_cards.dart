@@ -94,7 +94,7 @@ class DimensionCard extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     final categoryClass = category ?? '';
-    return div(classes: 'dimension-card', [
+    return div(classes: 'dimension-card $categoryClass'.trim(), [
       div(classes: 'card-header-row', [
         if (icon case final icon?)
           div(classes: 'card-icon-wrap $categoryClass', [MaterialIcon(icon)]),
