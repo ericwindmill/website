@@ -32,7 +32,7 @@ class BenchDetailDrawer extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     if (entry == null) {
-      return div(classes: 'bench-drawer-backdrop', []);
+      return const div(classes: 'bench-drawer-backdrop', []);
     }
 
     final currentEntry = entry!;
@@ -50,7 +50,7 @@ class BenchDetailDrawer extends StatelessComponent {
       div(
         classes: 'bench-drawer-backdrop ${isOpen ? 'open' : ''}',
         events: events(onClick: onClose),
-        [],
+        const [],
       ),
 
       // Slide-over drawer panel
@@ -67,7 +67,7 @@ class BenchDetailDrawer extends StatelessComponent {
           button(
             classes: 'drawer-close-btn',
             events: events(onClick: onClose),
-            [.text('✕')],
+            const [.text('✕')],
           ),
         ]),
 
@@ -256,14 +256,14 @@ class BenchDetailDrawer extends StatelessComponent {
           ]),
           div(classes: 'per-task-table-wrapper', [
             table(classes: 'per-task-table', [
-              thead([
+              const thead([
                 tr([
-                  const th([.text('Task Name')]),
-                  const th([.text('Category')]),
-                  const th(classes: 'num', [.text('Result Score')]),
-                  const th(classes: 'num', [.text('Outcome')]),
-                  const th(classes: 'num', [.text('Quality')]),
-                  const th(classes: 'num', [.text('DX')]),
+                  th([.text('Task Name')]),
+                  th([.text('Category')]),
+                  th(classes: 'num', [.text('Result Score')]),
+                  th(classes: 'num', [.text('Outcome')]),
+                  th(classes: 'num', [.text('Quality')]),
+                  th(classes: 'num', [.text('DX')]),
                 ]),
               ]),
               tbody([

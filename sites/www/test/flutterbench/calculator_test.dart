@@ -5,8 +5,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import '../../lib/src/models/content/flutter_bench.dart';
-import '../../lib/src/utils/bench_calculator.dart';
+import 'package:flutter_website/src/models/content/flutter_bench.dart';
+import 'package:flutter_website/src/utils/bench_calculator.dart';
 
 void expect(dynamic actual, dynamic expected, [String message = '']) {
   if (actual != expected) {
@@ -191,7 +191,7 @@ void main() {
     expect(file.existsSync(), true, 'results.json exists');
 
     final jsonString = file.readAsStringSync();
-    final List<dynamic> list = jsonDecode(jsonString) as List<dynamic>;
+    final list = jsonDecode(jsonString) as List<dynamic>;
     expect(list.isNotEmpty, true, 'results.json not empty');
 
     final runs = list

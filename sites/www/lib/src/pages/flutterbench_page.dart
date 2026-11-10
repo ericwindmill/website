@@ -15,8 +15,28 @@ import '../utils/data_utils.dart';
 /// Renders the shared heading and sub-navigation, then loads benchmark results
 /// and passes the raw JSON list to the client-hydrated
 /// [FlutterBenchInteractive] component.
+///
+/// Any Markdown content wrapped by the component renders below the
+/// leaderboard, inside the same container:
+///
+/// ```md
+/// <FlutterBenchPage>
+///
+/// Markdown content...
+///
+/// </FlutterBenchPage>
+/// ```
 class FlutterBenchPage extends StatelessComponent {
-  const FlutterBenchPage({super.key});
+  const FlutterBenchPage({this.child, super.key});
+
+  /// Creates a [FlutterBenchPage] from Markdown element attributes.
+  static FlutterBenchPage fromAttrs(
+    Map<String, String> attrs,
+    Component? child,
+  ) => FlutterBenchPage(child: child);
+
+  /// Static content rendered below the interactive leaderboard.
+  final Component? child;
 
   @override
   Component build(BuildContext context) {
@@ -50,6 +70,9 @@ class FlutterBenchPage extends StatelessComponent {
 
       // Client-hydrated interactive leaderboard
       FlutterBenchInteractive(rawRunsJson: rawData),
+
+      // Static content from Markdown, such as the methodology card and legend.
+      if (child case final child?) div(classes: 'container', [child]),
     ]);
   }
 
@@ -67,7 +90,7 @@ class FlutterBenchPage extends StatelessComponent {
             'category': t.category.value,
             'tokens': t.tokens,
             'cost': t.cost,
-            'trials': t.trials.map((tr) => tr.toJson()).toList(),
+            'trials': t.trials.map((el) => el.toJson()).toList(),
           },
         )
         .toList(),

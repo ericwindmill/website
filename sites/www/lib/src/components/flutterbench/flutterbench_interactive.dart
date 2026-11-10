@@ -9,7 +9,6 @@ import '../../models/content/flutter_bench.dart';
 import '../../utils/bench_calculator.dart';
 import 'bench_controls.dart';
 import 'bench_detail_drawer.dart';
-import 'bench_methodology_card.dart';
 import 'bench_table.dart';
 
 /// Client-hydrated interactive leaderboard component.
@@ -184,57 +183,6 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
             _drawerOpen = true;
           }),
         ),
-
-        // Methodology Teaser Card (directly under table)
-        const BenchMethodologyCard(),
-
-        // Metric Legend Card (plain-language definitions and calculations)
-        const div(classes: 'bench-legend-card', [
-          h4([.text('Metric Definitions & Formulas')]),
-          ul(classes: 'legend-list', [
-            li([
-              strong([.text('Pass Rate (%): ')]),
-              .text(
-                'Percentage of benchmark tasks where the run achieved '
-                'full outcome success: ',
-              ),
-              code([
-                .text('count(tasks with Outcome == 1.0) / total tasks × 100'),
-              ]),
-              .text('.'),
-            ]),
-            li([
-              strong([.text('Pass@4 Rate (%): ')]),
-              .text(
-                'Reliability metric representing the percentage of tasks '
-                'where at least 1 of 4 trials passed (',
-              ),
-              code([.text('K = 4')]),
-              .text(').'),
-            ]),
-            li([
-              strong([.text('Avg Score (%): ')]),
-              .text(
-                'Mean Result Score across the dataset, computed on a '
-                '0.0–1.0 scale as: ',
-              ),
-              code([
-                .text(
-                  'Outcome (60%) + Quality (30%) + '
-                  'Developer Experience (10%)',
-                ),
-              ]),
-              .text(', shown with standard deviation (± SD).'),
-            ]),
-            li([
-              strong([.text('Avg Tokens & Cost: ')]),
-              .text(
-                'Mean token consumption and USD cost per task run '
-                'across all evaluations.',
-              ),
-            ]),
-          ]),
-        ]),
       ]),
 
       // Slide-over detail drawer component

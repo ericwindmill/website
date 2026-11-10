@@ -135,7 +135,10 @@ void main() {
           defineComponent('FlipPage', const FlipPage()),
           defineComponent('NewsPage', const NewsPage()),
           defineComponent('WhyFlutterPage', const WhyFlutterPage()),
-          defineComponent('FlutterBenchPage', const FlutterBenchPage()),
+          defineComponentWithChild(
+            'FlutterBenchPage',
+            FlutterBenchPage.fromAttrs,
+          ),
           defineComponentWithAttrs(
             'FlutterBenchHeader',
             FlutterBenchHeader.fromAttrs,
