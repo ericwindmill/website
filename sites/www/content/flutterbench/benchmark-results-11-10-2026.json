@@ -1,0 +1,1819 @@
+{
+    "schemaVersion": "2.0",
+    "snapshot": {
+        "id": "2026-q4",
+        "label": "Q4 2026",
+        "generatedAt": "2026-11-10T18:33:12Z",
+        "status": "current",
+        "trialsPerTask": 4,
+        "scoring": {
+            "outcomeWeight": 0.65,
+            "qualityWeight": 0.35,
+            "passThreshold": 1.0
+        },
+        "environment": {
+            "flutterVersion": "3.50.0-0.1.pre",
+            "dartVersion": "3.14.0-315.1.beta",
+            "suiteVersion": "dash-evals@b0f145b2",
+            "harnessVersion": "harbor-custom-agents@ad8d580"
+        }
+    },
+    "runs": [
+        {
+            "agentId": "antigravity",
+            "agent": "Antigravity",
+            "modelId": "gemini-4-argon",
+            "model": "Gemini 4 Argon",
+            "modelProvider": "Google",
+            "variant": "enhanced",
+            "startedAt": "2026-11-10T00:35:50Z",
+            "completedAt": "2026-11-10T05:26:58Z",
+            "metrics": {
+                "totalTasks": 8,
+                "passedTaskCount": 1,
+                "passAtKTaskCount": 4,
+                "passRate": 12.5,
+                "passAtKRate": 50.0,
+                "avgScore": 83.488,
+                "scoreSd": 12.233,
+                "avgOutcome": 87.21,
+                "avgQuality": 76.575,
+                "avgTokens": 6019514.0,
+                "avgCost": null
+            },
+            "tasks": [
+                {
+                    "id": "overflow-bug",
+                    "name": "Fix Layout Overflows",
+                    "category": "short_horizon",
+                    "metrics": {
+                        "resultScore": 95.787,
+                        "outcome": 93.517,
+                        "quality": 100.0,
+                        "passedTrialCount": 3,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": false,
+                        "meanTokens": 1058993.0,
+                        "meanCost": null
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "tokens": 918020,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 635.7
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "tokens": 1910243,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 1051.0
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.7407,
+                            "quality": 1.0,
+                            "tokens": 783997,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 551.2
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "tokens": 623711,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 507.0
+                        }
+                    ]
+                },
+                {
+                    "id": "manage-state-with-provider",
+                    "name": "Manage State with Provider",
+                    "category": "short_horizon",
+                    "metrics": {
+                        "resultScore": 90.156,
+                        "outcome": 100.0,
+                        "quality": 71.875,
+                        "passedTrialCount": 4,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": true,
+                        "meanTokens": 1728204.0,
+                        "meanCost": null
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.75,
+                            "tokens": 1168676,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 1172.9
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.6875,
+                            "tokens": 1889964,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 1514.0
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.6875,
+                            "tokens": 2232003,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 1585.1
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.75,
+                            "tokens": 1622172,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 2020.8
+                        }
+                    ]
+                },
+                {
+                    "id": "add-localization",
+                    "name": "Add Localization",
+                    "category": "short_horizon",
+                    "metrics": {
+                        "resultScore": 93.794,
+                        "outcome": 97.407,
+                        "quality": 87.083,
+                        "passedTrialCount": 2,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": false,
+                        "meanTokens": 8310560.0,
+                        "meanCost": null
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.8125,
+                            "tokens": 5916159,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 3409.4
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9222,
+                            "quality": 0.85,
+                            "tokens": 8937653,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 3625.8
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.95,
+                            "tokens": 10077867,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 4568.3
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": null,
+                            "quality": null,
+                            "tokens": 6353608,
+                            "cost": null,
+                            "status": "errored",
+                            "durationSeconds": 2181.0
+                        }
+                    ]
+                },
+                {
+                    "id": "adaptive-material-cupertino",
+                    "name": "Adapt to Material and Cupertino",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 78.951,
+                        "outcome": 77.715,
+                        "quality": 81.25,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 4740490.0,
+                        "meanCost": null
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.7853,
+                            "quality": 0.75,
+                            "tokens": 3186595,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 3116.9
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.769,
+                            "quality": 0.875,
+                            "tokens": 6294384,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 3312.9
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.769,
+                            "quality": 0.875,
+                            "tokens": 5118573,
+                            "cost": null,
+                            "status": "timed_out",
+                            "durationSeconds": 4178.8
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": null,
+                            "quality": null,
+                            "tokens": 1142682,
+                            "cost": null,
+                            "status": "errored",
+                            "durationSeconds": 394.2
+                        }
+                    ]
+                },
+                {
+                    "id": "add-web-support",
+                    "name": "Add Web Support",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 79.055,
+                        "outcome": 76.753,
+                        "quality": 83.333,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 10686185.0,
+                        "meanCost": null
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": null,
+                            "quality": null,
+                            "tokens": 1164828,
+                            "cost": null,
+                            "status": "errored",
+                            "durationSeconds": 466.6
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.4286,
+                            "quality": 0.8125,
+                            "tokens": 12373351,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 3706.2
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9664,
+                            "quality": 0.8125,
+                            "tokens": 10059519,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 3124.4
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9076,
+                            "quality": 0.875,
+                            "tokens": 9625686,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 2494.2
+                        }
+                    ]
+                },
+                {
+                    "id": "add-unit-widget-integration-tests",
+                    "name": "Add Unit, Widget, and Integration Tests",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 90.825,
+                        "outcome": 95.138,
+                        "quality": 82.81,
+                        "passedTrialCount": 1,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": false,
+                        "meanTokens": 6067346.0,
+                        "meanCost": null
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.6875,
+                            "tokens": 11391160,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 3021.0
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9222,
+                            "quality": 0.8437,
+                            "tokens": 2839058,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 1184.6
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9222,
+                            "quality": 0.8437,
+                            "tokens": 2449577,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 1248.2
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9611,
+                            "quality": 0.9375,
+                            "tokens": 7589587,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 2747.2
+                        }
+                    ]
+                },
+                {
+                    "id": "firebase-storage",
+                    "name": "Add Firebase Storage Photos",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 58.06,
+                        "outcome": 59.032,
+                        "quality": 56.245,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 9832923.0,
+                        "meanCost": null
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.6121,
+                            "quality": 0.6562,
+                            "tokens": 8454726,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 4056.4
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.6238,
+                            "quality": 0.5937,
+                            "tokens": 9840148,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 5451.7
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.5277,
+                            "quality": 0.5937,
+                            "tokens": 9543764,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 5199.4
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.5977,
+                            "quality": 0.4062,
+                            "tokens": 11493053,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 5270.2
+                        }
+                    ]
+                },
+                {
+                    "id": "greenfield-fitness-app",
+                    "name": "Build a Greenfield Fitness App",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 81.276,
+                        "outcome": 98.12,
+                        "quality": 50.0,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 5731412.0,
+                        "meanCost": null
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9812,
+                            "quality": 0.5,
+                            "tokens": 3950139,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 8429.7
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9812,
+                            "quality": 0.5,
+                            "tokens": 6478703,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 10269.7
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9812,
+                            "quality": 0.5,
+                            "tokens": 5590068,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 10121.1
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9812,
+                            "quality": 0.5,
+                            "tokens": 6906740,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 9892.7
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "agentId": "antigravity",
+            "agent": "Antigravity",
+            "modelId": "gemini-3-8-flash",
+            "model": "Gemini 3.8 Flash",
+            "modelProvider": "Google",
+            "variant": "enhanced",
+            "startedAt": "2026-11-10T00:35:35Z",
+            "completedAt": "2026-11-10T05:11:44Z",
+            "metrics": {
+                "totalTasks": 8,
+                "passedTaskCount": 1,
+                "passAtKTaskCount": 3,
+                "passRate": 12.5,
+                "passAtKRate": 37.5,
+                "avgScore": 74.858,
+                "scoreSd": 9.959,
+                "avgOutcome": 77.947,
+                "avgQuality": 69.118,
+                "avgTokens": 10425743.0,
+                "avgCost": 1.483
+            },
+            "tasks": [
+                {
+                    "id": "overflow-bug",
+                    "name": "Fix Layout Overflows",
+                    "category": "short_horizon",
+                    "metrics": {
+                        "resultScore": 81.042,
+                        "outcome": 70.83,
+                        "quality": 100.0,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 6868310.0,
+                        "meanCost": 1.0133
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.6111,
+                            "quality": 1.0,
+                            "tokens": 4265780,
+                            "cost": 0.7503,
+                            "status": "failed",
+                            "durationSeconds": 1610.0
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.7407,
+                            "quality": 1.0,
+                            "tokens": 7767929,
+                            "cost": 1.1064,
+                            "status": "failed",
+                            "durationSeconds": 1297.5
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.7407,
+                            "quality": 1.0,
+                            "tokens": 4774296,
+                            "cost": 0.7911,
+                            "status": "failed",
+                            "durationSeconds": 747.6
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.7407,
+                            "quality": 1.0,
+                            "tokens": 10665233,
+                            "cost": 1.4056,
+                            "status": "failed",
+                            "durationSeconds": 1370.0
+                        }
+                    ]
+                },
+                {
+                    "id": "manage-state-with-provider",
+                    "name": "Manage State with Provider",
+                    "category": "short_horizon",
+                    "metrics": {
+                        "resultScore": 83.047,
+                        "outcome": 100.0,
+                        "quality": 51.562,
+                        "passedTrialCount": 4,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": true,
+                        "meanTokens": 5097699.0,
+                        "meanCost": 0.817
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.5625,
+                            "tokens": 5117859,
+                            "cost": 0.8091,
+                            "status": "passed",
+                            "durationSeconds": 1438.5
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "tokens": 7147213,
+                            "cost": 1.0437,
+                            "status": "passed",
+                            "durationSeconds": 1585.3
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "tokens": 4378335,
+                            "cost": 0.7147,
+                            "status": "passed",
+                            "durationSeconds": 1274.6
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "tokens": 3747388,
+                            "cost": 0.7004,
+                            "status": "passed",
+                            "durationSeconds": 1908.1
+                        }
+                    ]
+                },
+                {
+                    "id": "add-localization",
+                    "name": "Add Localization",
+                    "category": "short_horizon",
+                    "metrics": {
+                        "resultScore": 77.05,
+                        "outcome": 72.502,
+                        "quality": 85.5,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 15181737.0,
+                        "meanCost": 2.0581
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.8056,
+                            "quality": 0.8,
+                            "tokens": 13527163,
+                            "cost": 1.974,
+                            "status": "failed",
+                            "durationSeconds": 2215.2
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.8833,
+                            "quality": 0.9,
+                            "tokens": 16644002,
+                            "cost": 2.2391,
+                            "status": "failed",
+                            "durationSeconds": 2390.3
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.4056,
+                            "quality": 0.785,
+                            "tokens": 11432497,
+                            "cost": 1.5976,
+                            "status": "failed",
+                            "durationSeconds": 2351.9
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.8056,
+                            "quality": 0.935,
+                            "tokens": 19123285,
+                            "cost": 2.4219,
+                            "status": "failed",
+                            "durationSeconds": 2536.9
+                        }
+                    ]
+                },
+                {
+                    "id": "adaptive-material-cupertino",
+                    "name": "Adapt to Material and Cupertino",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 73.246,
+                        "outcome": 73.142,
+                        "quality": 73.438,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 11453787.0,
+                        "meanCost": 1.5867
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.7001,
+                            "quality": 0.875,
+                            "tokens": 9677973,
+                            "cost": 1.3508,
+                            "status": "failed",
+                            "durationSeconds": 3105.6
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.7283,
+                            "quality": 0.875,
+                            "tokens": 14498793,
+                            "cost": 1.8826,
+                            "status": "failed",
+                            "durationSeconds": 3589.1
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.7446,
+                            "quality": 0.625,
+                            "tokens": 12887692,
+                            "cost": 1.6988,
+                            "status": "failed",
+                            "durationSeconds": 3413.1
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.7527,
+                            "quality": 0.5625,
+                            "tokens": 8750690,
+                            "cost": 1.4147,
+                            "status": "failed",
+                            "durationSeconds": 3135.4
+                        }
+                    ]
+                },
+                {
+                    "id": "add-web-support",
+                    "name": "Add Web Support",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 75.821,
+                        "outcome": 73.737,
+                        "quality": 79.688,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 16647068.0,
+                        "meanCost": 2.2098
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.8487,
+                            "quality": 0.9375,
+                            "tokens": 17626471,
+                            "cost": 2.2952,
+                            "status": "failed",
+                            "durationSeconds": 2006.5
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.8487,
+                            "quality": 0.8125,
+                            "tokens": 16795566,
+                            "cost": 2.1531,
+                            "status": "failed",
+                            "durationSeconds": 1865.4
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.3613,
+                            "quality": 0.8125,
+                            "tokens": 16738580,
+                            "cost": 2.1792,
+                            "status": "failed",
+                            "durationSeconds": 2095.4
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.8908,
+                            "quality": 0.625,
+                            "tokens": 15427653,
+                            "cost": 2.2119,
+                            "status": "failed",
+                            "durationSeconds": 1932.4
+                        }
+                    ]
+                },
+                {
+                    "id": "add-unit-widget-integration-tests",
+                    "name": "Add Unit, Widget, and Integration Tests",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 81.084,
+                        "outcome": 93.192,
+                        "quality": 58.59,
+                        "passedTrialCount": 1,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": false,
+                        "meanTokens": 5117953.0,
+                        "meanCost": 0.9586
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9222,
+                            "quality": 0.5,
+                            "tokens": 6800004,
+                            "cost": 0.9852,
+                            "status": "failed",
+                            "durationSeconds": 1226.7
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.8444,
+                            "quality": 0.6562,
+                            "tokens": 7109158,
+                            "cost": 1.026,
+                            "status": "failed",
+                            "durationSeconds": 1332.1
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.5937,
+                            "tokens": 0,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 1438.8
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9611,
+                            "quality": 0.5937,
+                            "tokens": 6562649,
+                            "cost": 0.8646,
+                            "status": "failed",
+                            "durationSeconds": 1126.9
+                        }
+                    ]
+                },
+                {
+                    "id": "firebase-storage",
+                    "name": "Add Firebase Storage Photos",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 51.606,
+                        "outcome": 50.227,
+                        "quality": 54.163,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 15999604.0,
+                        "meanCost": 2.1338
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.5144,
+                            "quality": 0.5312,
+                            "tokens": 13919423,
+                            "cost": 1.8972,
+                            "status": "failed",
+                            "durationSeconds": 4101.9
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.478,
+                            "quality": 0.5312,
+                            "tokens": 16097213,
+                            "cost": 2.1032,
+                            "status": "failed",
+                            "durationSeconds": 4647.9
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.4894,
+                            "quality": 0.5,
+                            "tokens": 11554515,
+                            "cost": 1.5991,
+                            "status": "timed_out",
+                            "durationSeconds": 7255.6
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.5144,
+                            "quality": 0.5625,
+                            "tokens": 17982176,
+                            "cost": 2.4009,
+                            "status": "failed",
+                            "durationSeconds": 4928.1
+                        }
+                    ]
+                },
+                {
+                    "id": "greenfield-fitness-app",
+                    "name": "Build a Greenfield Fitness App",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 75.966,
+                        "outcome": 89.948,
+                        "quality": 50.0,
+                        "passedTrialCount": 1,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": false,
+                        "meanTokens": 7039788.0,
+                        "meanCost": 1.0869
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.719,
+                            "quality": 0.5,
+                            "tokens": 8116552,
+                            "cost": 1.2673,
+                            "status": "failed",
+                            "durationSeconds": 9082.9
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "tokens": 9476958,
+                            "cost": 1.276,
+                            "status": "passed",
+                            "durationSeconds": 9868.3
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9354,
+                            "quality": 0.5,
+                            "tokens": 5871725,
+                            "cost": 0.9846,
+                            "status": "failed",
+                            "durationSeconds": 8074.2
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9435,
+                            "quality": 0.5,
+                            "tokens": 4693918,
+                            "cost": 0.8196,
+                            "status": "failed",
+                            "durationSeconds": 9914.8
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "agentId": "antigravity",
+            "agent": "Antigravity",
+            "modelId": "gemini-4-argon",
+            "model": "Gemini 4 Argon",
+            "modelProvider": "Google",
+            "variant": "baseline",
+            "startedAt": "2026-11-10T00:35:05Z",
+            "completedAt": "2026-11-10T05:29:33Z",
+            "metrics": {
+                "totalTasks": 8,
+                "passedTaskCount": 2,
+                "passAtKTaskCount": 3,
+                "passRate": 25.0,
+                "passAtKRate": 37.5,
+                "avgScore": 81.114,
+                "scoreSd": 14.238,
+                "avgOutcome": 86.993,
+                "avgQuality": 70.195,
+                "avgTokens": 5664451.0,
+                "avgCost": null
+            },
+            "tasks": [
+                {
+                    "id": "overflow-bug",
+                    "name": "Fix Layout Overflows",
+                    "category": "short_horizon",
+                    "metrics": {
+                        "resultScore": 100.0,
+                        "outcome": 100.0,
+                        "quality": 100.0,
+                        "passedTrialCount": 4,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": true,
+                        "meanTokens": 422534.0,
+                        "meanCost": null
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "tokens": 523604,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 510.7
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "tokens": 449625,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 459.1
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "tokens": 356277,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 396.3
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "tokens": 360630,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 442.8
+                        }
+                    ]
+                },
+                {
+                    "id": "manage-state-with-provider",
+                    "name": "Manage State with Provider",
+                    "category": "short_horizon",
+                    "metrics": {
+                        "resultScore": 90.156,
+                        "outcome": 100.0,
+                        "quality": 71.875,
+                        "passedTrialCount": 4,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": true,
+                        "meanTokens": 1559457.0,
+                        "meanCost": null
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.75,
+                            "tokens": 1907689,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 1470.7
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.6875,
+                            "tokens": 1567755,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 1248.2
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.625,
+                            "tokens": 1483220,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 1702.6
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.8125,
+                            "tokens": 1279164,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 1433.7
+                        }
+                    ]
+                },
+                {
+                    "id": "add-localization",
+                    "name": "Add Localization",
+                    "category": "short_horizon",
+                    "metrics": {
+                        "resultScore": 88.394,
+                        "outcome": 96.11,
+                        "quality": 74.062,
+                        "passedTrialCount": 3,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": false,
+                        "meanTokens": 6961206.0,
+                        "meanCost": null
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.725,
+                            "tokens": 7020964,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 3658.8
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.6375,
+                            "tokens": 7416003,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 3221.1
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.8444,
+                            "quality": 0.95,
+                            "tokens": 8601271,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 3911.7
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.65,
+                            "tokens": 4806584,
+                            "cost": null,
+                            "status": "passed",
+                            "durationSeconds": 4045.4
+                        }
+                    ]
+                },
+                {
+                    "id": "adaptive-material-cupertino",
+                    "name": "Adapt to Material and Cupertino",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 71.859,
+                        "outcome": 76.9,
+                        "quality": 62.5,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 5713709.0,
+                        "meanCost": null
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.8266,
+                            "quality": 0.5625,
+                            "tokens": 5415136,
+                            "cost": null,
+                            "status": "timed_out",
+                            "durationSeconds": 4287.0
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.769,
+                            "quality": 0.625,
+                            "tokens": 5713709,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 3302.6
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.7245,
+                            "quality": 0.75,
+                            "tokens": 7104031,
+                            "cost": null,
+                            "status": "timed_out",
+                            "durationSeconds": 4399.2
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": null,
+                            "quality": null,
+                            "tokens": 1636731,
+                            "cost": null,
+                            "status": "errored",
+                            "durationSeconds": 585.7
+                        }
+                    ]
+                },
+                {
+                    "id": "add-web-support",
+                    "name": "Add Web Support",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 78.141,
+                        "outcome": 79.833,
+                        "quality": 75.0,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 14350285.0,
+                        "meanCost": null
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9664,
+                            "quality": 0.6875,
+                            "tokens": 16357716,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 4088.8
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9832,
+                            "quality": 0.75,
+                            "tokens": 16218280,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 4149.2
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.4454,
+                            "quality": 0.8125,
+                            "tokens": 10474859,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 3702.7
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.7815,
+                            "quality": 0.7312,
+                            "tokens": 12958016,
+                            "cost": null,
+                            "status": "timed_out",
+                            "durationSeconds": 4228.4
+                        }
+                    ]
+                },
+                {
+                    "id": "add-unit-widget-integration-tests",
+                    "name": "Add Unit, Widget, and Integration Tests",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 86.351,
+                        "outcome": 89.095,
+                        "quality": 81.25,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 3575392.0,
+                        "meanCost": null
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9222,
+                            "quality": 0.8125,
+                            "tokens": 3551386,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 1451.5
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9222,
+                            "quality": 0.75,
+                            "tokens": 4498244,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 1712.5
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9222,
+                            "quality": 0.875,
+                            "tokens": 2712007,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 1371.0
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.7972,
+                            "quality": 0.8125,
+                            "tokens": 3539930,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 1675.9
+                        }
+                    ]
+                },
+                {
+                    "id": "firebase-storage",
+                    "name": "Add Firebase Storage Photos",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 52.731,
+                        "outcome": 55.883,
+                        "quality": 46.87,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 7870075.0,
+                        "meanCost": null
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.5744,
+                            "quality": 0.4062,
+                            "tokens": 5904372,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 4185.9
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.5744,
+                            "quality": 0.4062,
+                            "tokens": 10600805,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 5371.3
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": null,
+                            "quality": null,
+                            "tokens": 6896109,
+                            "cost": null,
+                            "status": "errored",
+                            "durationSeconds": 2232.4
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.5277,
+                            "quality": 0.5937,
+                            "tokens": 7105047,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 5297.1
+                        }
+                    ]
+                },
+                {
+                    "id": "greenfield-fitness-app",
+                    "name": "Build a Greenfield Fitness App",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 81.276,
+                        "outcome": 98.12,
+                        "quality": 50.0,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 4862951.0,
+                        "meanCost": null
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9812,
+                            "quality": 0.5,
+                            "tokens": 4383827,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 8574.7
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9812,
+                            "quality": 0.5,
+                            "tokens": 5934065,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 10043.0
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9812,
+                            "quality": 0.5,
+                            "tokens": 4523400,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 10043.9
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9812,
+                            "quality": 0.5,
+                            "tokens": 4610512,
+                            "cost": null,
+                            "status": "failed",
+                            "durationSeconds": 9943.2
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "agentId": "antigravity",
+            "agent": "Antigravity",
+            "modelId": "gemini-3-8-flash",
+            "model": "Gemini 3.8 Flash",
+            "modelProvider": "Google",
+            "variant": "baseline",
+            "startedAt": "2026-11-10T00:34:54Z",
+            "completedAt": "2026-11-10T05:30:56Z",
+            "metrics": {
+                "totalTasks": 8,
+                "passedTaskCount": 1,
+                "passAtKTaskCount": 4,
+                "passRate": 12.5,
+                "passAtKRate": 50.0,
+                "avgScore": 75.828,
+                "scoreSd": 12.455,
+                "avgOutcome": 81.324,
+                "avgQuality": 65.618,
+                "avgTokens": 10456845.0,
+                "avgCost": 1.4488
+            },
+            "tasks": [
+                {
+                    "id": "overflow-bug",
+                    "name": "Fix Layout Overflows",
+                    "category": "short_horizon",
+                    "metrics": {
+                        "resultScore": 85.957,
+                        "outcome": 78.393,
+                        "quality": 100.0,
+                        "passedTrialCount": 1,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": false,
+                        "meanTokens": 4436166.0,
+                        "meanCost": 0.6816
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.8704,
+                            "quality": 1.0,
+                            "tokens": 5622012,
+                            "cost": 0.8011,
+                            "status": "timed_out",
+                            "durationSeconds": 3007.2
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.6111,
+                            "quality": 1.0,
+                            "tokens": 4702367,
+                            "cost": 0.7077,
+                            "status": "failed",
+                            "durationSeconds": 1456.3
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.7407,
+                            "quality": 1.0,
+                            "tokens": 3829088,
+                            "cost": 0.5694,
+                            "status": "failed",
+                            "durationSeconds": 754.4
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "tokens": 4777043,
+                            "cost": 0.7676,
+                            "status": "passed",
+                            "durationSeconds": 1312.3
+                        }
+                    ]
+                },
+                {
+                    "id": "manage-state-with-provider",
+                    "name": "Manage State with Provider",
+                    "category": "short_horizon",
+                    "metrics": {
+                        "resultScore": 83.047,
+                        "outcome": 100.0,
+                        "quality": 51.562,
+                        "passedTrialCount": 4,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": true,
+                        "meanTokens": 5246358.0,
+                        "meanCost": 0.8425
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "tokens": 4874073,
+                            "cost": 0.7762,
+                            "status": "passed",
+                            "durationSeconds": 1500.8
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "tokens": 4989154,
+                            "cost": 0.7747,
+                            "status": "passed",
+                            "durationSeconds": 1361.6
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "tokens": 5727378,
+                            "cost": 0.9174,
+                            "status": "passed",
+                            "durationSeconds": 1522.5
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.5625,
+                            "tokens": 5394827,
+                            "cost": 0.9018,
+                            "status": "passed",
+                            "durationSeconds": 1953.2
+                        }
+                    ]
+                },
+                {
+                    "id": "add-localization",
+                    "name": "Add Localization",
+                    "category": "short_horizon",
+                    "metrics": {
+                        "resultScore": 84.991,
+                        "outcome": 92.22,
+                        "quality": 71.562,
+                        "passedTrialCount": 1,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": false,
+                        "meanTokens": 15502348.0,
+                        "meanCost": 2.1004
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.8444,
+                            "quality": 0.65,
+                            "tokens": 20646728,
+                            "cost": 2.653,
+                            "status": "failed",
+                            "durationSeconds": 2758.7
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9222,
+                            "quality": 0.7375,
+                            "tokens": 19625018,
+                            "cost": 2.6161,
+                            "status": "failed",
+                            "durationSeconds": 2781.5
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.7375,
+                            "tokens": 8434883,
+                            "cost": 1.2412,
+                            "status": "passed",
+                            "durationSeconds": 2057.0
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9222,
+                            "quality": 0.7375,
+                            "tokens": 13302763,
+                            "cost": 1.8913,
+                            "status": "failed",
+                            "durationSeconds": 2395.5
+                        }
+                    ]
+                },
+                {
+                    "id": "adaptive-material-cupertino",
+                    "name": "Adapt to Material and Cupertino",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 72.26,
+                        "outcome": 75.27,
+                        "quality": 66.667,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 10944060.0,
+                        "meanCost": 1.5438
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.7527,
+                            "quality": 0.5625,
+                            "tokens": 12310637,
+                            "cost": 1.7421,
+                            "status": "failed",
+                            "durationSeconds": 3156.5
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.7527,
+                            "quality": 0.875,
+                            "tokens": 10106457,
+                            "cost": 1.3864,
+                            "status": "failed",
+                            "durationSeconds": 2901.6
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.6027,
+                            "quality": 0.5625,
+                            "tokens": 14534834,
+                            "cost": 2.1551,
+                            "status": "timed_out",
+                            "durationSeconds": 4668.7
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.7527,
+                            "quality": 0.5625,
+                            "tokens": 10415085,
+                            "cost": 1.503,
+                            "status": "failed",
+                            "durationSeconds": 3529.6
+                        }
+                    ]
+                },
+                {
+                    "id": "add-web-support",
+                    "name": "Add Web Support",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 72.499,
+                        "outcome": 67.787,
+                        "quality": 81.25,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 22792220.0,
+                        "meanCost": 2.9317
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.8151,
+                            "quality": 0.8125,
+                            "tokens": 21762334,
+                            "cost": 2.7344,
+                            "status": "timed_out",
+                            "durationSeconds": 4312.1
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.3782,
+                            "quality": 0.75,
+                            "tokens": 26231493,
+                            "cost": 3.2459,
+                            "status": "failed",
+                            "durationSeconds": 2340.9
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.8319,
+                            "quality": 0.8125,
+                            "tokens": 24000374,
+                            "cost": 3.0515,
+                            "status": "failed",
+                            "durationSeconds": 2385.5
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.8235,
+                            "quality": 0.875,
+                            "tokens": 18144792,
+                            "cost": 2.4977,
+                            "status": "failed",
+                            "durationSeconds": 2250.2
+                        }
+                    ]
+                },
+                {
+                    "id": "add-unit-widget-integration-tests",
+                    "name": "Add Unit, Widget, and Integration Tests",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 79.018,
+                        "outcome": 88.33,
+                        "quality": 61.715,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 5942383.0,
+                        "meanCost": 0.8578
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9222,
+                            "quality": 0.5937,
+                            "tokens": 5304022,
+                            "cost": 0.7668,
+                            "status": "failed",
+                            "durationSeconds": 1192.0
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9222,
+                            "quality": 0.5937,
+                            "tokens": 6652746,
+                            "cost": 0.9703,
+                            "status": "failed",
+                            "durationSeconds": 1249.7
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.8444,
+                            "quality": 0.5937,
+                            "tokens": 6605981,
+                            "cost": 0.9051,
+                            "status": "failed",
+                            "durationSeconds": 1235.4
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.8444,
+                            "quality": 0.6875,
+                            "tokens": 5206783,
+                            "cost": 0.7891,
+                            "status": "failed",
+                            "durationSeconds": 1273.5
+                        }
+                    ]
+                },
+                {
+                    "id": "firebase-storage",
+                    "name": "Add Firebase Storage Photos",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 47.795,
+                        "outcome": 50.815,
+                        "quality": 42.19,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 12843562.0,
+                        "meanCost": 1.6576
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.5144,
+                            "quality": 0.4062,
+                            "tokens": 15399572,
+                            "cost": 1.8956,
+                            "status": "failed",
+                            "durationSeconds": 3792.4
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.5027,
+                            "quality": 0.4688,
+                            "tokens": 13218657,
+                            "cost": 1.7147,
+                            "status": "failed",
+                            "durationSeconds": 5034.5
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.5011,
+                            "quality": 0.3438,
+                            "tokens": 11337757,
+                            "cost": 1.5053,
+                            "status": "failed",
+                            "durationSeconds": 3707.0
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.5144,
+                            "quality": 0.4688,
+                            "tokens": 11418264,
+                            "cost": 1.5146,
+                            "status": "failed",
+                            "durationSeconds": 3986.0
+                        }
+                    ]
+                },
+                {
+                    "id": "greenfield-fitness-app",
+                    "name": "Build a Greenfield Fitness App",
+                    "category": "long_horizon",
+                    "metrics": {
+                        "resultScore": 81.058,
+                        "outcome": 97.78,
+                        "quality": 50.0,
+                        "passedTrialCount": 1,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": false,
+                        "meanTokens": 5947660.0,
+                        "meanCost": 0.9752
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9771,
+                            "quality": 0.5,
+                            "tokens": 6499953,
+                            "cost": 0.8863,
+                            "status": "failed",
+                            "durationSeconds": 7417.6
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9529,
+                            "quality": 0.5,
+                            "tokens": 6712772,
+                            "cost": 1.0476,
+                            "status": "failed",
+                            "durationSeconds": 10673.0
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "tokens": 5334770,
+                            "cost": 0.9443,
+                            "status": "passed",
+                            "durationSeconds": 9750.2
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9812,
+                            "quality": 0.5,
+                            "tokens": 5243143,
+                            "cost": 1.0225,
+                            "status": "failed",
+                            "durationSeconds": 10343.6
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

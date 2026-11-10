@@ -45,3 +45,18 @@ and an AI Tooling harness equipped with official Flutter MCP tools and skills.
 </div>
 
 </FlutterBenchPage>
+
+Also consider: 
+  'antigravity-cli-1.4.4-gemini-3.8-flash-high-reasoning',
+
+  'antigravity-cli-1.4.4-gemini-4-argon-high-reasoning',
+
+  'antigravity-cli-1.4.4-gemini-4-carbon-high-reasoning',
+
+  'claude-code-2.1.280-claude-opus-5.5-high-reasoning',
+
+  'claude-code-2.1.280-claude-sonnet-5-5-high-reasoning',
+
+  'codex-0.163.0-gpt-6.1-sol-high-reasoning',
+
+  'codex-0.163.0-gpt-6-astra-high-reasoning',
