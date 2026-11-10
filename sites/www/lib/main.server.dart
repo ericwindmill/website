@@ -176,12 +176,14 @@ void main() {
 }
 
 /// Builds the `package:markdown` document used to parse this site's content,
-/// adding [MermaidBlockSyntax] on top of the parser's default block syntaxes
-/// so `MermaidProcessor` has diagrams to transform.
+/// adding [MermaidBlockSyntax] (so `MermaidProcessor` has diagrams to
+/// transform) and [AlertBlockSyntax] (for `:::note`-style alerts) on top of
+/// the parser's default block syntaxes.
 md.Document _buildMarkdownDocument(Page page) => md.Document(
   blockSyntaxes: [
     ...MarkdownParser.defaultBlockSyntaxes,
     const MermaidBlockSyntax(),
+    const AlertBlockSyntax(),
   ],
   extensionSet: md.ExtensionSet.gitHubWeb,
 );

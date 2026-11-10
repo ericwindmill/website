@@ -43,12 +43,22 @@ enterprises, and AI researchers:
 
 <StoryChapter number="02" title="Dataset design">
 
-The Flutter Bench dataset is constructed from real-world Critical User Journeys
-(CUJs) identified across production Flutter codebases. Tasks are intentionally
-divided into two distinct horizons to evaluate both immediate syntactical
-reasoning and long-range architectural planning.
+Evaluation tasks derive directly from Flutter's canonical Critical User Journeys (CUJs),
+which are the core workflows that developers perform regularly. 
+This approach ensures evaluations reflect real-world developer needs rather 
+than synthetic puzzles. 
+
+:::note
+We can't open-source the full evaluation tasks without contaminating 
+the benchmark dataset, and instead we publish our canonical list of CUJs. 
+With this list, along with the example task below, you can understand 
+our evaluation philosophy for FlutterBench.
+:::
 
 ### Short-horizon vs. long-horizon framing
+
+Tasks are divided into two distinct horizons to evaluate both immediate syntactical
+reasoning and long-range architectural planning.
 
 - **Short-horizon tasks**: These challenges test localized implementation,
   widget layout, and framework API mechanics. Each task is self-contained within
@@ -60,9 +70,21 @@ reasoning and long-range architectural planning.
 
 ### Critical User Journeys (CUJs)
 
-To prevent benchmark saturation and maintain integrity, individual prompts and
-test suites are not public. The evaluation dataset assesses the following
-representative journey categories:
+Each CUJ represents a combination of:
+
+* A Flutter developer persona (e.g., app developer, plugin developer, full-stack developer)
+* A high-level goal
+* The specific sequential steps required to achieve that goal
+
+These CUJs are converted into Harbor tasks. Harbor is the framework used to run containerized evaluation tasks.
+
+CUJs and Harbor tasks don't map cleanly one-to-one. Instead, the CUJ list serves as a guide to verify that 
+core developer workflows are evaluated. In some cases, several CUJs combine into a single task, 
+and vice-versa. Our most ambitious evaluations combine multiple Harbor tasks, and thus cover many CUJs.
+
+### MVP Dataset
+
+The current dataset includes the following tasks:
 
 | Category | CUJ Identifier | Description |
 |---|---|---|
@@ -73,6 +95,8 @@ representative journey categories:
 | Long horizon | `cuj-05-firebase-cloud-storage` | **Firebase Cloud Storage**: Integrating cloud file upload/download flows, transfer progress streams, authentication guards, and exception handling. |
 | Long horizon | `cuj-06-dart-genkit-function` | **Dart Genkit Cloud Function**: Authoring serverless Dart AI agent workflows utilizing Firebase Functions and the Genkit Dart SDK. |
 | Short horizon | `cuj-07-internationalization-i18n` | **Internationalization (i18n)**: Configuring localization with `.arb` translation catalogs, locale delegates, and localized parameter interpolation. |
+
+We're currently working on 
 
 </StoryChapter>
 
