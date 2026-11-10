@@ -200,7 +200,7 @@ class BenchTable extends StatelessComponent {
         return div(classes: 'both-cell-container', [
           div(classes: 'variant-item', [
             const span(classes: 'variant-badge badge-ai', [
-              .text('AI Tooling'),
+              .text('Tooling'),
             ]),
             span([.text(aiVal)]),
           ]),

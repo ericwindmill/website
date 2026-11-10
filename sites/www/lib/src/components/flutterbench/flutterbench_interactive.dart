@@ -52,9 +52,7 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
   }
 
   void _recomputeComparisons() {
-    final runs = component.rawRunsJson
-        .map(BenchModelRun.fromJson)
-        .toList();
+    final runs = component.rawRunsJson.map(BenchModelRun.fromJson).toList();
     _allComparisons = BenchCalculator.buildComparisonEntries(runs);
   }
 
@@ -91,55 +89,7 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
       return true;
     }).toList();
 
-    // Sort comparisons.
-    filtered.sort((a, b) {
-      var cmp = 0;
-      switch (_sortColumn) {
-        case SortColumn.agentModel:
-          cmp = a.compositeKey.compareTo(b.compositeKey);
-        case SortColumn.passRate:
-          final aVal = _selectedVariant == DisplayVariant.baseline
-              ? a.baselineMetrics.passRate
-              : a.aiToolingMetrics.passRate;
-          final bVal = _selectedVariant == DisplayVariant.baseline
-              ? b.baselineMetrics.passRate
-              : b.aiToolingMetrics.passRate;
-          cmp = aVal.compareTo(bVal);
-        case SortColumn.passAt4:
-          final aVal = _selectedVariant == DisplayVariant.baseline
-              ? a.baselineMetrics.passAt4Rate
-              : a.aiToolingMetrics.passAt4Rate;
-          final bVal = _selectedVariant == DisplayVariant.baseline
-              ? b.baselineMetrics.passAt4Rate
-              : b.aiToolingMetrics.passAt4Rate;
-          cmp = aVal.compareTo(bVal);
-        case SortColumn.avgScore:
-          final aVal = _selectedVariant == DisplayVariant.baseline
-              ? a.baselineMetrics.avgScore
-              : a.aiToolingMetrics.avgScore;
-          final bVal = _selectedVariant == DisplayVariant.baseline
-              ? b.baselineMetrics.avgScore
-              : b.aiToolingMetrics.avgScore;
-          cmp = aVal.compareTo(bVal);
-        case SortColumn.tokens:
-          final aVal = _selectedVariant == DisplayVariant.baseline
-              ? a.baselineMetrics.avgTokens
-              : a.aiToolingMetrics.avgTokens;
-          final bVal = _selectedVariant == DisplayVariant.baseline
-              ? b.baselineMetrics.avgTokens
-              : b.aiToolingMetrics.avgTokens;
-          cmp = aVal.compareTo(bVal);
-        case SortColumn.cost:
-          final aVal = _selectedVariant == DisplayVariant.baseline
-              ? a.baselineMetrics.avgCost
-              : a.aiToolingMetrics.avgCost;
-          final bVal = _selectedVariant == DisplayVariant.baseline
-              ? b.baselineMetrics.avgCost
-              : b.aiToolingMetrics.avgCost;
-          cmp = aVal.compareTo(bVal);
-      }
-      return _sortAscending ? cmp : -cmp;
-    });
+    _sortCols(filtered);
 
     return div(classes: 'bench-interactive', [
       div(classes: 'container', [
@@ -191,7 +141,62 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
         variant: _selectedVariant,
         isOpen: _drawerOpen,
         onClose: () => setState(() => _drawerOpen = false),
+        onVariantChanged: (variant) => setState(() {
+          _selectedVariant = variant;
+        }),
       ),
     ]);
+  }
+
+  void _sortCols(List<BenchComparisonEntry> elements) {
+    // Sort comparisons.
+    elements.sort((a, b) {
+      var cmp = 0;
+      switch (_sortColumn) {
+        case SortColumn.agentModel:
+          cmp = a.compositeKey.compareTo(b.compositeKey);
+        case SortColumn.passRate:
+          final aVal = _selectedVariant == DisplayVariant.baseline
+              ? a.baselineMetrics.passRate
+              : a.aiToolingMetrics.passRate;
+          final bVal = _selectedVariant == DisplayVariant.baseline
+              ? b.baselineMetrics.passRate
+              : b.aiToolingMetrics.passRate;
+          cmp = aVal.compareTo(bVal);
+        case SortColumn.passAt4:
+          final aVal = _selectedVariant == DisplayVariant.baseline
+              ? a.baselineMetrics.passAt4Rate
+              : a.aiToolingMetrics.passAt4Rate;
+          final bVal = _selectedVariant == DisplayVariant.baseline
+              ? b.baselineMetrics.passAt4Rate
+              : b.aiToolingMetrics.passAt4Rate;
+          cmp = aVal.compareTo(bVal);
+        case SortColumn.avgScore:
+          final aVal = _selectedVariant == DisplayVariant.baseline
+              ? a.baselineMetrics.avgScore
+              : a.aiToolingMetrics.avgScore;
+          final bVal = _selectedVariant == DisplayVariant.baseline
+              ? b.baselineMetrics.avgScore
+              : b.aiToolingMetrics.avgScore;
+          cmp = aVal.compareTo(bVal);
+        case SortColumn.tokens:
+          final aVal = _selectedVariant == DisplayVariant.baseline
+              ? a.baselineMetrics.avgTokens
+              : a.aiToolingMetrics.avgTokens;
+          final bVal = _selectedVariant == DisplayVariant.baseline
+              ? b.baselineMetrics.avgTokens
+              : b.aiToolingMetrics.avgTokens;
+          cmp = aVal.compareTo(bVal);
+        case SortColumn.cost:
+          final aVal = _selectedVariant == DisplayVariant.baseline
+              ? a.baselineMetrics.avgCost
+              : a.aiToolingMetrics.avgCost;
+          final bVal = _selectedVariant == DisplayVariant.baseline
+              ? b.baselineMetrics.avgCost
+              : b.aiToolingMetrics.avgCost;
+          cmp = aVal.compareTo(bVal);
+      }
+      return _sortAscending ? cmp : -cmp;
+    });
   }
 }

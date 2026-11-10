@@ -15,12 +15,16 @@ import 'bench_controls.dart';
 /// 1. Top-level metric summary cards.
 /// 2. Outcome (60%) / Quality (30%) / DX (10%) breakdown cards (Android Bench pattern).
 /// 3. Per-task breakdown table respecting the active variant.
+///
+/// The header includes a [BenchVariantToggle] so the variant can be
+/// changed without closing the drawer.
 class BenchDetailDrawer extends StatelessComponent {
   const BenchDetailDrawer({
     required this.entry,
     required this.variant,
     required this.isOpen,
     required this.onClose,
+    required this.onVariantChanged,
     super.key,
   });
 
@@ -28,6 +32,7 @@ class BenchDetailDrawer extends StatelessComponent {
   final DisplayVariant variant;
   final bool isOpen;
   final VoidCallback onClose;
+  final ValueChanged<DisplayVariant> onVariantChanged;
 
   @override
   Component build(BuildContext context) {
@@ -43,7 +48,7 @@ class BenchDetailDrawer extends StatelessComponent {
     final baselineMetrics = currentEntry.baselineMetrics;
     final aiToolingMetrics = currentEntry.aiToolingMetrics;
     final activeMetrics = _resolveActiveMetrics(currentEntry);
-    final activeTasks = _resolveActiveTasks(currentEntry);
+    final taskRows = _resolveTaskRows(currentEntry, showBoth: showBoth);
 
     return div(classes: 'bench-drawer-root', [
       // Backdrop overlay
@@ -60,8 +65,11 @@ class BenchDetailDrawer extends StatelessComponent {
           div(classes: 'drawer-title-group', [
             span(classes: 'drawer-agent-badge', [.text(currentEntry.agent)]),
             h2(classes: 'drawer-model-title', [.text(currentEntry.model)]),
-            span(classes: 'drawer-variant-subtitle', [
-              .text('Viewing mode: ${variant.label}'),
+            div(classes: 'drawer-variant-toggle', [
+              BenchVariantToggle(
+                selectedVariant: variant,
+                onVariantChanged: onVariantChanged,
+              ),
             ]),
           ]),
           button(
@@ -267,35 +275,27 @@ class BenchDetailDrawer extends StatelessComponent {
                 ]),
               ]),
               tbody([
-                for (final task in activeTasks)
+                for (final row in taskRows)
                   tr([
                     td([
-                      strong([.text(task.name)]),
+                      strong([.text(row.name)]),
                     ]),
                     td([
-                      span(classes: 'category-tag ${task.category.value}', [
-                        .text(task.category.label),
+                      span(classes: 'category-tag ${row.category.value}', [
+                        .text(row.category.label),
                       ]),
                     ]),
                     td(classes: 'num', [
-                      strong([
-                        .text(
-                          BenchCalculator.formatPercent(task.avgScore * 100),
-                        ),
-                      ]),
+                      _buildTaskCell(row, (t) => t.avgScore, bold: true),
                     ]),
                     td(classes: 'num', [
-                      .text(
-                        BenchCalculator.formatPercent(task.avgOutcome * 100),
-                      ),
+                      _buildTaskCell(row, (t) => t.avgOutcome),
                     ]),
                     td(classes: 'num', [
-                      .text(
-                        BenchCalculator.formatPercent(task.avgQuality * 100),
-                      ),
+                      _buildTaskCell(row, (t) => t.avgQuality),
                     ]),
                     td(classes: 'num', [
-                      .text(BenchCalculator.formatPercent(task.avgDx * 100)),
+                      _buildTaskCell(row, (t) => t.avgDx),
                     ]),
                   ]),
               ]),
@@ -311,19 +311,76 @@ class BenchDetailDrawer extends StatelessComponent {
       case DisplayVariant.baseline:
         return currentEntry.baselineMetrics;
       case DisplayVariant.aiTooling:
-      case DisplayVariant.both:
         return currentEntry.aiToolingMetrics;
+      case DisplayVariant.both:
+        // Only used when one of the runs is missing,
+        // so fall back to whichever run exists.
+        return currentEntry.aiToolingRun != null
+            ? currentEntry.aiToolingMetrics
+            : currentEntry.baselineMetrics;
     }
   }
 
-  List<BenchTask> _resolveActiveTasks(BenchComparisonEntry currentEntry) {
-    switch (variant) {
-      case DisplayVariant.baseline:
-        return currentEntry.baselineRun?.tasks ?? const [];
-      case DisplayVariant.aiTooling:
-      case DisplayVariant.both:
-        return currentEntry.aiToolingRun?.tasks ?? const [];
+  /// Builds the per-task rows for the active variant.
+  ///
+  /// When [showBoth] is true, tasks from the two runs are paired by
+  /// [BenchTask.id] so each row shows baseline and AI tooling together.
+  List<_TaskRow> _resolveTaskRows(
+    BenchComparisonEntry currentEntry, {
+    required bool showBoth,
+  }) {
+    final baselineTasks = currentEntry.baselineRun?.tasks ?? const [];
+    final aiTasks = currentEntry.aiToolingRun?.tasks ?? const [];
+
+    if (showBoth) {
+      final baselineById = {for (final t in baselineTasks) t.id: t};
+      final aiIds = {for (final t in aiTasks) t.id};
+      return [
+        for (final ai in aiTasks)
+          _TaskRow(baseline: baselineById[ai.id], aiTooling: ai, paired: true),
+        for (final base in baselineTasks)
+          if (!aiIds.contains(base.id)) _TaskRow(baseline: base, paired: true),
+      ];
     }
+
+    final useBaseline = switch (variant) {
+      DisplayVariant.baseline => true,
+      DisplayVariant.aiTooling => false,
+      DisplayVariant.both => currentEntry.aiToolingRun == null,
+    };
+    return useBaseline
+        ? [for (final t in baselineTasks) _TaskRow(baseline: t)]
+        : [for (final t in aiTasks) _TaskRow(aiTooling: t)];
+  }
+
+  /// Renders a numeric per-task cell.
+  ///
+  /// Paired rows use the same stacked "AI Tooling" / "Base" layout
+  /// as the leaderboard table's Both mode.
+  Component _buildTaskCell(
+    _TaskRow row,
+    double Function(BenchTask) metric, {
+    bool bold = false,
+  }) {
+    String format(BenchTask? task) =>
+        task == null ? '—' : BenchCalculator.formatPercent(metric(task) * 100);
+
+    Component value(String text) => bold ? strong([.text(text)]) : .text(text);
+
+    if (!row.paired) {
+      return value(format(row.aiTooling ?? row.baseline));
+    }
+
+    return div(classes: 'both-cell-container', [
+      div(classes: 'variant-item', [
+        const span(classes: 'variant-badge badge-ai', [.text('Tooling')]),
+        span([value(format(row.aiTooling))]),
+      ]),
+      div(classes: 'variant-item', [
+        const span(classes: 'variant-badge badge-baseline', [.text('Base')]),
+        span([value(format(row.baseline))]),
+      ]),
+    ]);
   }
 
   Component _buildSummaryCard({required String label, required String value}) {
@@ -343,4 +400,21 @@ class BenchDetailDrawer extends StatelessComponent {
       span(classes: 'large-value', [.text(value)]),
     ]);
   }
+}
+
+/// A row in the per-task table, holding a task from one or both variants.
+class _TaskRow {
+  const _TaskRow({this.baseline, this.aiTooling, this.paired = false})
+    : assert(baseline != null || aiTooling != null);
+
+  final BenchTask? baseline;
+  final BenchTask? aiTooling;
+
+  /// Whether to render baseline and AI tooling values side by side.
+  final bool paired;
+
+  BenchTask get _primary => (aiTooling ?? baseline)!;
+
+  String get name => _primary.name;
+  TaskCategory get category => _primary.category;
 }

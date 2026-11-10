@@ -105,15 +105,38 @@ class BenchControls extends StatelessComponent {
       ]),
 
       // Top-right 3-segment variant toggle
-      div(classes: 'bench-variant-toggle', [
-        for (final variant in DisplayVariant.values)
-          button(
-            classes:
-                'toggle-segment ${selectedVariant == variant ? 'active' : ''}',
-            events: events(onClick: () => onVariantChanged(variant)),
-            [.text(variant.label)],
-          ),
-      ]),
+      BenchVariantToggle(
+        selectedVariant: selectedVariant,
+        onVariantChanged: onVariantChanged,
+      ),
+    ]);
+  }
+}
+
+/// A 3-segment toggle for switching between [DisplayVariant] values.
+///
+/// Used in both the leaderboard controls bar and the detail drawer.
+class BenchVariantToggle extends StatelessComponent {
+  const BenchVariantToggle({
+    required this.selectedVariant,
+    required this.onVariantChanged,
+    super.key,
+  });
+
+  final DisplayVariant selectedVariant;
+  final ValueChanged<DisplayVariant> onVariantChanged;
+
+  @override
+  Component build(BuildContext context) {
+    return div(classes: 'bench-variant-toggle', [
+      for (final variant in DisplayVariant.values)
+        button(
+          classes:
+              'toggle-segment ${selectedVariant == variant ? 'active' : ''}',
+          attributes: {'aria-pressed': '${selectedVariant == variant}'},
+          events: events(onClick: () => onVariantChanged(variant)),
+          [.text(variant.label)],
+        ),
     ]);
   }
 }

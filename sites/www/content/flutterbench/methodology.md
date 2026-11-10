@@ -81,8 +81,6 @@ representative journey categories:
 Every task evaluation is executed **4 independent times** (*K* = 4) from a clean
 workspace state to account for non-deterministic model outputs.
 
-<EvaluationMatrix />
-
 ### Triple-metric evaluation rubric
 
 Rather than reducing model performance to a simple pass/fail binary, each trial

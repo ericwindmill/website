@@ -58,7 +58,7 @@ class FlutterBenchPage extends StatelessComponent {
           h1(classes: 'bench-title', [.text('Flutter Bench')]),
           p(classes: 'bench-subtitle', [
             .text(
-              'A public leaderboard measuring how effectively AI coding '
+              'Measuring how effectively AI coding '
               'agents and models build Flutter and Dart applications.',
             ),
           ]),
