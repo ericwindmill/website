@@ -48,7 +48,7 @@ which are the core workflows that developers perform regularly.
 This approach ensures evaluations reflect real-world developer needs rather 
 than synthetic puzzles. 
 
-:::note
+:::note Working in the open
 We can't open-source the full evaluation tasks without contaminating 
 the benchmark dataset, and instead we publish our canonical list of CUJs. 
 With this list, along with the example task below, you can understand 
@@ -76,13 +76,17 @@ Each CUJ represents a combination of:
 * A high-level goal
 * The specific sequential steps required to achieve that goal
 
-These CUJs are converted into Harbor tasks. Harbor is the framework used to run containerized evaluation tasks.
+These CUJs are converted into Harbor tasks. Harbor is the framework used to 
+run containerized evaluation tasks. CUJs and Harbor tasks don't map cleanly 
+one-to-one. Instead, the CUJ list serves as a guide to verify that 
+core developer workflows are evaluated. In some cases, 
+several CUJs combine into a single task, 
+and vice-versa. Our most ambitious evaluations combine multiple Harbor tasks, 
+and thus cover many CUJs.
 
-CUJs and Harbor tasks don't map cleanly one-to-one. Instead, the CUJ list serves as a guide to verify that 
-core developer workflows are evaluated. In some cases, several CUJs combine into a single task, 
-and vice-versa. Our most ambitious evaluations combine multiple Harbor tasks, and thus cover many CUJs.
+Read the [complete CUJ list](https://docs.flutter.dev/ai/flutter-bench/cujs).
 
-### MVP Dataset
+### Dataset
 
 The current dataset includes the following tasks:
 
@@ -96,7 +100,7 @@ The current dataset includes the following tasks:
 | Long horizon | `cuj-06-dart-genkit-function` | **Dart Genkit Cloud Function**: Authoring serverless Dart AI agent workflows utilizing Firebase Functions and the Genkit Dart SDK. |
 | Short horizon | `cuj-07-internationalization-i18n` | **Internationalization (i18n)**: Configuring localization with `.arb` translation catalogs, locale delegates, and localized parameter interpolation. |
 
-We're currently working on 
+The team is working toward covering all of the workflows in the CUJ list, and new data will be published as we continue work. 
 
 </StoryChapter>
 

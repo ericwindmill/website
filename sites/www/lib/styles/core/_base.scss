@@ -119,3 +119,7 @@ p:not(:where(.post-content *)) {
     font-variation-settings: 'FILL' 1;
   }
 }
+
+.alert {
+  max-width: 760px;
+}
