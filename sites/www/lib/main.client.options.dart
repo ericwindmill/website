@@ -106,9 +106,7 @@ ClientOptions get defaultClientOptions => ClientOptions(
     ),
     'flutterbench_interactive': ClientLoader(
       (p) => _flutterbench_interactive.FlutterBenchInteractive(
-        rawRunsJson: (p['rawRunsJson'] as List<Object?>)
-            .map((i) => (i as Map<String, Object?>))
-            .toList(),
+        rawResultsJson: (p['rawResultsJson'] as Map<String, Object?>),
       ),
       loader: _flutterbench_interactive.loadLibrary,
     ),

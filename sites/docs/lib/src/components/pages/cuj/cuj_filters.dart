@@ -124,7 +124,7 @@ class _CujFiltersState extends State<CujFilters> {
             icon: 'close_small',
             content: 'Clear filters',
             size: ButtonSize.compact,
-            disabled: _searchQuery.isEmpty && !_filters.hasSelectedPersonas,
+            disabled: _searchQuery.isEmpty && !_filters.hasActiveFilters,
             onClick: () {
               // No setState needed, since resetting filters will trigger it.
               _searchQuery = '';

@@ -6,13 +6,13 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import '../../models/content/flutter_bench.dart';
-import '../../utils/bench_calculator.dart';
+import '../../utils/bench_format.dart';
 import 'bench_controls.dart';
 
 enum SortColumn {
   agentModel,
   passRate,
-  passAt4,
+  passAtK,
   avgScore,
   tokens,
   cost,
@@ -23,6 +23,7 @@ enum SortColumn {
 class BenchTable extends StatelessComponent {
   const BenchTable({
     required this.entries,
+    required this.snapshot,
     required this.variant,
     required this.sortColumn,
     required this.sortAscending,
@@ -32,6 +33,10 @@ class BenchTable extends StatelessComponent {
   });
 
   final List<BenchComparisonEntry> entries;
+
+  /// Snapshot metadata, used for the Pass@K label and scoring weights.
+  final BenchSnapshot snapshot;
+
   final DisplayVariant variant;
   final SortColumn sortColumn;
   final bool sortAscending;
@@ -40,6 +45,9 @@ class BenchTable extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
+    final k = snapshot.trialsPerTask;
+    final scoring = snapshot.scoring;
+
     return div(classes: 'bench-table-card', [
       div(classes: 'bench-table-scroll', [
         table(classes: 'bench-table', [
@@ -54,21 +62,22 @@ class BenchTable extends StatelessComponent {
                 label: 'Pass Rate (%)',
                 column: SortColumn.passRate,
                 isNum: true,
-                title: 'count(tasks with Outcome == 1.0) / total tasks × 100',
+                title: 'Percentage of tasks where all $k trials passed',
               ),
               _buildHeader(
-                label: 'Pass@4 Rate (%)',
-                column: SortColumn.passAt4,
+                label: 'Pass@$k Rate (%)',
+                column: SortColumn.passAtK,
                 isNum: true,
                 title:
-                    'Percentage of tasks where at least 1 of 4 trials passed (K = 4)',
+                    'Percentage of tasks where at least 1 of $k trials passed',
               ),
               _buildHeader(
                 label: 'Avg Score (%)',
                 column: SortColumn.avgScore,
                 isNum: true,
                 title:
-                    'Mean Result Score: Outcome (60%) + Quality (30%) + DX (10%) (mean ± SD)',
+                    'Mean Result Score: Outcome (${scoring.outcomePercent}%) + '
+                    'Quality (${scoring.qualityPercent}%) (mean ± SD)',
               ),
               _buildHeader(
                 label: 'Avg Tokens',
@@ -99,62 +108,40 @@ class BenchTable extends StatelessComponent {
                   // Pass Rate
                   td(classes: 'num', [
                     _buildMetricCell(
-                      baselineVal: BenchCalculator.formatPercent(
-                        entry.baselineMetrics.passRate,
-                      ),
-                      aiVal: BenchCalculator.formatPercent(
-                        entry.aiToolingMetrics.passRate,
-                      ),
+                      entry,
+                      (m) => formatPercent(m?.passRate),
                     ),
                   ]),
 
-                  // Pass@4 Rate
+                  // Pass@K Rate
                   td(classes: 'num', [
                     _buildMetricCell(
-                      baselineVal: BenchCalculator.formatPercent(
-                        entry.baselineMetrics.passAt4Rate,
-                      ),
-                      aiVal: BenchCalculator.formatPercent(
-                        entry.aiToolingMetrics.passAt4Rate,
-                      ),
+                      entry,
+                      (m) => formatPercent(m?.passAtKRate),
                     ),
                   ]),
 
                   // Avg Score
                   td(classes: 'num', [
                     _buildMetricCell(
-                      baselineVal: BenchCalculator.formatScoreWithSd(
-                        entry.baselineMetrics.avgScore,
-                        entry.baselineMetrics.scoreSd,
-                      ),
-                      aiVal: BenchCalculator.formatScoreWithSd(
-                        entry.aiToolingMetrics.avgScore,
-                        entry.aiToolingMetrics.scoreSd,
-                      ),
+                      entry,
+                      (m) => formatScoreWithSd(m?.avgScore, m?.scoreSd),
                     ),
                   ]),
 
                   // Avg Tokens
                   td(classes: 'num', [
                     _buildMetricCell(
-                      baselineVal: BenchCalculator.formatTokens(
-                        entry.baselineMetrics.avgTokens,
-                      ),
-                      aiVal: BenchCalculator.formatTokens(
-                        entry.aiToolingMetrics.avgTokens,
-                      ),
+                      entry,
+                      (m) => formatTokens(m?.avgTokens),
                     ),
                   ]),
 
                   // Avg Cost
                   td(classes: 'num', [
                     _buildMetricCell(
-                      baselineVal: BenchCalculator.formatCost(
-                        entry.baselineMetrics.avgCost,
-                      ),
-                      aiVal: BenchCalculator.formatCost(
-                        entry.aiToolingMetrics.avgCost,
-                      ),
+                      entry,
+                      (m) => formatCost(m?.avgCost),
                     ),
                   ]),
                 ],
@@ -187,22 +174,27 @@ class BenchTable extends StatelessComponent {
     );
   }
 
-  Component _buildMetricCell({
-    required String baselineVal,
-    required String aiVal,
-  }) {
+  /// Renders a metric for the active variant,
+  /// or both variants stacked in Both mode.
+  Component _buildMetricCell(
+    BenchComparisonEntry entry,
+    String Function(BenchRunMetrics?) format,
+  ) {
+    final baselineVal = format(entry.baselineMetrics);
+    final enhancedVal = format(entry.enhancedMetrics);
+
     switch (variant) {
       case DisplayVariant.baseline:
         return .text(baselineVal);
-      case DisplayVariant.aiTooling:
-        return .text(aiVal);
+      case DisplayVariant.enhanced:
+        return .text(enhancedVal);
       case DisplayVariant.both:
         return div(classes: 'both-cell-container', [
           div(classes: 'variant-item', [
             const span(classes: 'variant-badge badge-ai', [
-              .text('Tooling'),
+              .text('Enhanced'),
             ]),
-            span([.text(aiVal)]),
+            span([.text(enhancedVal)]),
           ]),
           div(classes: 'variant-item', [
             const span(classes: 'variant-badge badge-baseline', [

@@ -6,14 +6,13 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import '../../models/content/flutter_bench.dart';
-import '../../utils/bench_calculator.dart';
 import 'bench_controls.dart';
 import 'bench_detail_drawer.dart';
 import 'bench_table.dart';
 
 /// Client-hydrated interactive leaderboard component.
 ///
-/// Receives pre-loaded benchmark data as raw JSON maps (serialized by
+/// Receives the benchmark results file as raw JSON (serialized by
 /// Jaspr across the server→client boundary) and handles all user
 /// interaction: filtering, variant toggling, sorting, and the detail drawer.
 ///
@@ -23,11 +22,12 @@ import 'bench_table.dart';
 @client
 class FlutterBenchInteractive extends StatefulComponent {
   const FlutterBenchInteractive({
-    required this.rawRunsJson,
+    required this.rawResultsJson,
     super.key,
   });
 
-  final List<Map<String, Object?>> rawRunsJson;
+  /// The contents of the results file, decoded with [BenchResults.fromJson].
+  final Map<String, Object?> rawResultsJson;
 
   @override
   State<FlutterBenchInteractive> createState() =>
@@ -43,17 +43,15 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
   BenchComparisonEntry? _selectedRow;
   bool _drawerOpen = false;
 
+  late BenchSnapshot _snapshot;
   late List<BenchComparisonEntry> _allComparisons;
 
   @override
   void initState() {
     super.initState();
-    _recomputeComparisons();
-  }
-
-  void _recomputeComparisons() {
-    final runs = component.rawRunsJson.map(BenchModelRun.fromJson).toList();
-    _allComparisons = BenchCalculator.buildComparisonEntries(runs);
+    final results = BenchResults.fromJson(component.rawResultsJson);
+    _snapshot = results.snapshot;
+    _allComparisons = BenchComparisonEntry.fromRuns(results.runs);
   }
 
   @override
@@ -117,14 +115,15 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
         // Primary Leaderboard Table
         BenchTable(
           entries: filtered,
+          snapshot: _snapshot,
           variant: _selectedVariant,
           sortColumn: _sortColumn,
           sortAscending: _sortAscending,
-          onSort: (col) => setState(() {
-            if (_sortColumn == col) {
+          onSort: (column) => setState(() {
+            if (_sortColumn == column) {
               _sortAscending = !_sortAscending;
             } else {
-              _sortColumn = col;
+              _sortColumn = column;
               _sortAscending = false;
             }
           }),
@@ -138,6 +137,7 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
       // Slide-over detail drawer component
       BenchDetailDrawer(
         entry: _selectedRow,
+        snapshot: _snapshot,
         variant: _selectedVariant,
         isOpen: _drawerOpen,
         onClose: () => setState(() => _drawerOpen = false),
@@ -148,54 +148,40 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
     ]);
   }
 
+  /// Sorts [elements] in place by the selected column.
+  ///
+  /// In Both mode, numeric columns sort by the enhanced values.
+  /// Missing values, such as unavailable cost, always sort last.
   void _sortCols(List<BenchComparisonEntry> elements) {
-    // Sort comparisons.
-    elements.sort((a, b) {
-      var cmp = 0;
-      switch (_sortColumn) {
-        case SortColumn.agentModel:
-          cmp = a.compositeKey.compareTo(b.compositeKey);
-        case SortColumn.passRate:
-          final aVal = _selectedVariant == DisplayVariant.baseline
-              ? a.baselineMetrics.passRate
-              : a.aiToolingMetrics.passRate;
-          final bVal = _selectedVariant == DisplayVariant.baseline
-              ? b.baselineMetrics.passRate
-              : b.aiToolingMetrics.passRate;
-          cmp = aVal.compareTo(bVal);
-        case SortColumn.passAt4:
-          final aVal = _selectedVariant == DisplayVariant.baseline
-              ? a.baselineMetrics.passAt4Rate
-              : a.aiToolingMetrics.passAt4Rate;
-          final bVal = _selectedVariant == DisplayVariant.baseline
-              ? b.baselineMetrics.passAt4Rate
-              : b.aiToolingMetrics.passAt4Rate;
-          cmp = aVal.compareTo(bVal);
-        case SortColumn.avgScore:
-          final aVal = _selectedVariant == DisplayVariant.baseline
-              ? a.baselineMetrics.avgScore
-              : a.aiToolingMetrics.avgScore;
-          final bVal = _selectedVariant == DisplayVariant.baseline
-              ? b.baselineMetrics.avgScore
-              : b.aiToolingMetrics.avgScore;
-          cmp = aVal.compareTo(bVal);
-        case SortColumn.tokens:
-          final aVal = _selectedVariant == DisplayVariant.baseline
-              ? a.baselineMetrics.avgTokens
-              : a.aiToolingMetrics.avgTokens;
-          final bVal = _selectedVariant == DisplayVariant.baseline
-              ? b.baselineMetrics.avgTokens
-              : b.aiToolingMetrics.avgTokens;
-          cmp = aVal.compareTo(bVal);
-        case SortColumn.cost:
-          final aVal = _selectedVariant == DisplayVariant.baseline
-              ? a.baselineMetrics.avgCost
-              : a.aiToolingMetrics.avgCost;
-          final bVal = _selectedVariant == DisplayVariant.baseline
-              ? b.baselineMetrics.avgCost
-              : b.aiToolingMetrics.avgCost;
-          cmp = aVal.compareTo(bVal);
+    final sortVariant = _selectedVariant == DisplayVariant.baseline
+        ? BenchVariant.baseline
+        : BenchVariant.enhanced;
+
+    num? valueOf(BenchComparisonEntry entry) {
+      final metrics = entry.metricsFor(sortVariant);
+      return switch (_sortColumn) {
+        SortColumn.agentModel => null,
+        SortColumn.passRate => metrics?.passRate,
+        SortColumn.passAtK => metrics?.passAtKRate,
+        SortColumn.avgScore => metrics?.avgScore,
+        SortColumn.tokens => metrics?.avgTokens,
+        SortColumn.cost => metrics?.avgCost,
+      };
+    }
+
+    elements.sort((first, second) {
+      if (_sortColumn == SortColumn.agentModel) {
+        final cmp = first.displayKey.compareTo(second.displayKey);
+        return _sortAscending ? cmp : -cmp;
       }
+
+      final aVal = valueOf(first);
+      final bVal = valueOf(second);
+      if (aVal == null || bVal == null) {
+        if (aVal == bVal) return 0;
+        return aVal == null ? 1 : -1;
+      }
+      final cmp = aVal.compareTo(bVal);
       return _sortAscending ? cmp : -cmp;
     });
   }

@@ -9,6 +9,7 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:site_shared/components/common/button.dart';
 import 'package:site_shared/components/common/card.dart';
+import 'package:site_shared/components/common/material_icon.dart';
 import 'package:site_shared/components/common/tags.dart';
 
 import '../../../models/cuj_model.dart';
@@ -65,11 +66,24 @@ final class _CujCard extends StatelessComponent {
       },
       header: [
         div(classes: 'cuj-card-heading', [
-          Tag(
-            cuj.persona.label,
-            color: cuj.persona.tagColor,
-            size: TagSize.small,
-          ),
+          div(classes: 'cuj-card-tags', [
+            Tag(
+              cuj.persona.label,
+              color: cuj.persona.tagColor,
+              size: TagSize.small,
+            ),
+            if (cuj.evaluatedTaskCount case final evaluated when evaluated > 0)
+              Tag(
+                'FlutterBench · $evaluated/$taskCount',
+                icon: _evaluatedIcon,
+                color: TagColor.green,
+                size: TagSize.small,
+                title:
+                    '$evaluated of $taskCount '
+                    '${taskCount == 1 ? 'task is' : 'tasks are'} '
+                    'evaluated by FlutterBench',
+              ),
+          ]),
           h2(classes: 'card-title', [.text(cuj.goal)]),
         ]),
         div(classes: 'card-header-buttons', [
@@ -101,9 +115,22 @@ final class _CujCard extends StatelessComponent {
       ],
       expandedContent: [
         ul(classes: 'cuj-task-list', [
-          for (final task in cuj.tasks) li([.text(task.task)]),
+          for (final task in cuj.tasks)
+            li(classes: task.isEvaluated ? 'evaluated' : null, [
+              .text(task.task),
+              if (task.isEvaluated)
+                MaterialIcon(
+                  _evaluatedIcon,
+                  title:
+                      'Evaluated by FlutterBench: '
+                      '${task.flutterbench.join(', ')}',
+                ),
+            ]),
         ]),
       ],
     );
   }
 }
+
+/// The Material Symbols icon that marks FlutterBench coverage.
+const _evaluatedIcon = 'check_circle';

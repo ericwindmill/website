@@ -28,6 +28,12 @@ what matters in Flutter development. If the way you build Flutter apps
 isn't represented here, the list is incomplete, and we
 encourage [you to open an issue with your feedback][].
 
+Journeys tagged **FlutterBench** include tasks that the
+current FlutterBench evaluations cover.
+Expand a journey to find the covered tasks,
+which are marked with a check mark,
+or filter the list to show only covered journeys.
+
 <CujIndex />
 
 [you to open an issue with your feedback]: https://github.com/flutter/evals/issues

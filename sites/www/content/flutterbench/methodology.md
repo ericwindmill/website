@@ -109,16 +109,16 @@ The team is working toward covering all of the workflows in the CUJ list, and ne
 Every task evaluation is executed **4 independent times** (*K* = 4) from a clean
 workspace state to account for non-deterministic model outputs.
 
-### Triple-metric evaluation rubric
+### Two-dimension evaluation rubric
 
 Rather than reducing model performance to a simple pass/fail binary, each trial
-is scored on a normalized 0.0 to 1.0 scale across three weighted dimensions:
+is scored on a normalized 0.0 to 1.0 scale across two weighted dimensions:
 
-<p class="formula">Result Score = (Outcome × 0.60) + (Quality × 0.30) + (Developer Experience × 0.10)</p>
+<p class="formula">Result Score = (Outcome × 0.65) + (Quality × 0.35)</p>
 
 <ScoreDimensions>
 
-<DimensionCard title="1. Outcome" icon="check_circle" category="outcome" badge="60% weight">
+<DimensionCard title="1. Outcome" icon="check_circle" category="outcome" badge="65% weight">
 
 Outcome measures whether the application compiles and completely fulfills the
 functional requirements of the CUJ.
@@ -130,7 +130,7 @@ functional requirements of the CUJ.
 
 </DimensionCard>
 
-<DimensionCard title="2. Code Quality" icon="code" category="quality" badge="30% weight">
+<DimensionCard title="2. Code Quality" icon="code" category="quality" badge="35% weight">
 
 Code quality measures whether the implementation adheres to production-grade
 engineering standards.
@@ -144,18 +144,15 @@ engineering standards.
 
 </DimensionCard>
 
-<DimensionCard title="3. Developer Experience" icon="bolt" category="dx" badge="10% weight">
-
-Developer experience evaluates the ergonomics and efficiency of the agent during
-the run:
-
-- Token economy and context utilization.
-- Turn count efficiency and tool call precision.
-- Absence of thrashing, hallucinated file paths, or circular compilation fixes.
-
-</DimensionCard>
-
 </ScoreDimensions>
+
+### Timed-out and errored trials
+
+A trial that times out or hits an infrastructure error
+never counts as a pass.
+These trials are also excluded from a task's average
+Outcome, Quality, and Result Score,
+so those averages reflect only trials that ran to completion.
 
 ### Grader architecture
 
@@ -174,9 +171,9 @@ The leaderboard aggregates task-level trials into three primary metrics:
 
 <RollupMetrics>
 
-<RollupCard title="Pass Rate (%)" pill="Outcome = 1.0" highlight="true">
+<RollupCard title="Pass Rate (%)" pill="All trials pass" highlight="true">
 
-<p class="formula">Pass Rate = (Tasks with Outcome = 1.0 ÷ Total Tasks) × 100</p>
+<p class="formula">Pass Rate = (Tasks where all 4 trials passed ÷ Total Tasks) × 100</p>
 
 </RollupCard>
 
@@ -194,14 +191,14 @@ The leaderboard aggregates task-level trials into three primary metrics:
 
 </RollupMetrics>
 
-### Baseline vs. With AI Tooling
+### Baseline vs. Enhanced
 
 To measure the impact of agent tool augmentation, every model is benchmarked
 under two distinct environments:
 
 - **Baseline**: The raw model equipped only with generic command-line execution
   and file read/write tools.
-- **With AI Tooling**: The model equipped with the official Flutter harness,
+- **Enhanced**: The model equipped with the official Flutter harness,
   including specialized agent skills (such as `flutter-fix-layout-issues`,
   `dart-run-static-analysis`, and `flutter-add-widget-test`) and the official
   Dart Tooling Daemon MCP server.

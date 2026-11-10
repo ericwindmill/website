@@ -67,6 +67,9 @@ final class Cuj {
   /// The tasks that contribute to [goal].
   final List<CujTask> tasks;
 
+  /// The number of [tasks] that FlutterBench evaluates.
+  int get evaluatedTaskCount => tasks.where((t) => t.isEvaluated).length;
+
   /// The identifier of the card element that renders this journey.
   String get elementId => '$_elementIdPrefix$id';
 }
@@ -77,6 +80,7 @@ final class CujTask {
     required this.id,
     required this.name,
     required this.task,
+    this.flutterbench = const [],
   });
 
   /// Creates a task from YAML-backed page data or decoded JSON.
@@ -85,6 +89,10 @@ final class CujTask {
       id: map['id'] as int,
       name: map['name'] as String,
       task: map['task'] as String,
+      flutterbench: [
+        for (final taskId in map['flutterbench'] as List<Object?>? ?? const [])
+          taskId as String,
+      ],
     );
   }
 
@@ -97,11 +105,21 @@ final class CujTask {
   /// The reader-facing task description.
   final String task;
 
+  /// The IDs of the FlutterBench tasks that evaluate this task,
+  /// matching `tasks[].id` in the FlutterBench results file.
+  ///
+  /// Empty if FlutterBench doesn't evaluate this task yet.
+  final List<String> flutterbench;
+
+  /// Whether at least one FlutterBench task evaluates this task.
+  bool get isEvaluated => flutterbench.isNotEmpty;
+
   /// A JSON-compatible representation of this task.
   Map<String, Object> toJson() => {
     'id': id,
     'name': name,
     'task': task,
+    if (isEvaluated) 'flutterbench': flutterbench,
   };
 }
 

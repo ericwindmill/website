@@ -1,14 +1,3 @@
-# List of all Flutter CUJs
-# The source-of-truth is the tasks in the FlutterBench 
-# repository (which is currently private.)
-#
-# TODO(ewindmill): automate the generation of this file.
-#
-# CUJs should have:
-#  - id: The CUJs ID defined in the FlutterBench repository.
-#  - goal: The main CUJ text.
-#  - persona: The type of developer the CUJ speaks for from a list of ["The Tech Lead / Architect", "The App Developer",  "The Plugin Developer", "Full-stack developer", "Hybrid (native + Flutter) developer"]
-#  - tasks: A list of tasks that a developer does to reach the CUJ goal.
 - id: 0
   goal: Evaluate and select the technical stack, folder structure, state management,
     and routing architecture for a project
@@ -134,6 +123,8 @@
       name: add-flutter-integration-tests-mobile
       task: Develop end-to-end integration test suites using "package:integration_test"
         to validate complete user journeys across mobile and web environments.
+      flutterbench:
+        - add-unit-widget-integration-tests
 - id: 9
   goal: Diagnose and resolve layout overflow errors in UI component trees
   persona: The App Developer
@@ -142,10 +133,14 @@
       name: find-real-cause-ui-overflow
       task: Diagnose and identify the root cause of layout overflow errors in the
         UI component tree.
+      flutterbench:
+        - overflow-bug
     - id: 23
       name: fix-overflow-bug-with-proper-widgets
       task: Refactor the layout using flexible scrolling or bounding widgets to resolve
         the overflow error.
+      flutterbench:
+        - overflow-bug
     - id: 24
       name: write-widget-tests-edge-cases
       task: Implement automated widget tests covering boundary conditions and large
@@ -376,10 +371,14 @@
       name: create-new-app-android-ios
       task: Create a new cross-platform Flutter application targeting both Android
         and iOS.
+      flutterbench:
+        - greenfield-fitness-app
     - id: 64
       name: add-adaptive-material-cupertino-layouts
       task: Implement navigation layouts that adaptively render Material Design components
         on Android and Cupertino components on iOS.
+      flutterbench:
+        - adaptive-material-cupertino
 - id: 25
   goal: Implement performant scrolling layouts for long-form content
   persona: The App Developer
@@ -388,6 +387,8 @@
       name: identify-overflow-refactor-layout-use
       task: Diagnose vertical layout overflow errors and refactor the component hierarchy
         to use SingleChildScrollView.
+      flutterbench:
+        - overflow-bug
     - id: 66
       name: migrate-customscrollview-slivers-more-complex
       task: Refactor standard scroll views to use CustomScrollView and Sliver components
@@ -440,6 +441,8 @@
       name: use-provider-manage-state
       task: Implement application state management using "package:provider" for dependency
         injection and reactive updates.
+      flutterbench:
+        - manage-state-with-provider
     - id: 76
       name: use-riverpod-manage-state-maybe
       task: Implement application state management using "package:riverpod", optionally
@@ -670,10 +673,14 @@
       name: add-firebase-storage
       task: Integrate "package:firebase_storage" into the application to enable cloud
         storage capabilities.
+      flutterbench:
+        - firebase-storage
     - id: 117
       name: implement-upload-download-delete
       task: Implement user flows and repository methods to upload, download, and delete
         cloud storage files.
+      flutterbench:
+        - firebase-storage
 - id: 43
   goal: Integrate crash reporting, error tracking, and production telemetry
   persona: The Full Stack Developer
@@ -749,10 +756,14 @@
       name: add-required-languages-locales-app
       task: Configure supported languages and regional locales within the application
         localization settings.
+      flutterbench:
+        - add-localization
     - id: 129
       name: confirm-default-flutter-ways-i18n
       task: Verify that the codebase implements standard Flutter internationalization
         practices using ARB files and generated localization delegates.
+      flutterbench:
+        - add-localization
 - id: 50
   goal: Embed interactive Flutter applications and widgets within existing HTML or
     React web pages
@@ -873,10 +884,14 @@
       name: analyze-repo-check-which-features
       task: Audit existing codebase capabilities and third-party plugins to determine
         feature compatibility with the target platform.
+      flutterbench:
+        - add-web-support
     - id: 148
       name: verify-proper-command-is-used
       task: Execute official platform scaffolding commands to generate target platform
         projects and verify dependency compatibility.
+      flutterbench:
+        - add-web-support
 - id: 59
   goal: Implement new application features utilizing modern language capabilities
     and defensive coding practices

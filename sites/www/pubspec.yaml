@@ -37,6 +37,7 @@ dev_dependencies:
   sass_builder: ^2.4.0+1
   sealed_countries: ^3.2.1
   test: ^1.31.0
+  yaml: ^3.1.4
   youtube_transcript_api: ^1.0.0
 
 jaspr:

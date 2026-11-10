@@ -69,6 +69,24 @@ class CujFiltersSidebar extends StatelessComponent {
                     ),
                   ]),
               ]),
+              const h4([.text('Coverage')]),
+              ul([
+                li([
+                  input(
+                    type: InputType.checkbox,
+                    attributes: const {'name': 'cuj-filter-evaluated'},
+                    id: 'cuj-filter-evaluated',
+                    checked: filters.evaluatedOnly,
+                    onChange: (checked) {
+                      filters.setEvaluatedOnly(checked as bool? ?? false);
+                    },
+                  ),
+                  const label(
+                    attributes: {'for': 'cuj-filter-evaluated'},
+                    [.text('Evaluated by FlutterBench')],
+                  ),
+                ]),
+              ]),
             ]);
           },
         ),
@@ -86,6 +104,13 @@ final class CujFiltersNotifier extends ChangeNotifier {
   /// Whether any persona filters are selected.
   bool get hasSelectedPersonas => _selectedPersonas.isNotEmpty;
 
+  /// Whether to show only journeys with tasks that FlutterBench evaluates.
+  bool get evaluatedOnly => _evaluatedOnly;
+  bool _evaluatedOnly = false;
+
+  /// Whether any persona or coverage filters are selected.
+  bool get hasActiveFilters => hasSelectedPersonas || _evaluatedOnly;
+
   /// Whether [persona] is selected.
   bool isPersonaSelected(CujPersona persona) =>
       _selectedPersonas.contains(persona);
@@ -100,17 +125,28 @@ final class CujFiltersNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Clears all selected personas.
+  /// Updates whether only evaluated journeys are shown
+  /// and notifies listeners.
+  void setEvaluatedOnly(bool value) {
+    _evaluatedOnly = value;
+    notifyListeners();
+  }
+
+  /// Clears all selected filters.
   void reset() {
     _selectedPersonas.clear();
+    _evaluatedOnly = false;
     notifyListeners();
   }
 
   /// Returns the journeys matching [searchQuery] and the selected filters.
+  ///
+  /// The search query also matches the IDs of the FlutterBench tasks
+  /// that evaluate a journey's tasks.
   Set<Cuj> filterCujs(List<Cuj> cujs, String searchQuery) {
     searchQuery = searchQuery.trim().toLowerCase();
 
-    if (searchQuery.isEmpty && _selectedPersonas.isEmpty) {
+    if (searchQuery.isEmpty && !hasActiveFilters) {
       // No filters applied, return all journeys.
       return cujs.toSet();
     }
@@ -124,12 +160,20 @@ final class CujFiltersNotifier extends ChangeNotifier {
         continue;
       }
 
+      if (_evaluatedOnly && cuj.evaluatedTaskCount == 0) {
+        continue;
+      }
+
       final matchesSearchQuery =
           searchQuery.isEmpty ||
           cuj.goal.toLowerCase().contains(searchQuery) ||
           cuj.persona.label.toLowerCase().contains(searchQuery) ||
           cuj.tasks.any(
-            (task) => task.task.toLowerCase().contains(searchQuery),
+            (task) =>
+                task.task.toLowerCase().contains(searchQuery) ||
+                task.flutterbench.any(
+                  (id) => id.toLowerCase().contains(searchQuery),
+                ),
           );
       if (!matchesSearchQuery) {
         continue;

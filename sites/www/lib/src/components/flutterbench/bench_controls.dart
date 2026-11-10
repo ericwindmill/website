@@ -8,7 +8,7 @@ import 'package:jaspr/jaspr.dart';
 /// Available toggle view states for Flutter Bench.
 enum DisplayVariant {
   baseline('baseline', 'Baseline'),
-  aiTooling('ai_tooling', 'With AI tooling'),
+  enhanced('enhanced', 'Enhanced'),
   both('both', 'Both');
 
   final String id;

@@ -1,0 +1,113 @@
+- id: 4
+  goal: Develop custom Dart CLI developer utilities and automation tools
+  persona: The App Developer
+  metadata:
+    domains: [Flutter Devexp]
+    skills: []
+    tools: []
+- id: 8
+  goal: Achieve comprehensive test coverage with unit, widget, and integration test suites
+  persona: The App Developer
+  metadata:
+    domains: [Flutter Framework]
+    skills: []
+    tools: []
+- id: 9
+  goal: Diagnose and resolve layout overflow errors in UI component trees
+  persona: The App Developer
+  metadata:
+    domains: [Flutter Framework]
+    skills: []
+    tools: []
+- id: 10
+  goal:
+    Bring an existing mobile application to the mobile web as an idiomatic,
+    installable web app
+  persona: The App Developer
+  metadata:
+    domains: [Flutter Framework]
+    skills: []
+    tools: []
+- id: 11
+  goal:
+    Add a new UI screen to an existing application following established design
+    and architectural patterns
+  persona: The App Developer
+  metadata:
+    domains: [Flutter Framework]
+    skills: []
+    tools: []
+- id: 12
+  goal:
+    Design responsive UI layouts that reflow cleanly across all window sizes and
+    device orientations
+  persona: The App Developer
+  metadata:
+    domains: [Flutter Framework]
+    skills: []
+    tools: []
+- id: 18
+  goal: Implement a consistent visual design theme and styling across an application
+  persona: The App Developer
+  metadata:
+    domains: [Flutter Framework]
+    skills: []
+    tools: []
+- id: 24
+  goal:
+    Build an application that renders Material UI on Android and Cupertino UI
+    on iOS
+  persona: The App Developer
+  metadata:
+    domains: [Flutter Framework]
+    skills: []
+    tools: []
+- id: 27
+  goal: Build an application that communicates with a REST API
+  persona: The App Developer
+  metadata:
+    domains: [Flutter ecosystem]
+    skills: []
+    tools: []
+- id: 28
+  goal: Implement and evaluate state management architectures
+  persona: The App Developer
+  metadata:
+    domains: [Flutter ecosystem]
+    skills: []
+    tools: []
+- id: 29
+  goal: Implement local data persistence in an application
+  persona: The App Developer
+  metadata:
+    domains: [Flutter ecosystem]
+    skills: []
+    tools: []
+- id: 42
+  goal: Integrate Firebase storage into an application
+  persona: The Full Stack Developer
+  metadata:
+    domains: [Flutter ecosystem]
+    skills: []
+    tools: []
+- id: 48
+  goal: Develop Google Cloud Functions in Dart using the Genkit SDK
+  persona: The Full Stack Developer
+  metadata:
+    domains: [Dart language]
+    skills: []
+    tools: []
+- id: 49
+  goal: Add internationalization (i18n) and localization (l10n) support to an application
+  persona: The App Developer
+  metadata:
+    domains: [Flutter Framework]
+    skills: []
+    tools: []
+- id: 62
+  goal: Set up and configure a complete cross-platform Flutter development environment
+  persona: The App Developer
+  metadata:
+    domains: [Flutter Devexp]
+    skills: []
+    tools: []

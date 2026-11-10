@@ -27,6 +27,12 @@
       line-height: 1.5;
       max-width: 820px;
     }
+
+    .bench-snapshot-meta {
+      margin-top: var(--spacer-xs);
+      font-size: 0.875rem;
+      color: var(--grey-6);
+    }
   }
 
   .bench-subnav {

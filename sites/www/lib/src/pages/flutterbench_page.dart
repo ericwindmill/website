@@ -13,8 +13,8 @@ import '../utils/data_utils.dart';
 /// Server-side page component for `/flutterbench`.
 ///
 /// Renders the shared heading and sub-navigation, then loads benchmark results
-/// and passes the raw JSON list to the client-hydrated
-/// [FlutterBenchInteractive] component.
+/// from `content/flutterbench/results.json` and passes the raw JSON to the
+/// client-hydrated [FlutterBenchInteractive] component.
 ///
 /// Any Markdown content wrapped by the component renders below the
 /// leaderboard, inside the same container:
@@ -40,59 +40,44 @@ class FlutterBenchPage extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    var rawData = const <Map<String, Object?>>[];
-    try {
-      final runs = context.decodeJsonList(
-        'flutterbench.results',
-        BenchModelRun.fromJson,
-      );
-      rawData = runs.map(_modelRunToJson).toList();
-    } catch (_) {
-      // Fallback empty when data is not available
-    }
+    // Parse on the server so malformed results fail the build,
+    // then pass the validated raw JSON across to the client.
+    final (:rawJson, :results) = context.decodeJsonObject(
+      'flutterbench.results',
+      (json) => (rawJson: json, results: BenchResults.fromJson(json)),
+    );
+    final snapshot = results.snapshot;
+    final environment = snapshot.environment;
 
     return main_(classes: 'flutterbench-page', [
-      const div(classes: 'container', [
+      div(classes: 'container', [
         // Page Title & Subtitle
         div(classes: 'bench-header', [
-          h1(classes: 'bench-title', [.text('Flutter Bench')]),
-          p(classes: 'bench-subtitle', [
+          const h1(classes: 'bench-title', [.text('Flutter Bench')]),
+          const p(classes: 'bench-subtitle', [
             .text(
               'Measuring how effectively AI coding '
               'agents and models build Flutter and Dart applications.',
             ),
           ]),
+          p(classes: 'bench-snapshot-meta', [
+            .text(
+              '${snapshot.label} results · '
+              'Flutter ${environment.flutterVersion} · '
+              'Dart ${environment.dartVersion}',
+            ),
+          ]),
         ]),
 
         // Sub-navigation tabs: Leaderboard · Methodology · Archive
-        BenchSubnav(activePage: 'leaderboard'),
+        const BenchSubnav(activePage: 'leaderboard'),
       ]),
 
       // Client-hydrated interactive leaderboard
-      FlutterBenchInteractive(rawRunsJson: rawData),
+      FlutterBenchInteractive(rawResultsJson: rawJson),
 
       // Static content from Markdown, such as the methodology card and legend.
       if (child case final child?) div(classes: 'container', [child]),
     ]);
   }
-
-  /// Converts a [BenchModelRun] back to a JSON map for client serialization.
-  /// TODO(ewindmill): This shouldn't be here?
-  static Map<String, Object?> _modelRunToJson(BenchModelRun run) => {
-    'agent': run.agent,
-    'model': run.model,
-    'variant': run.variant.value,
-    'tasks': run.tasks
-        .map(
-          (t) => {
-            'id': t.id,
-            'name': t.name,
-            'category': t.category.value,
-            'tokens': t.tokens,
-            'cost': t.cost,
-            'trials': t.trials.map((el) => el.toJson()).toList(),
-          },
-        )
-        .toList(),
-  };
 }
