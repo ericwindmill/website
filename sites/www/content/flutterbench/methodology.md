@@ -90,15 +90,16 @@ Read the [complete CUJ list](https://docs.flutter.dev/ai/flutter-bench/cujs).
 
 The current dataset includes the following tasks:
 
-| Category | CUJ Identifier | Description |
-|---|---|---|
-| Short horizon | `cuj-01-renderflex-overflow` | **Fix RenderFlex Overflow**: Diagnosing and resolving unbounded layout constraints, row/column overflow errors, and proper flex spacing. |
-| Long horizon | `cuj-02-adaptive-layout-navigation` | **Navigation with Adaptive Layout**: Implementing responsive multi-pane declarative routing (NavigationRail vs NavigationBar) across mobile, tablet, and desktop breakpoints. |
-| Short horizon | `cuj-03-rest-api-http` | **REST API Client: Fetch JSON with http**: Constructing an asynchronous HTTP service with JSON deserialization, model mapping, and network error handling. |
-| Short horizon | `cuj-04-provider-state-mgmt` | **Provider State Management**: Implementing reactive application state with `ChangeNotifier`, `ChangeNotifierProvider`, and scoped `Consumer` widgets. |
-| Long horizon | `cuj-05-firebase-cloud-storage` | **Firebase Cloud Storage**: Integrating cloud file upload/download flows, transfer progress streams, authentication guards, and exception handling. |
-| Long horizon | `cuj-06-dart-genkit-function` | **Dart Genkit Cloud Function**: Authoring serverless Dart AI agent workflows utilizing Firebase Functions and the Genkit Dart SDK. |
-| Short horizon | `cuj-07-internationalization-i18n` | **Internationalization (i18n)**: Configuring localization with `.arb` translation catalogs, locale delegates, and localized parameter interpolation. |
+| Name | CUJ | Category | Description |
+|---|---|---|---|
+| Fix Layout Overflows | `overflow-bug` | Short horizon | Diagnose the root cause of layout overflow errors and refactor the layout with flexible, scrolling, or bounding widgets to resolve them. |
+| Manage State with Provider | `manage-state-with-provider` | Short horizon | Implement application state management using `package:provider` for dependency injection and reactive updates. |
+| Add Localization | `add-localization` | Short horizon | Configure supported languages and locales using standard Flutter internationalization with ARB files and generated localization delegates. |
+| Adapt to Material and Cupertino | `adaptive-material-cupertino` | Long horizon | Implement navigation layouts that adaptively render Material Design components on Android and Cupertino components on iOS. |
+| Add Web Support | `add-web-support` | Long horizon | Extend an existing application to run on the web, auditing feature and plugin compatibility and scaffolding the platform with official commands. |
+| Add Unit, Widget, and Integration Tests | `add-unit-widget-integration-tests` | Long horizon | Achieve comprehensive test coverage with unit, widget, and end-to-end integration test suites using `package:integration_test`. |
+| Add Firebase Storage Photos | `firebase-storage` | Long horizon | Integrate `package:firebase_storage` and implement flows to upload, download, and delete photos in cloud storage. |
+| Build a Greenfield Fitness App | `greenfield-fitness-app` | Long horizon | Create a new cross-platform Flutter fitness application from scratch, spanning many CUJs across architecture, UI, and data. |
 
 The team is working toward covering all of the workflows in the CUJ list, and new data will be published as we continue work. 
 
