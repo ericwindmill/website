@@ -95,9 +95,12 @@ The dataset includes the following tasks:
 
 <StoryChapter number="03" title="Grading and scoring design" id="grading-scoring-design">
 
-We run each task **4 independent times** (*K* = 4),
+We run each task *K* independent times,
 each from a clean workspace,
 to account for nondeterministic model output.
+The value of *K* can increase between leaderboard snapshots.
+The leaderboard's Pass@*K* column shows
+the value used for the current snapshot.
 
 ### Two-dimension evaluation rubric
 
@@ -170,13 +173,13 @@ The leaderboard aggregates task-level trials into three primary metrics:
   <tbody>
     <tr>
       <td><strong>Pass Rate (%)</strong></td>
-      <td><code>pass^4</code></td>
-      <td>Pass Rate = (Tasks where all 4 trials passed ÷ Total Tasks) × 100</td>
+      <td><code>pass^K</code></td>
+      <td>Pass Rate = (Tasks where all <em>K</em> trials passed ÷ Total Tasks) × 100</td>
     </tr>
     <tr>
-      <td><strong>Pass@4 Rate (%)</strong></td>
-      <td><code>pass@4</code></td>
-      <td>Pass@4 = (Tasks with at least 1 trial passed ÷ Total Tasks) × 100</td>
+      <td><strong>Pass@<em>K</em> Rate (%)</strong></td>
+      <td><code>pass@K</code></td>
+      <td>Pass@<em>K</em> = (Tasks with at least 1 of <em>K</em> trials passed ÷ Total Tasks) × 100</td>
     </tr>
     <tr>
       <td><strong>Average Score (%)</strong></td>

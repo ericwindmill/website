@@ -5,7 +5,7 @@
         "label": "Q4 2026",
         "generatedAt": "2026-11-10T18:33:12Z",
         "status": "current",
-        "trialsPerTask": 4,
+        "trialsPerTask": 5,
         "scoring": {
             "outcomeWeight": 0.65,
             "qualityWeight": 0.35,
