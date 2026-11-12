@@ -56,8 +56,8 @@ class FlutterBenchPage extends StatelessComponent {
           const h1(classes: 'bench-title', [.text('Flutter Bench')]),
           const p(classes: 'bench-subtitle', [
             .text(
-              'Measuring how effectively AI coding '
-              'agents and models build Flutter and Dart applications.',
+              'Flutter Bench measures how effectively AI coding '
+              'agents and models build Flutter and Dart apps.',
             ),
           ]),
           p(classes: 'bench-snapshot-meta', [

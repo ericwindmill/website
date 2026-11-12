@@ -204,7 +204,7 @@
                 {
                     "id": "adaptive-material-cupertino",
                     "name": "Adapt to Material and Cupertino",
-                    "category": "long_horizon",
+                    "category": "short_horizon",
                     "metrics": {
                         "resultScore": 78.951,
                         "outcome": 77.715,
@@ -257,7 +257,7 @@
                 {
                     "id": "add-web-support",
                     "name": "Add Web Support",
-                    "category": "long_horizon",
+                    "category": "short_horizon",
                     "metrics": {
                         "resultScore": 79.055,
                         "outcome": 76.753,
@@ -310,7 +310,7 @@
                 {
                     "id": "add-unit-widget-integration-tests",
                     "name": "Add Unit, Widget, and Integration Tests",
-                    "category": "long_horizon",
+                    "category": "short_horizon",
                     "metrics": {
                         "resultScore": 90.825,
                         "outcome": 95.138,
@@ -363,7 +363,7 @@
                 {
                     "id": "firebase-storage",
                     "name": "Add Firebase Storage Photos",
-                    "category": "long_horizon",
+                    "category": "short_horizon",
                     "metrics": {
                         "resultScore": 58.06,
                         "outcome": 59.032,
@@ -653,7 +653,7 @@
                 {
                     "id": "adaptive-material-cupertino",
                     "name": "Adapt to Material and Cupertino",
-                    "category": "long_horizon",
+                    "category": "short_horizon",
                     "metrics": {
                         "resultScore": 73.246,
                         "outcome": 73.142,
@@ -706,7 +706,7 @@
                 {
                     "id": "add-web-support",
                     "name": "Add Web Support",
-                    "category": "long_horizon",
+                    "category": "short_horizon",
                     "metrics": {
                         "resultScore": 75.821,
                         "outcome": 73.737,
@@ -759,7 +759,7 @@
                 {
                     "id": "add-unit-widget-integration-tests",
                     "name": "Add Unit, Widget, and Integration Tests",
-                    "category": "long_horizon",
+                    "category": "short_horizon",
                     "metrics": {
                         "resultScore": 81.084,
                         "outcome": 93.192,
@@ -812,7 +812,7 @@
                 {
                     "id": "firebase-storage",
                     "name": "Add Firebase Storage Photos",
-                    "category": "long_horizon",
+                    "category": "short_horizon",
                     "metrics": {
                         "resultScore": 51.606,
                         "outcome": 50.227,
@@ -1102,7 +1102,7 @@
                 {
                     "id": "adaptive-material-cupertino",
                     "name": "Adapt to Material and Cupertino",
-                    "category": "long_horizon",
+                    "category": "short_horizon",
                     "metrics": {
                         "resultScore": 71.859,
                         "outcome": 76.9,
@@ -1155,7 +1155,7 @@
                 {
                     "id": "add-web-support",
                     "name": "Add Web Support",
-                    "category": "long_horizon",
+                    "category": "short_horizon",
                     "metrics": {
                         "resultScore": 78.141,
                         "outcome": 79.833,
@@ -1208,7 +1208,7 @@
                 {
                     "id": "add-unit-widget-integration-tests",
                     "name": "Add Unit, Widget, and Integration Tests",
-                    "category": "long_horizon",
+                    "category": "short_horizon",
                     "metrics": {
                         "resultScore": 86.351,
                         "outcome": 89.095,
@@ -1261,7 +1261,7 @@
                 {
                     "id": "firebase-storage",
                     "name": "Add Firebase Storage Photos",
-                    "category": "long_horizon",
+                    "category": "short_horizon",
                     "metrics": {
                         "resultScore": 52.731,
                         "outcome": 55.883,
@@ -1551,7 +1551,7 @@
                 {
                     "id": "adaptive-material-cupertino",
                     "name": "Adapt to Material and Cupertino",
-                    "category": "long_horizon",
+                    "category": "short_horizon",
                     "metrics": {
                         "resultScore": 72.26,
                         "outcome": 75.27,
@@ -1604,7 +1604,7 @@
                 {
                     "id": "add-web-support",
                     "name": "Add Web Support",
-                    "category": "long_horizon",
+                    "category": "short_horizon",
                     "metrics": {
                         "resultScore": 72.499,
                         "outcome": 67.787,
@@ -1657,7 +1657,7 @@
                 {
                     "id": "add-unit-widget-integration-tests",
                     "name": "Add Unit, Widget, and Integration Tests",
-                    "category": "long_horizon",
+                    "category": "short_horizon",
                     "metrics": {
                         "resultScore": 79.018,
                         "outcome": 88.33,
@@ -1710,7 +1710,7 @@
                 {
                     "id": "firebase-storage",
                     "name": "Add Firebase Storage Photos",
-                    "category": "long_horizon",
+                    "category": "short_horizon",
                     "metrics": {
                         "resultScore": 47.795,
                         "outcome": 50.815,

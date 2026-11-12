@@ -16,8 +16,8 @@ import 'bench_controls.dart';
 /// 2. Outcome / Quality breakdown cards, weighted by the snapshot's scoring.
 /// 3. Per-task breakdown table respecting the active variant.
 ///
-/// The header includes a [BenchVariantToggle] so the variant can be
-/// changed without closing the drawer.
+/// The drawer renders whichever [variant] it's given and doesn't
+/// display a [BenchVariantToggle] while only baseline results are shown.
 class BenchDetailDrawer extends StatelessComponent {
   const BenchDetailDrawer({
     required this.entry,
@@ -25,7 +25,6 @@ class BenchDetailDrawer extends StatelessComponent {
     required this.variant,
     required this.isOpen,
     required this.onClose,
-    required this.onVariantChanged,
     super.key,
   });
 
@@ -37,7 +36,6 @@ class BenchDetailDrawer extends StatelessComponent {
   final DisplayVariant variant;
   final bool isOpen;
   final VoidCallback onClose;
-  final ValueChanged<DisplayVariant> onVariantChanged;
 
   int get _k => snapshot.trialsPerTask;
   BenchScoring get _scoring => snapshot.scoring;
@@ -73,12 +71,6 @@ class BenchDetailDrawer extends StatelessComponent {
           div(classes: 'drawer-title-group', [
             span(classes: 'drawer-agent-badge', [.text(currentEntry.agent)]),
             h2(classes: 'drawer-model-title', [.text(currentEntry.model)]),
-            div(classes: 'drawer-variant-toggle', [
-              BenchVariantToggle(
-                selectedVariant: variant,
-                onVariantChanged: onVariantChanged,
-              ),
-            ]),
           ]),
           button(
             classes: 'drawer-close-btn',
@@ -123,7 +115,6 @@ class BenchDetailDrawer extends StatelessComponent {
               thead([
                 tr([
                   const th([.text('Task Name')]),
-                  const th([.text('Category')]),
                   const th(classes: 'num', [.text('Result Score')]),
                   const th(classes: 'num', [.text('Outcome')]),
                   const th(classes: 'num', [.text('Quality')]),
@@ -135,7 +126,7 @@ class BenchDetailDrawer extends StatelessComponent {
                 if (taskRows.isEmpty)
                   const tr([
                     td(
-                      attributes: {'colspan': '7'},
+                      attributes: {'colspan': '6'},
                       [.text('No results yet for this agent and model.')],
                     ),
                   ]),
@@ -143,11 +134,6 @@ class BenchDetailDrawer extends StatelessComponent {
                   tr([
                     td([
                       strong([.text(row.name)]),
-                    ]),
-                    td([
-                      span(classes: 'category-tag ${row.category.value}', [
-                        .text(row.category.label),
-                      ]),
                     ]),
                     td(classes: 'num', [
                       _buildTaskCell(
@@ -355,5 +341,4 @@ class _TaskRow {
   BenchTask get _primary => (enhanced ?? baseline)!;
 
   String get name => _primary.name;
-  TaskCategory get category => _primary.category;
 }

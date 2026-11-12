@@ -471,6 +471,31 @@ body.flutterbench-methodology section.content .chapter-content {
       }
     }
   }
+
+  // Experimental table layout for the rollup metrics (title | pill | body).
+  // Tweak the column widths with the custom properties below.
+  // `table-layout: fixed` makes the browser honor them exactly.
+  .rollup-metrics-table {
+    --rollup-col-title-width: 20%;
+    --rollup-col-pill-width: 10%;
+    --rollup-col-body-width: 70%;
+
+    width: 100%;
+    table-layout: fixed;
+
+    td:nth-child(1) {
+      width: var(--rollup-col-title-width);
+      text-align: right;
+    }
+
+    td:nth-child(2) {
+      width: var(--rollup-col-pill-width);
+    }
+
+    td:nth-child(3) {
+      width: var(--rollup-col-body-width);
+    }
+  }
 }
 
 // -----------------------------------------------------------------------------

@@ -17,31 +17,29 @@ enum DisplayVariant {
   const DisplayVariant(this.id, this.label);
 }
 
-/// Controls bar hosting top-left search/select filters and top-right 3-segment
-/// variant toggle.
+/// Controls bar hosting the agent and model filters.
+///
+/// The [BenchVariantToggle] isn't shown here while the leaderboard
+/// displays baseline results only.
 class BenchControls extends StatelessComponent {
   const BenchControls({
     required this.selectedAgent,
     required this.selectedModel,
-    required this.selectedVariant,
     required this.availableAgents,
     required this.availableModels,
     required this.onAgentChanged,
     required this.onModelChanged,
     required this.onClearFilters,
-    required this.onVariantChanged,
     super.key,
   });
 
   final String? selectedAgent;
   final String? selectedModel;
-  final DisplayVariant selectedVariant;
   final List<String> availableAgents;
   final List<String> availableModels;
   final ValueChanged<String?> onAgentChanged;
   final ValueChanged<String?> onModelChanged;
   final VoidCallback onClearFilters;
-  final ValueChanged<DisplayVariant> onVariantChanged;
 
   @override
   Component build(BuildContext context) {
@@ -103,19 +101,14 @@ class BenchControls extends StatelessComponent {
             const [.text('✕ Clear filters')],
           ),
       ]),
-
-      // Top-right 3-segment variant toggle
-      BenchVariantToggle(
-        selectedVariant: selectedVariant,
-        onVariantChanged: onVariantChanged,
-      ),
     ]);
   }
 }
 
 /// A 3-segment toggle for switching between [DisplayVariant] values.
 ///
-/// Used in both the leaderboard controls bar and the detail drawer.
+/// Not currently rendered: the leaderboard shows baseline results only.
+/// Previously used in both the leaderboard controls bar and the detail drawer.
 class BenchVariantToggle extends StatelessComponent {
   const BenchVariantToggle({
     required this.selectedVariant,

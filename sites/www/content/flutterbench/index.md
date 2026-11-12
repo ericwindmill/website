@@ -2,14 +2,15 @@
 title: Flutter Bench
 bodyTags: interior flutterbench
 description: >-
-  Measuring how effectively AI coding agents and models build Flutter and Dart applications.
+  Measuring how effectively AI coding agents and models
+  build Flutter and Dart applications.
 ---
 
 <FlutterBenchPage>
 
 <div class="bench-legend-card">
 
-#### Metric Definitions & Formulas
+#### Metric definitions and formulas
 
 - **Pass Rate (%)**
   Percentage of benchmark tasks where every trial passed
@@ -30,16 +31,14 @@ description: >-
 
 Flutter Bench evaluates AI coding agents across realistic
 Flutter and Dart development workflows.
-Our benchmark includes short-horizon tasks
-and multi-file long-horizon challenges.
-Every task run is executed across 4 independent trials
+The benchmark covers tasks ranging from targeted fixes
+to building a complete app.
+Each task runs 4 independent times
 to ensure statistical repeatability.
-Solutions are graded through a combination of code-based verification suites,
+We grade solutions with a combination of code-based verification suites,
 rubric-guided LLM evaluation, and human-verified golden references,
 producing an overall Result Score weighted by functional Outcome (65%)
-and Code Quality (35%).
-We evaluate each model under both a standalone Baseline harness
-and an Enhanced harness equipped with official Flutter MCP tools and skills.
+and Quality (35%).
 
 [Read the complete methodology guide →](/flutterbench/methodology)
 

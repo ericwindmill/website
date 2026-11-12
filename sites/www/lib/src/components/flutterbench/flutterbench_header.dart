@@ -32,8 +32,8 @@ class FlutterBenchHeader extends StatelessComponent {
           p(classes: 'bench-subtitle', [
             // TODO(ewindmill): can this be written into the md file?
             .text(
-              'A public leaderboard measuring how effectively AI coding '
-              'agents and models build Flutter and Dart applications.',
+              'Flutter Bench measures how effectively AI coding '
+              'agents and models build Flutter and Dart apps.',
             ),
           ]),
         ]),

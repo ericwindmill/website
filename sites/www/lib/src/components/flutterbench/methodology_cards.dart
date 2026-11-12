@@ -192,6 +192,7 @@ class RollupCard extends StatelessComponent {
       [
         if (tag != null || pill != null)
           div(classes: 'rollup-header', [
+            h4([.text(title)]),
             if (tag case final tag?)
               span(classes: 'tag', [
                 if (tagIcon case final tagIcon?) MaterialIcon(tagIcon),
@@ -200,7 +201,6 @@ class RollupCard extends StatelessComponent {
             if (pill case final pill?)
               span(classes: 'math-pill', [.text(pill)]),
           ]),
-        h4([.text(title)]),
         div(classes: 'card-body', [?child]),
       ],
     );

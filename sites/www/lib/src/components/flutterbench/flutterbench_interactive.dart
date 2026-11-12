@@ -14,7 +14,10 @@ import 'bench_table.dart';
 ///
 /// Receives the benchmark results file as raw JSON (serialized by
 /// Jaspr across the server→client boundary) and handles all user
-/// interaction: filtering, variant toggling, sorting, and the detail drawer.
+/// interaction: filtering, sorting, and the detail drawer.
+///
+/// Only baseline results are shown. Enhanced runs in the results file
+/// are parsed but not rendered, and no variant toggle is displayed.
 ///
 /// This file is kept separate from [FlutterBenchPage] (the server-side
 /// page wrapper) to avoid importing `data_utils.dart` and
@@ -35,9 +38,16 @@ class FlutterBenchInteractive extends StatefulComponent {
 }
 
 class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
+  /// The variant shown in the leaderboard and detail drawer.
+  ///
+  /// Enhanced results are out of scope for the MVP,
+  /// so this is fixed to baseline.
+  /// To bring the variant toggle back, make this mutable and
+  /// render a [BenchVariantToggle] that updates it.
+  final DisplayVariant _variant = DisplayVariant.baseline;
+
   String? _selectedAgent;
   String? _selectedModel;
-  DisplayVariant _selectedVariant = DisplayVariant.baseline;
   SortColumn _sortColumn = SortColumn.passRate;
   bool _sortAscending = false; // default Pass Rate descending
   BenchComparisonEntry? _selectedRow;
@@ -91,11 +101,10 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
 
     return div(classes: 'bench-interactive', [
       div(classes: 'container', [
-        // Controls bar (Filters top-left, Variant toggle top-right)
+        // Controls bar (filters)
         BenchControls(
           selectedAgent: _selectedAgent,
           selectedModel: _selectedModel,
-          selectedVariant: _selectedVariant,
           availableAgents: availableAgents,
           availableModels: availableModels,
           onAgentChanged: (val) => setState(() {
@@ -107,16 +116,13 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
             _selectedAgent = null;
             _selectedModel = null;
           }),
-          onVariantChanged: (variant) => setState(() {
-            _selectedVariant = variant;
-          }),
         ),
 
         // Primary Leaderboard Table
         BenchTable(
           entries: filtered,
           snapshot: _snapshot,
-          variant: _selectedVariant,
+          variant: _variant,
           sortColumn: _sortColumn,
           sortAscending: _sortAscending,
           onSort: (column) => setState(() {
@@ -138,12 +144,9 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
       BenchDetailDrawer(
         entry: _selectedRow,
         snapshot: _snapshot,
-        variant: _selectedVariant,
+        variant: _variant,
         isOpen: _drawerOpen,
         onClose: () => setState(() => _drawerOpen = false),
-        onVariantChanged: (variant) => setState(() {
-          _selectedVariant = variant;
-        }),
       ),
     ]);
   }
@@ -153,7 +156,7 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
   /// In Both mode, numeric columns sort by the enhanced values.
   /// Missing values, such as unavailable cost, always sort last.
   void _sortCols(List<BenchComparisonEntry> elements) {
-    final sortVariant = _selectedVariant == DisplayVariant.baseline
+    final sortVariant = _variant == DisplayVariant.baseline
         ? BenchVariant.baseline
         : BenchVariant.enhanced;
 
