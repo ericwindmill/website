@@ -4,14 +4,14 @@
       "id": "SHT-01",
       "name": "Fix Layout Overflows",
       "cuj": "overflow-bug",
-      "developer_request": "This screen overflows on small phones. Fix it properly.",
+      "developer_request": "This screen throws a RenderFlex overflow error on small phones.",
       "evaluates": "Finding the root cause of a runtime layout bug and fixing it with bounded or scrollable layouts, rather than hiding the error."
     },
     {
       "id": "SHT-02",
       "name": "Adapt to Material and Cupertino",
       "cuj": "adaptive-material-cupertino",
-      "developer_request": "Make the app feel native on iOS, and adapt its navigation for tablets and desktop.",
+      "developer_request": "The app was designed Android first. Make the app feel native on iOS, and adapt its navigation for tablets and desktop.",
       "evaluates": "Material 3 and Cupertino widgets for each platform, navigation that adapts to window width rather than device type, and per-tab navigation state that survives layout changes."
     },
     {
@@ -25,7 +25,7 @@
       "id": "SHT-04",
       "name": "Manage State with Provider",
       "cuj": "manage-state-with-provider",
-      "developer_request": "Add a shopping cart that's shared across screens, using provider.",
+      "developer_request": "Add a shopping cart with state that's shared across screens, using provider.",
       "evaluates": "Where shared state lives, which widgets rebuild when it changes, and using `provider` the way its docs recommend. Transient UI state, such as animations or focus, stays out of app state."
     },
     {
