@@ -13,7 +13,7 @@ class BenchSubnav extends StatelessComponent {
   const BenchSubnav({required this.activePage, super.key});
 
   /// The currently active page identifier.
-  /// One of `'leaderboard'`, `'methodology'`.
+  /// One of `'leaderboard'`, `'methodology'`, `'dataset'`.
   final String activePage;
 
   @override
@@ -28,6 +28,11 @@ class BenchSubnav extends StatelessComponent {
         label: 'Methodology',
         href: '/flutterbench/methodology',
         isActive: activePage == 'methodology',
+      ),
+      _buildTab(
+        label: 'Dataset',
+        href: '/flutterbench/dataset',
+        isActive: activePage == 'dataset',
       ),
     ]);
   }

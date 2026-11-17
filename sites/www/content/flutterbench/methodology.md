@@ -78,18 +78,16 @@ the CUJ list.
 
 ### Dataset
 
-The dataset includes the following tasks:
+The following table shows two example tasks from the dataset.
+For each task, **Developer request** summarizes
+what a developer asks the agent to do,
+and **What we evaluate** describes what the task grades
+and, where relevant, what's out of scope.
 
-| Name | CUJ | Description |
-|---|---|---|
-| Fix Layout Overflows | `overflow-bug` | Diagnose the root cause of layout overflow errors and refactor the layout with flexible, scrolling, or bounding widgets to resolve them. |
-| Manage State with Provider | `manage-state-with-provider` | Implement application state management using `package:provider` for dependency injection and reactive updates. |
-| Add Localization | `add-localization` | Configure supported languages and locales using standard Flutter internationalization with ARB files and generated localization delegates. |
-| Adapt to Material and Cupertino | `adaptive-material-cupertino` | Implement navigation layouts that adaptively render Material Design components on Android and Cupertino components on iOS. |
-| Add Web Support | `add-web-support` | Extend an existing application to run on the web, auditing feature and plugin compatibility and scaffolding the platform with official commands. |
-| Add Unit, Widget, and Integration Tests | `add-unit-widget-integration-tests` | Achieve comprehensive test coverage with unit, widget, and end-to-end integration test suites using `package:integration_test`. |
-| Add Firebase Storage Photos | `firebase-storage` | Integrate `package:firebase_storage` and implement flows to upload, download, and delete photos in cloud storage. |
-| Build a Greenfield Fitness App | `greenfield-fitness-app` | Create a new cross-platform Flutter fitness application from scratch, spanning many CUJs across architecture, UI, and data. |
+<DatasetTable limit="2" />
+
+To review every task the dataset currently includes,
+visit the [Dataset](/flutterbench/dataset) page.
 
 </StoryChapter>
 

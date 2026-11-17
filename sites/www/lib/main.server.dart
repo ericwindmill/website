@@ -17,6 +17,7 @@ import 'package:site_shared/page_extensions.dart';
 import 'main.server.options.dart';
 import 'src/components/common/dash_image.dart';
 import 'src/components/common/image.dart';
+import 'src/components/flutterbench/dataset_table.dart';
 import 'src/components/flutterbench/evaluation_matrix.dart';
 import 'src/components/flutterbench/flutterbench_header.dart';
 import 'src/components/flutterbench/methodology_cards.dart';
@@ -152,6 +153,7 @@ void main() {
           defineComponentWithChild('RollupMetrics', RollupMetrics.fromAttrs),
           defineComponentWithChild('RollupCard', RollupCard.fromAttrs),
           defineComponent('EvaluationMatrix', const EvaluationMatrix()),
+          defineComponentWithAttrs('DatasetTable', DatasetTable.fromAttrs),
           defineComponentWithAttrs('Image', Image.fromAttrs),
 
           CustomComponent(

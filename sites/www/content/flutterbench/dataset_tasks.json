@@ -1,0 +1,102 @@
+{
+  "tasks": [
+    {
+      "id": "SHT-01",
+      "name": "Fix Layout Overflows",
+      "cuj": "overflow-bug",
+      "developer_request": "This screen overflows on small phones. Fix it properly.",
+      "evaluates": "Finding the root cause of a runtime layout bug and fixing it with bounded or scrollable layouts, rather than hiding the error."
+    },
+    {
+      "id": "SHT-02",
+      "name": "Adapt to Material and Cupertino",
+      "cuj": "adaptive-material-cupertino",
+      "developer_request": "Make the app feel native on iOS, and adapt its navigation for tablets and desktop.",
+      "evaluates": "Material 3 and Cupertino widgets for each platform, navigation that adapts to window width rather than device type, and per-tab navigation state that survives layout changes."
+    },
+    {
+      "id": "SHT-03",
+      "name": "Fetch Data from a REST API",
+      "cuj": "-",
+      "developer_request": "Load the restaurant list from our API instead of the hard-coded data, and handle network failures.",
+      "evaluates": "Using `package:http` correctly: one shared, injected `Client`, a timeout on every request, status code checks, typed immutable models, and loading, empty, and error states in the UI."
+    },
+    {
+      "id": "SHT-04",
+      "name": "Manage State with Provider",
+      "cuj": "manage-state-with-provider",
+      "developer_request": "Add a shopping cart that's shared across screens, using provider.",
+      "evaluates": "Where shared state lives, which widgets rebuild when it changes, and using `provider` the way its docs recommend. Transient UI state, such as animations or focus, stays out of app state."
+    },
+    {
+      "id": "SHT-05",
+      "name": "Add Firebase Storage Photos",
+      "cuj": "firebase-storage",
+      "developer_request": "Let users upload, view, download, and delete their photos, with everything stored in Firebase.",
+      "evaluates": "Firebase setup and the `firebase_storage` API: per-user file paths, upload progress and metadata, error handling, and security rules that limit access to each user's files."
+    },
+    {
+      "id": "SHT-06",
+      "name": "Persist Sessions with Secure Storage",
+      "cuj": "-",
+      "developer_request": "Users get logged out every time they restart the app. Keep them signed in, but store their tokens securely.",
+      "evaluates": "The current `flutter_secure_storage` API and platform setup, restoring the session on cold start, clearing tokens on sign-out, and never writing tokens to logs or `shared_preferences`."
+    },
+    {
+      "id": "SHT-07",
+      "name": "Build an AI Backend with Genkit Dart",
+      "cuj": "-",
+      "developer_request": "Add a backend endpoint in Dart with Genkit that suggests three meals from the ingredients a user has.",
+      "evaluates": "The current Genkit Dart 1.x API: a typed flow, a tool, structured output, input validation, model error handling, and API keys kept out of code."
+    },
+    {
+      "id": "SHT-08",
+      "name": "Add Unit, Widget, and Integration Tests",
+      "cuj": "add-unit-widget-integration-tests",
+      "developer_request": "This checkout flow has no tests. Add unit, widget, and integration tests so we can change it safely.",
+      "evaluates": "Whether the tests catch seeded bugs, use the right level for each behavior, fake dependencies, and run deterministically without sleeps."
+    },
+    {
+      "id": "SHT-09",
+      "name": "Add Localization",
+      "cuj": "add-localization",
+      "developer_request": "We're launching in Spain and Saudi Arabia. Translate the whole app into Spanish and Arabic.",
+      "evaluates": "The current `gen-l10n` setup with ARB files, plurals and placeholders, locale-aware dates and prices, right-to-left layout, and localized framework widgets such as date pickers and dialogs."
+    },
+    {
+      "id": "SHT-10",
+      "name": "Add Web Support",
+      "cuj": "add-web-support",
+      "developer_request": "Our app only runs on Android and iOS. Ship it on the mobile web.",
+      "evaluates": "Removing web blockers such as `dart:io` and unsupported plugins, shareable URLs, browser back and refresh, text selection, and PWA setup. Out of scope: desktop layouts and mouse or keyboard input."
+    },
+    {
+      "id": "SHT-11",
+      "name": "Add Deep Links with go_router",
+      "cuj": "-",
+      "developer_request": "Make links from emails and notifications open the right screen, with a working back button.",
+      "evaluates": "A `go_router` route tree with path and query parameters, a not-found route, an onboarding redirect, and web-to-app links (Android App Links and iOS Universal Links). Out of scope: custom URL schemes, browser URLs, and sign-in guards."
+    },
+    {
+      "id": "SHT-12",
+      "name": "Persist the Cart with shared_preferences",
+      "cuj": "-",
+      "developer_request": "The cart empties every time the app restarts. Keep it on the device so people can pick up where they left off.",
+      "evaluates": "The current `shared_preferences` API, versioned serialization that tolerates missing or corrupt data, restoring the cart before it's shown, and storage behind a repository. Out of scope: secure storage."
+    },
+    {
+      "id": "SHT-13",
+      "name": "Add Firebase Authentication",
+      "cuj": "-",
+      "developer_request": "Add Firebase sign-in. Browsing stays public, but checkout and profile need an account.",
+      "evaluates": "Firebase Auth setup, route guards without redirect loops, relying on Firebase's built-in session persistence, auth error handling, and isolating each account's data, including carrying a guest's cart over on sign-in."
+    },
+    {
+      "id": "LHT-01",
+      "name": "Build a Greenfield Fitness App",
+      "cuj": "greenfield-fitness-app",
+      "developer_request": "Implement a Flutter fitness app from this product spec.",
+      "evaluates": "End-to-end app development over many turns, covering project structure, architecture, UI, and data across many CUJs in a single project."
+    }
+  ]
+}
