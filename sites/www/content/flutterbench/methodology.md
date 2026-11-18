@@ -96,8 +96,7 @@ visit the [Dataset](/flutterbench/dataset) page.
 We run each task several independent times,
 each from a clean workspace,
 to account for nondeterministic model output.
-The number of trials can vary between tasks and snapshots,
-so the leaderboard uses metrics that don't depend on it.
+The number of trials can vary between tasks and snapshots.
 
 ### Two-dimension evaluation rubric
 
@@ -174,11 +173,6 @@ The leaderboard aggregates task-level trials into these metrics:
       <td>Average Score = (Sum of Task Result Scores ÷ Total Tasks) × 100 (± Standard Deviation)</td>
     </tr>
     <tr>
-      <td><strong>Pass@1 (%)</strong></td>
-      <td><code>pass@1</code></td>
-      <td>Pass@1 = (Sum over tasks of (Passed Trials ÷ Trials Run) ÷ Total Tasks) × 100</td>
-    </tr>
-    <tr>
       <td><strong>Pass Rate (%)</strong></td>
       <td><code>pass^K</code></td>
       <td>Pass Rate = (Tasks where every trial passed ÷ Total Tasks) × 100</td>
@@ -194,9 +188,6 @@ The leaderboard aggregates task-level trials into these metrics:
 
 A trial passes only when its Result Score is `1.0`,
 meaning both Outcome and Quality are perfect.
-Pass@1 estimates the share of tasks a model passes on a single attempt.
-Because it averages each task's own pass rate,
-it stays comparable when tasks run different numbers of trials.
 Pass Rate and Pass@*K* depend on how many trials each task ran:
 fewer trials make Pass Rate easier to reach and Pass@*K* harder.
 The leaderboard ranks models by Average Score by default.

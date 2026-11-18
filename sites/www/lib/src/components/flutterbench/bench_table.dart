@@ -69,21 +69,13 @@ class BenchTable extends StatelessComponent {
                     'Quality (${scoring.qualityPercent}%) (mean ± SD)',
               ),
               _buildHeader(
-                label: 'Pass@1 (%)',
-                column: SortColumn.passAt1,
-                isNum: true,
-                title:
-                    'Expected percentage of tasks passed on a single attempt '
-                    '(average share of passing trials per task)',
-              ),
-              _buildHeader(
                 label: 'Pass Rate (%)',
                 column: SortColumn.passRate,
                 isNum: true,
                 title: 'Percentage of tasks where every trial passed',
               ),
               _buildHeader(
-                label: 'Pass@K Rate (%)',
+                label: 'Pass@5 Rate (%)',
                 column: SortColumn.passAtK,
                 isNum: true,
                 title: 'Percentage of tasks where at least one trial passed',
@@ -119,14 +111,6 @@ class BenchTable extends StatelessComponent {
                     _buildMetricCell(
                       entry,
                       (m) => formatScoreWithSd(m?.avgScore, m?.scoreSd),
-                    ),
-                  ]),
-
-                  // Pass@1
-                  td(classes: 'num', [
-                    _buildMetricCell(
-                      entry,
-                      (m) => formatPercent(m?.passAt1Rate),
                     ),
                   ]),
 
