@@ -1,0 +1,3580 @@
+{
+    "schemaVersion": "1",
+    "snapshot": {
+        "id": "flutterbench-baseline-2026-11-18",
+        "label": "FlutterBench baseline (outlier-filtered)",
+        "generatedAt": "2026-11-18T10:36:59-08:00",
+        "status": "partial",
+        "trialsPerTask": 5,
+        "scoring": {
+            "outcomeWeight": 0.65,
+            "qualityWeight": 0.35,
+            "passThreshold": 1.0
+        },
+        "environment": {
+            "flutterVersion": "3.50.0-0.1.pre",
+            "dartVersion": "3.14.0-315.1.beta",
+            "suiteVersion": "flutterbench-baseline; adaptive-material-cupertino v8, add-localization v6, add-unit-widget-integration-tests v6, add-web-support v6, greenfield-fitness-app v6, manage-state-with-provider v6, overflow-bug v8"
+        }
+    },
+    "runs": [
+        {
+            "agentId": "antigravity-cli-1.5.3-gemini-3.8-flash-high-reasoning",
+            "agent": "antigravity-cli 1.5.3",
+            "modelId": "gemini-3.8-flash",
+            "model": "Gemini 3.8 Flash",
+            "modelProvider": "google",
+            "variant": "baseline",
+            "startedAt": "2026-11-17T13:46:49-08:00",
+            "completedAt": "2026-11-18T05:26:27-08:00",
+            "metrics": {
+                "totalTasks": 7,
+                "passedTaskCount": 0,
+                "passAtKTaskCount": 1,
+                "passRate": 0.0,
+                "passAtKRate": 0.1429,
+                "avgScore": 0.8127,
+                "scoreSd": 0.0489,
+                "avgOutcome": 0.8741,
+                "avgQuality": 0.6986,
+                "avgTokens": 18127912.3571,
+                "avgCost": 1.9912
+            },
+            "tasks": [
+                {
+                    "id": "adaptive-material-cupertino",
+                    "name": "adaptive-material-cupertino",
+                    "version": "v8",
+                    "metrics": {
+                        "resultScore": 0.7018,
+                        "outcome": 0.7364,
+                        "quality": 0.6375,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 20158165.4,
+                        "meanCost": 2.1467,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.7527,
+                            "quality": 0.5625,
+                            "cost": 2.332994625,
+                            "status": "failed",
+                            "reward": 0.6861,
+                            "runId": 7071710,
+                            "tokens": 22058873,
+                            "durationSeconds": 1132.4
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.7364,
+                            "quality": 0.5625,
+                            "cost": 1.91533935,
+                            "status": "failed",
+                            "reward": 0.6756,
+                            "runId": 7071711,
+                            "tokens": 17458305,
+                            "durationSeconds": 1012.9
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.7202,
+                            "quality": 0.625,
+                            "cost": 2.56429515,
+                            "status": "failed",
+                            "reward": 0.6869,
+                            "runId": 7071712,
+                            "tokens": 25143189,
+                            "durationSeconds": 1235.1
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.7364,
+                            "quality": 0.5625,
+                            "cost": 1.6560689249999998,
+                            "status": "failed",
+                            "reward": 0.6756,
+                            "runId": 7071713,
+                            "tokens": 14840639,
+                            "durationSeconds": 917.0
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.7364,
+                            "quality": 0.875,
+                            "cost": 2.2649985,
+                            "status": "failed",
+                            "reward": 0.7849,
+                            "runId": 7071714,
+                            "tokens": 21289821,
+                            "durationSeconds": 1190.1
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-localization",
+                    "name": "add-localization",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.7943,
+                        "outcome": 0.8478,
+                        "quality": 0.695,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 22850561.6,
+                        "meanCost": 2.459,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.8833,
+                            "quality": 0.6875,
+                            "cost": 2.062873575,
+                            "status": "failed",
+                            "reward": 0.8148,
+                            "runId": 7053403,
+                            "tokens": 18796741,
+                            "durationSeconds": 1068.8
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.7833,
+                            "quality": 0.725,
+                            "cost": 2.784603075,
+                            "status": "failed",
+                            "reward": 0.7629,
+                            "runId": 7053404,
+                            "tokens": 26284853,
+                            "durationSeconds": 1218.8
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.8056,
+                            "quality": 0.7375,
+                            "cost": 2.7942106499999997,
+                            "status": "failed",
+                            "reward": 0.7817,
+                            "runId": 7053405,
+                            "tokens": 25827316,
+                            "durationSeconds": 1215.7
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.8833,
+                            "quality": 0.6375,
+                            "cost": 2.3550447749999996,
+                            "status": "failed",
+                            "reward": 0.7973,
+                            "runId": 7053406,
+                            "tokens": 22107169,
+                            "durationSeconds": 1137.5
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.8833,
+                            "quality": 0.6875,
+                            "cost": 2.29840785,
+                            "status": "failed",
+                            "reward": 0.8148,
+                            "runId": 7053407,
+                            "tokens": 21236729,
+                            "durationSeconds": 1121.0
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-unit-widget-integration-tests",
+                    "name": "add-unit-widget-integration-tests",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.7485,
+                        "outcome": 0.8444,
+                        "quality": 0.5703,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 12936160.5,
+                        "meanCost": 1.4374,
+                        "trialCount": 5,
+                        "keptTrialCount": 4,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.8444,
+                            "quality": 0.5,
+                            "cost": 0.740604225,
+                            "status": "failed",
+                            "reward": 0.7239,
+                            "runId": 7053438,
+                            "tokens": 5401117,
+                            "durationSeconds": 621.0
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.8444,
+                            "quality": 0.5937,
+                            "cost": 2.6817891,
+                            "status": "failed",
+                            "reward": 0.7567,
+                            "runId": 7053439,
+                            "tokens": 26646794,
+                            "durationSeconds": 1286.4
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.8444,
+                            "quality": 0.5937,
+                            "cost": 1.0614423,
+                            "status": "failed",
+                            "reward": 0.7567,
+                            "runId": 7053440,
+                            "tokens": 8891703,
+                            "durationSeconds": 682.9
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.8444,
+                            "quality": 0.5937,
+                            "cost": 1.265841975,
+                            "status": "failed",
+                            "reward": 0.7567,
+                            "runId": 7053442,
+                            "tokens": 10805028,
+                            "durationSeconds": 816.4
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-web-support",
+                    "name": "add-web-support",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8743,
+                        "outcome": 0.8605,
+                        "quality": 0.9,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 42244900.4,
+                        "meanCost": 4.1478,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.8655,
+                            "quality": 0.9375,
+                            "cost": 4.122899025000001,
+                            "status": "failed",
+                            "reward": 0.8907,
+                            "runId": 7053564,
+                            "tokens": 43068705,
+                            "durationSeconds": 1494.6
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.8655,
+                            "quality": 0.875,
+                            "cost": 4.493208825,
+                            "status": "failed",
+                            "reward": 0.8689,
+                            "runId": 7053565,
+                            "tokens": 43243707,
+                            "durationSeconds": 2105.3
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.8487,
+                            "quality": 0.8125,
+                            "cost": 4.4148971249999995,
+                            "status": "failed",
+                            "reward": 0.8361,
+                            "runId": 7053566,
+                            "tokens": 46083928,
+                            "durationSeconds": 1755.1
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.8403,
+                            "quality": 0.9375,
+                            "cost": 4.13317995,
+                            "status": "failed",
+                            "reward": 0.8743,
+                            "runId": 7053567,
+                            "tokens": 42343636,
+                            "durationSeconds": 1733.5
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.8824,
+                            "quality": 0.9375,
+                            "cost": 3.574952325,
+                            "status": "failed",
+                            "reward": 0.9017,
+                            "runId": 7053568,
+                            "tokens": 36484526,
+                            "durationSeconds": 1432.2
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "greenfield-fitness-app",
+                    "name": "greenfield-fitness-app",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.7817,
+                        "outcome": 0.9334,
+                        "quality": 0.5,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 11029149.8,
+                        "meanCost": 1.4695,
+                        "trialCount": 5,
+                        "keptTrialCount": 4,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9771,
+                            "quality": 0.5,
+                            "cost": 1.7784385499999997,
+                            "status": "failed",
+                            "reward": 0.8101,
+                            "runId": 7072798,
+                            "tokens": 15070606,
+                            "durationSeconds": 1135.5
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.7795,
+                            "quality": 0.5,
+                            "cost": 1.5286573499999998,
+                            "status": "failed",
+                            "reward": 0.6817,
+                            "runId": 7072799,
+                            "tokens": 10612200,
+                            "durationSeconds": 2286.8
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9771,
+                            "quality": 0.5,
+                            "cost": 1.337958825,
+                            "status": "failed",
+                            "reward": 0.8101,
+                            "runId": 7072802,
+                            "tokens": 8815665,
+                            "durationSeconds": 2228.4
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "cost": 1.2328218,
+                            "status": "failed",
+                            "reward": 0.825,
+                            "runId": 7072803,
+                            "tokens": 9618128,
+                            "durationSeconds": 963.8
+                        }
+                    ],
+                    "category": "long_horizon"
+                },
+                {
+                    "id": "manage-state-with-provider",
+                    "name": "manage-state-with-provider",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8556,
+                        "outcome": 1.0,
+                        "quality": 0.5875,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 9485296.8,
+                        "meanCost": 1.1917,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.5625,
+                            "cost": 0.866105925,
+                            "status": "failed",
+                            "reward": 0.8469,
+                            "runId": 7053463,
+                            "tokens": 6170625,
+                            "durationSeconds": 623.8
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.625,
+                            "cost": 1.3351340999999999,
+                            "status": "failed",
+                            "reward": 0.8688,
+                            "runId": 7053464,
+                            "tokens": 10890398,
+                            "durationSeconds": 864.0
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.5625,
+                            "cost": 1.0930333499999998,
+                            "status": "failed",
+                            "reward": 0.8469,
+                            "runId": 7053465,
+                            "tokens": 8319879,
+                            "durationSeconds": 827.5
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.5625,
+                            "cost": 1.2127605750000001,
+                            "status": "failed",
+                            "reward": 0.8469,
+                            "runId": 7053466,
+                            "tokens": 9530988,
+                            "durationSeconds": 1164.5
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 1.0,
+                            "quality": 0.625,
+                            "cost": 1.4516289,
+                            "status": "failed",
+                            "reward": 0.8688,
+                            "runId": 7053467,
+                            "tokens": 12514594,
+                            "durationSeconds": 923.2
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "overflow-bug",
+                    "name": "overflow-bug",
+                    "version": "v8",
+                    "metrics": {
+                        "resultScore": 0.9326,
+                        "outcome": 0.8963,
+                        "quality": 1.0,
+                        "passedTrialCount": 3,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": false,
+                        "meanTokens": 8191152.0,
+                        "meanCost": 1.086,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "cost": 1.4103776249999997,
+                            "status": "passed",
+                            "reward": 1.0,
+                            "runId": 7051691,
+                            "tokens": 10545824,
+                            "durationSeconds": 882.7
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "cost": 0.8128515,
+                            "status": "passed",
+                            "reward": 1.0,
+                            "runId": 7051692,
+                            "tokens": 5681721,
+                            "durationSeconds": 1084.7
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "cost": 1.332871725,
+                            "status": "passed",
+                            "reward": 1.0,
+                            "runId": 7051693,
+                            "tokens": 11041205,
+                            "durationSeconds": 908.1
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.7407,
+                            "quality": 1.0,
+                            "cost": 1.165917675,
+                            "status": "failed",
+                            "reward": 0.8315,
+                            "runId": 7051694,
+                            "tokens": 8890871,
+                            "durationSeconds": 882.9
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.7407,
+                            "quality": 1.0,
+                            "cost": 0.7082208750000001,
+                            "status": "failed",
+                            "reward": 0.8315,
+                            "runId": 7051695,
+                            "tokens": 4796139,
+                            "durationSeconds": 983.6
+                        }
+                    ],
+                    "category": "short_horizon"
+                }
+            ]
+        },
+        {
+            "agentId": "antigravity-cli-1.5.3-gemini-4-argon-high-reasoning",
+            "agent": "antigravity-cli 1.5.3",
+            "modelId": "gemini-4-argon",
+            "model": "Gemini 4 Argon",
+            "modelProvider": "google",
+            "variant": "baseline",
+            "startedAt": "2026-11-17T15:12:31-08:00",
+            "completedAt": "2026-11-18T05:32:27-08:00",
+            "metrics": {
+                "totalTasks": 7,
+                "passedTaskCount": 1,
+                "passAtKTaskCount": 1,
+                "passRate": 0.1429,
+                "passAtKRate": 0.1429,
+                "avgScore": 0.8724,
+                "scoreSd": 0.0488,
+                "avgOutcome": 0.9414,
+                "avgQuality": 0.7443,
+                "avgTokens": 6505385.2429,
+                "avgCost": null
+            },
+            "tasks": [
+                {
+                    "id": "adaptive-material-cupertino",
+                    "name": "adaptive-material-cupertino",
+                    "version": "v8",
+                    "metrics": {
+                        "resultScore": 0.7667,
+                        "outcome": 0.769,
+                        "quality": 0.7625,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 9175942.2,
+                        "meanCost": null,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.769,
+                            "quality": 0.8125,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.7842,
+                            "runId": 7071715,
+                            "tokens": 7820448,
+                            "durationSeconds": 2734.4
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.769,
+                            "quality": 0.8125,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.7842,
+                            "runId": 7071716,
+                            "tokens": 10498613,
+                            "durationSeconds": 2580.2
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.769,
+                            "quality": 0.5625,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.6967,
+                            "runId": 7071717,
+                            "tokens": 8373329,
+                            "durationSeconds": 2155.6
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.769,
+                            "quality": 0.875,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8061,
+                            "runId": 7071718,
+                            "tokens": 11759460,
+                            "durationSeconds": 2365.4
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.769,
+                            "quality": 0.75,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.7623,
+                            "runId": 7071719,
+                            "tokens": 7427861,
+                            "durationSeconds": 1755.8
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-localization",
+                    "name": "add-localization",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8909,
+                        "outcome": 0.9533,
+                        "quality": 0.775,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 7694481.0,
+                        "meanCost": null,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9222,
+                            "quality": 0.9,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.9144,
+                            "runId": 7053408,
+                            "tokens": 8031798,
+                            "durationSeconds": 1524.8
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.7375,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.9081,
+                            "runId": 7053409,
+                            "tokens": 6884807,
+                            "durationSeconds": 1202.3
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.725,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.9038,
+                            "runId": 7053410,
+                            "tokens": 8177330,
+                            "durationSeconds": 1552.7
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9222,
+                            "quality": 0.775,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8707,
+                            "runId": 7053411,
+                            "tokens": 7644221,
+                            "durationSeconds": 1764.5
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.9222,
+                            "quality": 0.7375,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8576,
+                            "runId": 7053412,
+                            "tokens": 7734249,
+                            "durationSeconds": 1500.0
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-unit-widget-integration-tests",
+                    "name": "add-unit-widget-integration-tests",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8506,
+                        "outcome": 0.9283,
+                        "quality": 0.7062,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 5951231.8,
+                        "meanCost": null,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.7187,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.9016,
+                            "runId": 7053443,
+                            "tokens": 9276941,
+                            "durationSeconds": 1686.9
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9222,
+                            "quality": 0.625,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8182,
+                            "runId": 7053444,
+                            "tokens": 8825944,
+                            "durationSeconds": 1805.5
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.7972,
+                            "quality": 0.7187,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.7698,
+                            "runId": 7053445,
+                            "tokens": 4568966,
+                            "durationSeconds": 1733.1
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.7187,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.9016,
+                            "runId": 7053446,
+                            "tokens": 4277556,
+                            "durationSeconds": 1012.7
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.9222,
+                            "quality": 0.75,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8619,
+                            "runId": 7053447,
+                            "tokens": 2806752,
+                            "durationSeconds": 1017.5
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-web-support",
+                    "name": "add-web-support",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.856,
+                        "outcome": 0.958,
+                        "quality": 0.6667,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 11839633.3,
+                        "meanCost": null,
+                        "trialCount": 5,
+                        "keptTrialCount": 3,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9832,
+                            "quality": 0.5625,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.836,
+                            "runId": 7053570,
+                            "tokens": 11750896,
+                            "durationSeconds": 2394.9
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.958,
+                            "quality": 0.625,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8414,
+                            "runId": 7053572,
+                            "tokens": 12527676,
+                            "durationSeconds": 2074.5
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9328,
+                            "quality": 0.8125,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8907,
+                            "runId": 7053573,
+                            "tokens": 11240328,
+                            "durationSeconds": 2750.0
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "greenfield-fitness-app",
+                    "name": "greenfield-fitness-app",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8565,
+                        "outcome": 0.9812,
+                        "quality": 0.625,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 8446292.0,
+                        "meanCost": null,
+                        "trialCount": 5,
+                        "keptTrialCount": 4,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9812,
+                            "quality": 1.0,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.9878,
+                            "runId": 7072808,
+                            "tokens": 6951660,
+                            "durationSeconds": 2844.8
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9812,
+                            "quality": 0.5,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8128,
+                            "runId": 7072809,
+                            "tokens": 12074881,
+                            "durationSeconds": 2456.9
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9812,
+                            "quality": 0.5,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8128,
+                            "runId": 7072814,
+                            "tokens": 6366159,
+                            "durationSeconds": 2537.4
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9812,
+                            "quality": 0.5,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8128,
+                            "runId": 7072815,
+                            "tokens": 8392468,
+                            "durationSeconds": 2870.3
+                        }
+                    ],
+                    "category": "long_horizon"
+                },
+                {
+                    "id": "manage-state-with-provider",
+                    "name": "manage-state-with-provider",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8863,
+                        "outcome": 1.0,
+                        "quality": 0.675,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 1995301.4,
+                        "meanCost": null,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.6875,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8906,
+                            "runId": 7053468,
+                            "tokens": 2704363,
+                            "durationSeconds": 930.9
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.6875,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8906,
+                            "runId": 7053469,
+                            "tokens": 1294991,
+                            "durationSeconds": 628.1
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.6875,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8906,
+                            "runId": 7053470,
+                            "tokens": 3048901,
+                            "durationSeconds": 843.9
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.625,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8688,
+                            "runId": 7053471,
+                            "tokens": 1536952,
+                            "durationSeconds": 596.7
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 1.0,
+                            "quality": 0.6875,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8906,
+                            "runId": 7053472,
+                            "tokens": 1391300,
+                            "durationSeconds": 837.0
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "overflow-bug",
+                    "name": "overflow-bug",
+                    "version": "v8",
+                    "metrics": {
+                        "resultScore": 1.0,
+                        "outcome": 1.0,
+                        "quality": 1.0,
+                        "passedTrialCount": 1,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": true,
+                        "meanTokens": 434815.0,
+                        "meanCost": null,
+                        "trialCount": 1,
+                        "keptTrialCount": 1,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "cost": null,
+                            "status": "passed",
+                            "reward": 1.0,
+                            "runId": 7053516,
+                            "tokens": 434815,
+                            "durationSeconds": 291.5
+                        }
+                    ],
+                    "category": "short_horizon"
+                }
+            ]
+        },
+        {
+            "agentId": "antigravity-cli-1.5.3-gemini-4-carbon-high-reasoning",
+            "agent": "antigravity-cli 1.5.3",
+            "modelId": "gemini-4-carbon",
+            "model": "Gemini 4 Carbon",
+            "modelProvider": "google",
+            "variant": "baseline",
+            "startedAt": "2026-11-17T15:12:32-08:00",
+            "completedAt": "2026-11-18T03:41:33-08:00",
+            "metrics": {
+                "totalTasks": 7,
+                "passedTaskCount": 0,
+                "passAtKTaskCount": 1,
+                "passRate": 0.0,
+                "passAtKRate": 0.1429,
+                "avgScore": 0.8762,
+                "scoreSd": 0.0403,
+                "avgOutcome": 0.9683,
+                "avgQuality": 0.7051,
+                "avgTokens": 10996400.3857,
+                "avgCost": null
+            },
+            "tasks": [
+                {
+                    "id": "adaptive-material-cupertino",
+                    "name": "adaptive-material-cupertino",
+                    "version": "v8",
+                    "metrics": {
+                        "resultScore": 0.7977,
+                        "outcome": 0.8705,
+                        "quality": 0.6625,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 12997251.2,
+                        "meanCost": null,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.8504,
+                            "quality": 0.5625,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.7496,
+                            "runId": 7071720,
+                            "tokens": 13388039,
+                            "durationSeconds": 2123.8
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9393,
+                            "quality": 0.6875,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8512,
+                            "runId": 7071721,
+                            "tokens": 12040766,
+                            "durationSeconds": 1820.7
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.8504,
+                            "quality": 0.6875,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.7934,
+                            "runId": 7071722,
+                            "tokens": 10835864,
+                            "durationSeconds": 1511.1
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.8178,
+                            "quality": 0.6875,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.7722,
+                            "runId": 7071723,
+                            "tokens": 13207945,
+                            "durationSeconds": 1826.1
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.8948,
+                            "quality": 0.6875,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8223,
+                            "runId": 7071724,
+                            "tokens": 15513642,
+                            "durationSeconds": 2105.1
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-localization",
+                    "name": "add-localization",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.948,
+                        "outcome": 0.9806,
+                        "quality": 0.8875,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 12956058.8,
+                        "meanCost": null,
+                        "trialCount": 5,
+                        "keptTrialCount": 4,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.85,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.9475,
+                            "runId": 7053413,
+                            "tokens": 13640034,
+                            "durationSeconds": 2875.5
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.85,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.9475,
+                            "runId": 7053414,
+                            "tokens": 15604839,
+                            "durationSeconds": 2476.4
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9222,
+                            "quality": 0.95,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.9319,
+                            "runId": 7053415,
+                            "tokens": 11953461,
+                            "durationSeconds": 2010.6
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.9,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.965,
+                            "runId": 7053416,
+                            "tokens": 10625901,
+                            "durationSeconds": 2809.1
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-unit-widget-integration-tests",
+                    "name": "add-unit-widget-integration-tests",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8824,
+                        "outcome": 0.9481,
+                        "quality": 0.7604,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 5784629.7,
+                        "meanCost": null,
+                        "trialCount": 5,
+                        "keptTrialCount": 3,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9222,
+                            "quality": 0.7812,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8729,
+                            "runId": 7053448,
+                            "tokens": 5075400,
+                            "durationSeconds": 1754.9
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9222,
+                            "quality": 0.75,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8619,
+                            "runId": 7053450,
+                            "tokens": 5452438,
+                            "durationSeconds": 1575.4
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.75,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.9125,
+                            "runId": 7053452,
+                            "tokens": 6826051,
+                            "durationSeconds": 1733.1
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-web-support",
+                    "name": "add-web-support",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8332,
+                        "outcome": 0.979,
+                        "quality": 0.5625,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 26764247.5,
+                        "meanCost": null,
+                        "trialCount": 5,
+                        "keptTrialCount": 2,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9748,
+                            "quality": 0.625,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8524,
+                            "runId": 7053575,
+                            "tokens": 24589121,
+                            "durationSeconds": 2549.2
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9832,
+                            "quality": 0.5,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8141,
+                            "runId": 7053577,
+                            "tokens": 28939374,
+                            "durationSeconds": 2974.8
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "greenfield-fitness-app",
+                    "name": "greenfield-fitness-app",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.825,
+                        "outcome": 1.0,
+                        "quality": 0.5,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 10225762.0,
+                        "meanCost": null,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.825,
+                            "runId": 7072816,
+                            "tokens": 5680617,
+                            "durationSeconds": 1732.0
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.825,
+                            "runId": 7072817,
+                            "tokens": 10112582,
+                            "durationSeconds": 2169.5
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.825,
+                            "runId": 7072818,
+                            "tokens": 17413993,
+                            "durationSeconds": 2800.7
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.825,
+                            "runId": 7072819,
+                            "tokens": 7919655,
+                            "durationSeconds": 2163.7
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.825,
+                            "runId": 7072820,
+                            "tokens": 10001963,
+                            "durationSeconds": 2103.3
+                        }
+                    ],
+                    "category": "long_horizon"
+                },
+                {
+                    "id": "manage-state-with-provider",
+                    "name": "manage-state-with-provider",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8906,
+                        "outcome": 1.0,
+                        "quality": 0.6875,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 2293595.0,
+                        "meanCost": null,
+                        "trialCount": 5,
+                        "keptTrialCount": 3,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.625,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8688,
+                            "runId": 7053473,
+                            "tokens": 2109671,
+                            "durationSeconds": 1268.8
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.6875,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.8906,
+                            "runId": 7053474,
+                            "tokens": 2677202,
+                            "durationSeconds": 938.2
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.75,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.9125,
+                            "runId": 7053476,
+                            "tokens": 2093912,
+                            "durationSeconds": 803.8
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "overflow-bug",
+                    "name": "overflow-bug",
+                    "version": "v8",
+                    "metrics": {
+                        "resultScore": 0.9563,
+                        "outcome": 1.0,
+                        "quality": 0.875,
+                        "passedTrialCount": 3,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": false,
+                        "meanTokens": 5953258.5,
+                        "meanCost": null,
+                        "trialCount": 5,
+                        "keptTrialCount": 4,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "cost": null,
+                            "status": "passed",
+                            "reward": 1.0,
+                            "runId": 7053517,
+                            "tokens": 5502121,
+                            "durationSeconds": 1835.6
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "cost": null,
+                            "status": "failed",
+                            "reward": 0.825,
+                            "runId": 7053518,
+                            "tokens": 7153035,
+                            "durationSeconds": 1938.1
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "cost": null,
+                            "status": "passed",
+                            "reward": 1.0,
+                            "runId": 7053519,
+                            "tokens": 5491612,
+                            "durationSeconds": 1862.4
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "cost": null,
+                            "status": "passed",
+                            "reward": 1.0,
+                            "runId": 7053520,
+                            "tokens": 5666266,
+                            "durationSeconds": 1841.0
+                        }
+                    ],
+                    "category": "short_horizon"
+                }
+            ]
+        },
+        {
+            "agentId": "claude-code-2.1.306-claude-opus-5-5-default-high-reasoning",
+            "agent": "claude-code 2.1.306",
+            "modelId": "claude-opus-5-5",
+            "model": "Claude Opus 5.5",
+            "modelProvider": "anthropic",
+            "variant": "baseline",
+            "startedAt": "2026-11-17T15:12:34-08:00",
+            "completedAt": "2026-11-18T05:32:57-08:00",
+            "metrics": {
+                "totalTasks": 7,
+                "passedTaskCount": 0,
+                "passAtKTaskCount": 1,
+                "passRate": 0.0,
+                "passAtKRate": 0.1429,
+                "avgScore": 0.8764,
+                "scoreSd": 0.0419,
+                "avgOutcome": 0.928,
+                "avgQuality": 0.7807,
+                "avgTokens": 6521643.8714,
+                "avgCost": 3.1853
+            },
+            "tasks": [
+                {
+                    "id": "adaptive-material-cupertino",
+                    "name": "adaptive-material-cupertino",
+                    "version": "v8",
+                    "metrics": {
+                        "resultScore": 0.8136,
+                        "outcome": 0.789,
+                        "quality": 0.8594,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 3325520.8,
+                        "meanCost": 2.1711,
+                        "trialCount": 5,
+                        "keptTrialCount": 4,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.8416,
+                            "quality": 0.9375,
+                            "cost": 2.3204922000000012,
+                            "status": "failed",
+                            "reward": 0.8752,
+                            "runId": 7071725,
+                            "tokens": 4408241,
+                            "durationSeconds": 881.8
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.7446,
+                            "quality": 0.875,
+                            "cost": 1.8656254,
+                            "status": "failed",
+                            "reward": 0.7902,
+                            "runId": 7071726,
+                            "tokens": 2937534,
+                            "durationSeconds": 492.1
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.7364,
+                            "quality": 0.9375,
+                            "cost": 1.7022992,
+                            "status": "failed",
+                            "reward": 0.8068,
+                            "runId": 7071728,
+                            "tokens": 3128033,
+                            "durationSeconds": 753.5
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.8335,
+                            "quality": 0.6875,
+                            "cost": 2.7958572000000004,
+                            "status": "failed",
+                            "reward": 0.7824,
+                            "runId": 7071729,
+                            "tokens": 2828275,
+                            "durationSeconds": 1751.8
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-localization",
+                    "name": "add-localization",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.9366,
+                        "outcome": 0.9456,
+                        "quality": 0.92,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 6256792.8,
+                        "meanCost": 3.1786,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9611,
+                            "quality": 0.75,
+                            "cost": 3.056605,
+                            "status": "failed",
+                            "reward": 0.8872,
+                            "runId": 7053418,
+                            "tokens": 5617855,
+                            "durationSeconds": 839.9
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9611,
+                            "quality": 0.95,
+                            "cost": 2.9977134000000007,
+                            "status": "failed",
+                            "reward": 0.9572,
+                            "runId": 7053419,
+                            "tokens": 6107856,
+                            "durationSeconds": 996.0
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.8833,
+                            "quality": 1.0,
+                            "cost": 3.033257799999999,
+                            "status": "failed",
+                            "reward": 0.9242,
+                            "runId": 7053420,
+                            "tokens": 5681143,
+                            "durationSeconds": 783.1
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9611,
+                            "quality": 1.0,
+                            "cost": 3.0656386000000007,
+                            "status": "failed",
+                            "reward": 0.9747,
+                            "runId": 7053421,
+                            "tokens": 5888201,
+                            "durationSeconds": 778.0
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.9611,
+                            "quality": 0.9,
+                            "cost": 3.7399614,
+                            "status": "failed",
+                            "reward": 0.9397,
+                            "runId": 7053422,
+                            "tokens": 7988909,
+                            "durationSeconds": 861.4
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-unit-widget-integration-tests",
+                    "name": "add-unit-widget-integration-tests",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8983,
+                        "outcome": 0.9378,
+                        "quality": 0.825,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 3473680.0,
+                        "meanCost": 2.0269,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9222,
+                            "quality": 0.7812,
+                            "cost": 2.1946044000000007,
+                            "status": "failed",
+                            "reward": 0.8729,
+                            "runId": 7053453,
+                            "tokens": 3692463,
+                            "durationSeconds": 644.5
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9222,
+                            "quality": 0.8437,
+                            "cost": 2.0117578000000003,
+                            "status": "failed",
+                            "reward": 0.8948,
+                            "runId": 7053454,
+                            "tokens": 3475096,
+                            "durationSeconds": 774.8
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.8437,
+                            "cost": 2.2046273999999997,
+                            "status": "failed",
+                            "reward": 0.9453,
+                            "runId": 7053455,
+                            "tokens": 4210083,
+                            "durationSeconds": 667.3
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9222,
+                            "quality": 0.8125,
+                            "cost": 2.033975,
+                            "status": "failed",
+                            "reward": 0.8838,
+                            "runId": 7053456,
+                            "tokens": 3556592,
+                            "durationSeconds": 744.3
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.9222,
+                            "quality": 0.8437,
+                            "cost": 1.6895,
+                            "status": "failed",
+                            "reward": 0.8948,
+                            "runId": 7053457,
+                            "tokens": 2434166,
+                            "durationSeconds": 667.0
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-web-support",
+                    "name": "add-web-support",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8269,
+                        "outcome": 0.958,
+                        "quality": 0.5833,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 19793440.3,
+                        "meanCost": 7.6818,
+                        "trialCount": 5,
+                        "keptTrialCount": 3,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9496,
+                            "quality": 0.5625,
+                            "cost": 6.3114538,
+                            "status": "failed",
+                            "reward": 0.8141,
+                            "runId": 7053579,
+                            "tokens": 15588427,
+                            "durationSeconds": 1896.1
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9832,
+                            "quality": 0.5,
+                            "cost": 9.608850399999998,
+                            "status": "failed",
+                            "reward": 0.8141,
+                            "runId": 7053580,
+                            "tokens": 25091205,
+                            "durationSeconds": 2829.4
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9412,
+                            "quality": 0.6875,
+                            "cost": 7.124994199999998,
+                            "status": "failed",
+                            "reward": 0.8524,
+                            "runId": 7053583,
+                            "tokens": 18700689,
+                            "durationSeconds": 2210.8
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "greenfield-fitness-app",
+                    "name": "greenfield-fitness-app",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8219,
+                        "outcome": 0.9953,
+                        "quality": 0.5,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 9144481.0,
+                        "meanCost": 4.6661,
+                        "trialCount": 5,
+                        "keptTrialCount": 2,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "cost": 4.779888400000002,
+                            "status": "failed",
+                            "reward": 0.825,
+                            "runId": 7072822,
+                            "tokens": 8732008,
+                            "durationSeconds": 1970.2
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9906,
+                            "quality": 0.5,
+                            "cost": 4.552297200000001,
+                            "status": "failed",
+                            "reward": 0.8189,
+                            "runId": 7072825,
+                            "tokens": 9556954,
+                            "durationSeconds": 1749.5
+                        }
+                    ],
+                    "category": "long_horizon"
+                },
+                {
+                    "id": "manage-state-with-provider",
+                    "name": "manage-state-with-provider",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.9431,
+                        "outcome": 1.0,
+                        "quality": 0.8375,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 1710068.4,
+                        "meanCost": 1.3341,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.875,
+                            "cost": 1.4269952,
+                            "status": "failed",
+                            "reward": 0.9563,
+                            "runId": 7053478,
+                            "tokens": 2406330,
+                            "durationSeconds": 480.1
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.8125,
+                            "cost": 1.1615906,
+                            "status": "failed",
+                            "reward": 0.9344,
+                            "runId": 7053479,
+                            "tokens": 1493176,
+                            "durationSeconds": 350.2
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.9375,
+                            "cost": 1.2922797999999998,
+                            "status": "failed",
+                            "reward": 0.9781,
+                            "runId": 7053480,
+                            "tokens": 1250173,
+                            "durationSeconds": 443.0
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.8125,
+                            "cost": 1.2263862,
+                            "status": "failed",
+                            "reward": 0.9344,
+                            "runId": 7053481,
+                            "tokens": 1332658,
+                            "durationSeconds": 369.0
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 1.0,
+                            "quality": 0.75,
+                            "cost": 1.5633154000000002,
+                            "status": "failed",
+                            "reward": 0.9125,
+                            "runId": 7053482,
+                            "tokens": 2068005,
+                            "durationSeconds": 525.6
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "overflow-bug",
+                    "name": "overflow-bug",
+                    "version": "v8",
+                    "metrics": {
+                        "resultScore": 0.8947,
+                        "outcome": 0.8704,
+                        "quality": 0.94,
+                        "passedTrialCount": 1,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": false,
+                        "meanTokens": 1947523.8,
+                        "meanCost": 1.2387,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "cost": 1.2857404,
+                            "status": "passed",
+                            "reward": 1.0,
+                            "runId": 7053522,
+                            "tokens": 2306375,
+                            "durationSeconds": 668.2
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.7407,
+                            "quality": 1.0,
+                            "cost": 0.8783955999999998,
+                            "status": "failed",
+                            "reward": 0.8315,
+                            "runId": 7053523,
+                            "tokens": 1080794,
+                            "durationSeconds": 555.9
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.9,
+                            "cost": 1.4790981999999997,
+                            "status": "failed",
+                            "reward": 0.965,
+                            "runId": 7053524,
+                            "tokens": 2298517,
+                            "durationSeconds": 1060.9
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.7407,
+                            "quality": 0.9,
+                            "cost": 1.0751397999999999,
+                            "status": "failed",
+                            "reward": 0.7965,
+                            "runId": 7053525,
+                            "tokens": 1349739,
+                            "durationSeconds": 653.5
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.8704,
+                            "quality": 0.9,
+                            "cost": 1.4750033999999994,
+                            "status": "failed",
+                            "reward": 0.8807,
+                            "runId": 7053526,
+                            "tokens": 2702194,
+                            "durationSeconds": 1080.3
+                        }
+                    ],
+                    "category": "short_horizon"
+                }
+            ]
+        },
+        {
+            "agentId": "claude-code-2.1.306-claude-sonnet-5-5-high-reasoning",
+            "agent": "claude-code 2.1.306",
+            "modelId": "claude-sonnet-5-5",
+            "model": "Claude Sonnet 5.5",
+            "modelProvider": "anthropic",
+            "variant": "baseline",
+            "startedAt": "2026-11-17T13:44:29-08:00",
+            "completedAt": "2026-11-18T05:15:58-08:00",
+            "metrics": {
+                "totalTasks": 7,
+                "passedTaskCount": 0,
+                "passAtKTaskCount": 1,
+                "passRate": 0.0,
+                "passAtKRate": 0.1429,
+                "avgScore": 0.8534,
+                "scoreSd": 0.0582,
+                "avgOutcome": 0.8787,
+                "avgQuality": 0.8064,
+                "avgTokens": 3593219.0571,
+                "avgCost": 1.0364
+            },
+            "tasks": [
+                {
+                    "id": "adaptive-material-cupertino",
+                    "name": "adaptive-material-cupertino",
+                    "version": "v8",
+                    "metrics": {
+                        "resultScore": 0.7806,
+                        "outcome": 0.7769,
+                        "quality": 0.7875,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 4453797.2,
+                        "meanCost": 1.2622,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.7527,
+                            "quality": 0.6875,
+                            "cost": 0.9461257000000002,
+                            "status": "failed",
+                            "reward": 0.7299,
+                            "runId": 7071730,
+                            "tokens": 2617149,
+                            "durationSeconds": 492.9
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.7283,
+                            "quality": 0.8125,
+                            "cost": 0.6258053000000001,
+                            "status": "failed",
+                            "reward": 0.7578,
+                            "runId": 7071731,
+                            "tokens": 1540930,
+                            "durationSeconds": 301.5
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.8253,
+                            "quality": 0.875,
+                            "cost": 1.9895403999999999,
+                            "status": "failed",
+                            "reward": 0.8427,
+                            "runId": 7071732,
+                            "tokens": 8732048,
+                            "durationSeconds": 1098.2
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.7202,
+                            "quality": 0.75,
+                            "cost": 1.4780635999999998,
+                            "status": "failed",
+                            "reward": 0.7306,
+                            "runId": 7071733,
+                            "tokens": 5167682,
+                            "durationSeconds": 726.9
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.8579,
+                            "quality": 0.8125,
+                            "cost": 1.2716828,
+                            "status": "failed",
+                            "reward": 0.842,
+                            "runId": 7071734,
+                            "tokens": 4211177,
+                            "durationSeconds": 675.2
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-localization",
+                    "name": "add-localization",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.9515,
+                        "outcome": 0.9456,
+                        "quality": 0.9625,
+                        "passedTrialCount": 1,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": false,
+                        "meanTokens": 3955619.4,
+                        "meanCost": 1.1397,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.8833,
+                            "quality": 0.95,
+                            "cost": 0.9532218000000002,
+                            "status": "failed",
+                            "reward": 0.9067,
+                            "runId": 7053423,
+                            "tokens": 3254107,
+                            "durationSeconds": 723.0
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9222,
+                            "quality": 1.0,
+                            "cost": 1.1741326000000005,
+                            "status": "failed",
+                            "reward": 0.9494,
+                            "runId": 7053424,
+                            "tokens": 4536363,
+                            "durationSeconds": 966.0
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9222,
+                            "quality": 0.95,
+                            "cost": 1.3827125999999998,
+                            "status": "failed",
+                            "reward": 0.9319,
+                            "runId": 7053425,
+                            "tokens": 5041560,
+                            "durationSeconds": 745.1
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.9125,
+                            "cost": 1.1038788000000004,
+                            "status": "failed",
+                            "reward": 0.9694,
+                            "runId": 7053426,
+                            "tokens": 3267202,
+                            "durationSeconds": 564.8
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "cost": 1.0846544999999999,
+                            "status": "passed",
+                            "reward": 1.0,
+                            "runId": 7053427,
+                            "tokens": 3678865,
+                            "durationSeconds": 766.4
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-unit-widget-integration-tests",
+                    "name": "add-unit-widget-integration-tests",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.7983,
+                        "outcome": 0.794,
+                        "quality": 0.8063,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 1724823.6,
+                        "meanCost": 0.6476,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9222,
+                            "quality": 0.7812,
+                            "cost": 0.6130473999999999,
+                            "status": "failed",
+                            "reward": 0.8729,
+                            "runId": 7051604,
+                            "tokens": 1409381,
+                            "durationSeconds": 497.0
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.6018,
+                            "quality": 0.7812,
+                            "cost": 0.6742814,
+                            "status": "failed",
+                            "reward": 0.6646,
+                            "runId": 7051605,
+                            "tokens": 1828802,
+                            "durationSeconds": 519.5
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9222,
+                            "quality": 0.7812,
+                            "cost": 0.6372528000000002,
+                            "status": "failed",
+                            "reward": 0.8729,
+                            "runId": 7051606,
+                            "tokens": 1428750,
+                            "durationSeconds": 516.2
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9222,
+                            "quality": 0.8437,
+                            "cost": 0.7240749999999998,
+                            "status": "failed",
+                            "reward": 0.8948,
+                            "runId": 7051607,
+                            "tokens": 2463349,
+                            "durationSeconds": 563.9
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.6018,
+                            "quality": 0.8437,
+                            "cost": 0.5895743,
+                            "status": "failed",
+                            "reward": 0.6865,
+                            "runId": 7051608,
+                            "tokens": 1493836,
+                            "durationSeconds": 484.8
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-web-support",
+                    "name": "add-web-support",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8524,
+                        "outcome": 0.9244,
+                        "quality": 0.7187,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 12088448.2,
+                        "meanCost": 2.748,
+                        "trialCount": 5,
+                        "keptTrialCount": 4,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9664,
+                            "quality": 0.75,
+                            "cost": 2.8934911000000003,
+                            "status": "failed",
+                            "reward": 0.8907,
+                            "runId": 7053585,
+                            "tokens": 13263825,
+                            "durationSeconds": 1616.2
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.8571,
+                            "quality": 0.8125,
+                            "cost": 3.2157362000000003,
+                            "status": "failed",
+                            "reward": 0.8415,
+                            "runId": 7053586,
+                            "tokens": 14967443,
+                            "durationSeconds": 2991.7
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.8908,
+                            "quality": 0.75,
+                            "cost": 2.6207015,
+                            "status": "failed",
+                            "reward": 0.8415,
+                            "runId": 7053587,
+                            "tokens": 10083987,
+                            "durationSeconds": 1622.7
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9832,
+                            "quality": 0.5625,
+                            "cost": 2.2621852000000007,
+                            "status": "failed",
+                            "reward": 0.836,
+                            "runId": 7053588,
+                            "tokens": 10038538,
+                            "durationSeconds": 1287.3
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "greenfield-fitness-app",
+                    "name": "greenfield-fitness-app",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8482,
+                        "outcome": 0.9953,
+                        "quality": 0.575,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 1308667.0,
+                        "meanCost": 0.7635,
+                        "trialCount": 5,
+                        "keptTrialCount": 4,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.7,
+                            "cost": 0.6691610999999998,
+                            "status": "failed",
+                            "reward": 0.895,
+                            "runId": 7072826,
+                            "tokens": 1058854,
+                            "durationSeconds": 414.2
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "cost": 0.9739859999999998,
+                            "status": "failed",
+                            "reward": 0.825,
+                            "runId": 7072827,
+                            "tokens": 1644287,
+                            "durationSeconds": 1085.1
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.6,
+                            "cost": 0.7637510999999999,
+                            "status": "failed",
+                            "reward": 0.86,
+                            "runId": 7072828,
+                            "tokens": 1528059,
+                            "durationSeconds": 496.7
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9812,
+                            "quality": 0.5,
+                            "cost": 0.6469826,
+                            "status": "failed",
+                            "reward": 0.8128,
+                            "runId": 7072829,
+                            "tokens": 1003468,
+                            "durationSeconds": 412.2
+                        }
+                    ],
+                    "category": "long_horizon"
+                },
+                {
+                    "id": "manage-state-with-provider",
+                    "name": "manage-state-with-provider",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.9563,
+                        "outcome": 1.0,
+                        "quality": 0.875,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 765410.8,
+                        "meanCost": 0.3424,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.875,
+                            "cost": 0.364624,
+                            "status": "failed",
+                            "reward": 0.9563,
+                            "runId": 7053483,
+                            "tokens": 733800,
+                            "durationSeconds": 216.8
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.875,
+                            "cost": 0.4076604,
+                            "status": "failed",
+                            "reward": 0.9563,
+                            "runId": 7053484,
+                            "tokens": 1164622,
+                            "durationSeconds": 268.7
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.9375,
+                            "cost": 0.36002629999999997,
+                            "status": "failed",
+                            "reward": 0.9781,
+                            "runId": 7053485,
+                            "tokens": 935885,
+                            "durationSeconds": 220.0
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.875,
+                            "cost": 0.2956276,
+                            "status": "failed",
+                            "reward": 0.9563,
+                            "runId": 7053486,
+                            "tokens": 578713,
+                            "durationSeconds": 176.6
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 1.0,
+                            "quality": 0.8125,
+                            "cost": 0.28391409999999995,
+                            "status": "failed",
+                            "reward": 0.9344,
+                            "runId": 7053487,
+                            "tokens": 414034,
+                            "durationSeconds": 149.6
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "overflow-bug",
+                    "name": "overflow-bug",
+                    "version": "v8",
+                    "metrics": {
+                        "resultScore": 0.7866,
+                        "outcome": 0.7148,
+                        "quality": 0.92,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 855767.2,
+                        "meanCost": 0.3517,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.7407,
+                            "quality": 1.0,
+                            "cost": 0.31436379999999997,
+                            "status": "failed",
+                            "reward": 0.8315,
+                            "runId": 7051712,
+                            "tokens": 723877,
+                            "durationSeconds": 192.1
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.7407,
+                            "quality": 1.0,
+                            "cost": 0.30678479999999997,
+                            "status": "failed",
+                            "reward": 0.8315,
+                            "runId": 7051713,
+                            "tokens": 786554,
+                            "durationSeconds": 187.0
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.7407,
+                            "quality": 0.6,
+                            "cost": 0.4019752,
+                            "status": "failed",
+                            "reward": 0.6915,
+                            "runId": 7051714,
+                            "tokens": 1210572,
+                            "durationSeconds": 305.8
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.6111,
+                            "quality": 1.0,
+                            "cost": 0.46150949999999996,
+                            "status": "failed",
+                            "reward": 0.7472,
+                            "runId": 7051715,
+                            "tokens": 1065257,
+                            "durationSeconds": 962.4
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.7407,
+                            "quality": 1.0,
+                            "cost": 0.2739963,
+                            "status": "failed",
+                            "reward": 0.8315,
+                            "runId": 7051716,
+                            "tokens": 492576,
+                            "durationSeconds": 161.7
+                        }
+                    ],
+                    "category": "short_horizon"
+                }
+            ]
+        },
+        {
+            "agentId": "codex-0.163.0-gpt-6.1-sol-high-reasoning",
+            "agent": "codex 0.163.0",
+            "modelId": "gpt-6.1-sol",
+            "model": "GPT-6.1 Sol",
+            "modelProvider": "openai",
+            "variant": "baseline",
+            "startedAt": "2026-11-17T13:44:26-08:00",
+            "completedAt": "2026-11-18T05:39:39-08:00",
+            "metrics": {
+                "totalTasks": 7,
+                "passedTaskCount": 0,
+                "passAtKTaskCount": 1,
+                "passRate": 0.0,
+                "passAtKRate": 0.1429,
+                "avgScore": 0.8257,
+                "scoreSd": 0.0429,
+                "avgOutcome": 0.8579,
+                "avgQuality": 0.7657,
+                "avgTokens": 4287364.5429,
+                "avgCost": 1.0609
+            },
+            "tasks": [
+                {
+                    "id": "adaptive-material-cupertino",
+                    "name": "adaptive-material-cupertino",
+                    "version": "v8",
+                    "metrics": {
+                        "resultScore": 0.8183,
+                        "outcome": 0.8551,
+                        "quality": 0.75,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 4726898.8,
+                        "meanCost": 1.2654,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.8667,
+                            "quality": 0.6875,
+                            "cost": 1.4785949000000007,
+                            "status": "failed",
+                            "reward": 0.804,
+                            "runId": 7071735,
+                            "tokens": 5920448,
+                            "durationSeconds": 1253.1
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9067,
+                            "quality": 0.6875,
+                            "cost": 1.0490660000000003,
+                            "status": "failed",
+                            "reward": 0.83,
+                            "runId": 7071736,
+                            "tokens": 3869663,
+                            "durationSeconds": 795.3
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.8504,
+                            "quality": 0.875,
+                            "cost": 1.3694806000000004,
+                            "status": "failed",
+                            "reward": 0.859,
+                            "runId": 7071737,
+                            "tokens": 4201605,
+                            "durationSeconds": 852.7
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.8341,
+                            "quality": 0.8125,
+                            "cost": 1.1503142,
+                            "status": "failed",
+                            "reward": 0.8265,
+                            "runId": 7071738,
+                            "tokens": 4162406,
+                            "durationSeconds": 940.8
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.8178,
+                            "quality": 0.6875,
+                            "cost": 1.2793913999999997,
+                            "status": "failed",
+                            "reward": 0.7722,
+                            "runId": 7071739,
+                            "tokens": 5480372,
+                            "durationSeconds": 963.4
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-localization",
+                    "name": "add-localization",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.9592,
+                        "outcome": 0.9533,
+                        "quality": 0.97,
+                        "passedTrialCount": 2,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": false,
+                        "meanTokens": 2995693.6,
+                        "meanCost": 0.8247,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9222,
+                            "quality": 1.0,
+                            "cost": 0.6997559000000002,
+                            "status": "failed",
+                            "reward": 0.9494,
+                            "runId": 7053428,
+                            "tokens": 2199971,
+                            "durationSeconds": 430.6
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "cost": 0.6830206000000001,
+                            "status": "passed",
+                            "reward": 1.0,
+                            "runId": 7053429,
+                            "tokens": 2139334,
+                            "durationSeconds": 396.4
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "cost": 0.9596901000000001,
+                            "status": "passed",
+                            "reward": 1.0,
+                            "runId": 7053430,
+                            "tokens": 4161426,
+                            "durationSeconds": 471.0
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9222,
+                            "quality": 0.85,
+                            "cost": 1.0629096,
+                            "status": "failed",
+                            "reward": 0.8969,
+                            "runId": 7053431,
+                            "tokens": 4176465,
+                            "durationSeconds": 609.3
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.9222,
+                            "quality": 1.0,
+                            "cost": 0.7183424000000002,
+                            "status": "failed",
+                            "reward": 0.9494,
+                            "runId": 7053432,
+                            "tokens": 2301272,
+                            "durationSeconds": 408.7
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-unit-widget-integration-tests",
+                    "name": "add-unit-widget-integration-tests",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8444,
+                        "outcome": 0.9222,
+                        "quality": 0.7,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 2420028.6,
+                        "meanCost": 0.7089,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9222,
+                            "quality": 0.6562,
+                            "cost": 0.6565295000000002,
+                            "status": "failed",
+                            "reward": 0.8291,
+                            "runId": 7051609,
+                            "tokens": 2215265,
+                            "durationSeconds": 446.9
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9222,
+                            "quality": 0.75,
+                            "cost": 0.7304204000000001,
+                            "status": "failed",
+                            "reward": 0.8619,
+                            "runId": 7051610,
+                            "tokens": 2377877,
+                            "durationSeconds": 441.2
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9222,
+                            "quality": 0.7187,
+                            "cost": 0.7799586999999999,
+                            "status": "failed",
+                            "reward": 0.851,
+                            "runId": 7051611,
+                            "tokens": 2905762,
+                            "durationSeconds": 436.1
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9222,
+                            "quality": 0.6875,
+                            "cost": 0.7902845000000001,
+                            "status": "failed",
+                            "reward": 0.8401,
+                            "runId": 7051612,
+                            "tokens": 2866874,
+                            "durationSeconds": 410.6
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.9222,
+                            "quality": 0.6875,
+                            "cost": 0.5874788000000001,
+                            "status": "failed",
+                            "reward": 0.8401,
+                            "runId": 7051613,
+                            "tokens": 1734365,
+                            "durationSeconds": 370.8
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-web-support",
+                    "name": "add-web-support",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.5957,
+                        "outcome": 0.5126,
+                        "quality": 0.75,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 10904434.0,
+                        "meanCost": 2.1273,
+                        "trialCount": 2,
+                        "keptTrialCount": 2,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.5126,
+                            "quality": 0.6875,
+                            "cost": 2.2782247,
+                            "status": "failed",
+                            "reward": 0.5738,
+                            "runId": 7053589,
+                            "tokens": 11766313,
+                            "durationSeconds": 1369.9
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.5126,
+                            "quality": 0.8125,
+                            "cost": 1.976399199999999,
+                            "status": "failed",
+                            "reward": 0.6176,
+                            "runId": 7053590,
+                            "tokens": 10042555,
+                            "durationSeconds": 999.7
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "greenfield-fitness-app",
+                    "name": "greenfield-fitness-app",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8053,
+                        "outcome": 0.9697,
+                        "quality": 0.5,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 7232641.0,
+                        "meanCost": 1.8226,
+                        "trialCount": 5,
+                        "keptTrialCount": 4,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9583,
+                            "quality": 0.5,
+                            "cost": 1.7590644999999998,
+                            "status": "failed",
+                            "reward": 0.7979,
+                            "runId": 7072831,
+                            "tokens": 7631299,
+                            "durationSeconds": 1598.8
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9624,
+                            "quality": 0.5,
+                            "cost": 2.0785501999999996,
+                            "status": "failed",
+                            "reward": 0.8005,
+                            "runId": 7072832,
+                            "tokens": 8178551,
+                            "durationSeconds": 1643.0
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9771,
+                            "quality": 0.5,
+                            "cost": 1.4859560000000003,
+                            "status": "failed",
+                            "reward": 0.8101,
+                            "runId": 7072834,
+                            "tokens": 5267864,
+                            "durationSeconds": 1508.2
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9812,
+                            "quality": 0.5,
+                            "cost": 1.9667159000000003,
+                            "status": "failed",
+                            "reward": 0.8128,
+                            "runId": 7072835,
+                            "tokens": 7852850,
+                            "durationSeconds": 1506.3
+                        }
+                    ],
+                    "category": "long_horizon"
+                },
+                {
+                    "id": "manage-state-with-provider",
+                    "name": "manage-state-with-provider",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.9475,
+                        "outcome": 1.0,
+                        "quality": 0.85,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 757994.2,
+                        "meanCost": 0.3387,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.8125,
+                            "cost": 0.3602849,
+                            "status": "failed",
+                            "reward": 0.9344,
+                            "runId": 7053488,
+                            "tokens": 753224,
+                            "durationSeconds": 223.4
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.8125,
+                            "cost": 0.36686129999999995,
+                            "status": "failed",
+                            "reward": 0.9344,
+                            "runId": 7053489,
+                            "tokens": 856803,
+                            "durationSeconds": 214.0
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.9375,
+                            "cost": 0.3475437,
+                            "status": "failed",
+                            "reward": 0.9781,
+                            "runId": 7053490,
+                            "tokens": 863877,
+                            "durationSeconds": 204.7
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.8125,
+                            "cost": 0.3391282,
+                            "status": "failed",
+                            "reward": 0.9344,
+                            "runId": 7053491,
+                            "tokens": 776170,
+                            "durationSeconds": 191.3
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 1.0,
+                            "quality": 0.875,
+                            "cost": 0.2798057,
+                            "status": "failed",
+                            "reward": 0.9563,
+                            "runId": 7053492,
+                            "tokens": 539897,
+                            "durationSeconds": 155.0
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "overflow-bug",
+                    "name": "overflow-bug",
+                    "version": "v8",
+                    "metrics": {
+                        "resultScore": 0.8092,
+                        "outcome": 0.7926,
+                        "quality": 0.84,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 973861.6,
+                        "meanCost": 0.339,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.9,
+                            "cost": 0.38654639999999996,
+                            "status": "failed",
+                            "reward": 0.965,
+                            "runId": 7051717,
+                            "tokens": 1184589,
+                            "durationSeconds": 232.7
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.7407,
+                            "quality": 0.9,
+                            "cost": 0.32644210000000007,
+                            "status": "failed",
+                            "reward": 0.7965,
+                            "runId": 7051718,
+                            "tokens": 912196,
+                            "durationSeconds": 190.1
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.7407,
+                            "quality": 0.7,
+                            "cost": 0.31877370000000005,
+                            "status": "failed",
+                            "reward": 0.7265,
+                            "runId": 7051719,
+                            "tokens": 986736,
+                            "durationSeconds": 217.4
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.7407,
+                            "quality": 0.8,
+                            "cost": 0.32465220000000006,
+                            "status": "failed",
+                            "reward": 0.7615,
+                            "runId": 7051720,
+                            "tokens": 905499,
+                            "durationSeconds": 169.6
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.7407,
+                            "quality": 0.9,
+                            "cost": 0.3383611000000001,
+                            "status": "failed",
+                            "reward": 0.7965,
+                            "runId": 7051721,
+                            "tokens": 880288,
+                            "durationSeconds": 220.9
+                        }
+                    ],
+                    "category": "short_horizon"
+                }
+            ]
+        },
+        {
+            "agentId": "codex-0.163.0-gpt-6-astra-high-reasoning",
+            "agent": "codex 0.163.0",
+            "modelId": "gpt-6-astra",
+            "model": "GPT-6 Astra",
+            "modelProvider": "openai",
+            "variant": "baseline",
+            "startedAt": "2026-11-17T13:46:54-08:00",
+            "completedAt": "2026-11-18T05:30:39-08:00",
+            "metrics": {
+                "totalTasks": 7,
+                "passedTaskCount": 0,
+                "passAtKTaskCount": 1,
+                "passRate": 0.0,
+                "passAtKRate": 0.1429,
+                "avgScore": 0.8165,
+                "scoreSd": 0.0393,
+                "avgOutcome": 0.8612,
+                "avgQuality": 0.7334,
+                "avgTokens": 3694825.5714,
+                "avgCost": 6.4223
+            },
+            "tasks": [
+                {
+                    "id": "adaptive-material-cupertino",
+                    "name": "adaptive-material-cupertino",
+                    "version": "v8",
+                    "metrics": {
+                        "resultScore": 0.8152,
+                        "outcome": 0.8503,
+                        "quality": 0.75,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 3543017.4,
+                        "meanCost": 6.5124,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.8585,
+                            "quality": 0.75,
+                            "cost": 6.692435499999999,
+                            "status": "failed",
+                            "reward": 0.8205,
+                            "runId": 7071740,
+                            "tokens": 3713028,
+                            "durationSeconds": 736.8
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.8742,
+                            "quality": 0.6875,
+                            "cost": 7.456004,
+                            "status": "failed",
+                            "reward": 0.8088,
+                            "runId": 7071741,
+                            "tokens": 4183343,
+                            "durationSeconds": 843.3
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.8341,
+                            "quality": 0.9375,
+                            "cost": 6.693785500000001,
+                            "status": "failed",
+                            "reward": 0.8703,
+                            "runId": 7071743,
+                            "tokens": 3716865,
+                            "durationSeconds": 731.8
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.8341,
+                            "quality": 0.6875,
+                            "cost": 4.5369065,
+                            "status": "failed",
+                            "reward": 0.7828,
+                            "runId": 7071744,
+                            "tokens": 2076643,
+                            "durationSeconds": 597.7
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.8504,
+                            "quality": 0.6875,
+                            "cost": 7.182845,
+                            "status": "failed",
+                            "reward": 0.7934,
+                            "runId": 7071745,
+                            "tokens": 4025208,
+                            "durationSeconds": 755.9
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-localization",
+                    "name": "add-localization",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.9448,
+                        "outcome": 0.9689,
+                        "quality": 0.9,
+                        "passedTrialCount": 1,
+                        "passedAnyTrial": true,
+                        "passedAllTrials": false,
+                        "meanTokens": 3251646.0,
+                        "meanCost": 5.729,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.8,
+                            "cost": 6.315246,
+                            "status": "failed",
+                            "reward": 0.93,
+                            "runId": 7053433,
+                            "tokens": 3754252,
+                            "durationSeconds": 605.4
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9222,
+                            "quality": 0.95,
+                            "cost": 5.985996999999999,
+                            "status": "failed",
+                            "reward": 0.9319,
+                            "runId": 7053434,
+                            "tokens": 3455182,
+                            "durationSeconds": 577.3
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.95,
+                            "cost": 6.512205499999999,
+                            "status": "failed",
+                            "reward": 0.9825,
+                            "runId": 7053435,
+                            "tokens": 3900335,
+                            "durationSeconds": 644.2
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 1.0,
+                            "cost": 5.280618500000002,
+                            "status": "passed",
+                            "reward": 1.0,
+                            "runId": 7053436,
+                            "tokens": 2809461,
+                            "durationSeconds": 492.7
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.9222,
+                            "quality": 0.8,
+                            "cost": 4.550765000000001,
+                            "status": "failed",
+                            "reward": 0.8794,
+                            "runId": 7053437,
+                            "tokens": 2339000,
+                            "durationSeconds": 442.7
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-unit-widget-integration-tests",
+                    "name": "add-unit-widget-integration-tests",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.8073,
+                        "outcome": 0.9222,
+                        "quality": 0.5937,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 2764204.0,
+                        "meanCost": 4.9548,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.9222,
+                            "quality": 0.5937,
+                            "cost": 4.5738825,
+                            "status": "failed",
+                            "reward": 0.8073,
+                            "runId": 7053458,
+                            "tokens": 2314255,
+                            "durationSeconds": 527.4
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9222,
+                            "quality": 0.5937,
+                            "cost": 4.4446449999999995,
+                            "status": "failed",
+                            "reward": 0.8073,
+                            "runId": 7053459,
+                            "tokens": 2371873,
+                            "durationSeconds": 482.3
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9222,
+                            "quality": 0.5937,
+                            "cost": 3.9980895,
+                            "status": "failed",
+                            "reward": 0.8073,
+                            "runId": 7053460,
+                            "tokens": 1910434,
+                            "durationSeconds": 465.0
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.9222,
+                            "quality": 0.5937,
+                            "cost": 7.185453499999998,
+                            "status": "failed",
+                            "reward": 0.8073,
+                            "runId": 7053461,
+                            "tokens": 4559840,
+                            "durationSeconds": 664.4
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.9222,
+                            "quality": 0.5937,
+                            "cost": 4.5720555,
+                            "status": "failed",
+                            "reward": 0.8073,
+                            "runId": 7053462,
+                            "tokens": 2664618,
+                            "durationSeconds": 480.4
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "add-web-support",
+                    "name": "add-web-support",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.5859,
+                        "outcome": 0.5109,
+                        "quality": 0.725,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 9118946.0,
+                        "meanCost": 13.4643,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 0.5126,
+                            "quality": 0.625,
+                            "cost": 13.8856565,
+                            "status": "failed",
+                            "reward": 0.5519,
+                            "runId": 7053591,
+                            "tokens": 9576534,
+                            "durationSeconds": 1385.7
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.5042,
+                            "quality": 0.6875,
+                            "cost": 13.933758,
+                            "status": "failed",
+                            "reward": 0.5684,
+                            "runId": 7053592,
+                            "tokens": 9734676,
+                            "durationSeconds": 1356.4
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.5126,
+                            "quality": 0.6875,
+                            "cost": 13.795680999999998,
+                            "status": "failed",
+                            "reward": 0.5738,
+                            "runId": 7053594,
+                            "tokens": 9397832,
+                            "durationSeconds": 1404.5
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.5126,
+                            "quality": 0.8125,
+                            "cost": 15.3549895,
+                            "status": "failed",
+                            "reward": 0.6176,
+                            "runId": 7053595,
+                            "tokens": 10365859,
+                            "durationSeconds": 1697.8
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.5126,
+                            "quality": 0.8125,
+                            "cost": 10.351305499999997,
+                            "status": "failed",
+                            "reward": 0.6176,
+                            "runId": 7053596,
+                            "tokens": 6519829,
+                            "durationSeconds": 1005.6
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "greenfield-fitness-app",
+                    "name": "greenfield-fitness-app",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.823,
+                        "outcome": 0.9835,
+                        "quality": 0.525,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 5434421.0,
+                        "meanCost": 10.1137,
+                        "trialCount": 5,
+                        "keptTrialCount": 4,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.6,
+                            "cost": 8.796356499999998,
+                            "status": "failed",
+                            "reward": 0.86,
+                            "runId": 7072836,
+                            "tokens": 4619261,
+                            "durationSeconds": 1313.0
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.9529,
+                            "quality": 0.5,
+                            "cost": 10.326673500000002,
+                            "status": "failed",
+                            "reward": 0.7944,
+                            "runId": 7072837,
+                            "tokens": 5519985,
+                            "durationSeconds": 1430.7
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.9812,
+                            "quality": 0.5,
+                            "cost": 11.969295500000003,
+                            "status": "failed",
+                            "reward": 0.8128,
+                            "runId": 7072838,
+                            "tokens": 6269113,
+                            "durationSeconds": 1572.2
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.5,
+                            "cost": 9.362584499999999,
+                            "status": "failed",
+                            "reward": 0.825,
+                            "runId": 7072840,
+                            "tokens": 5329325,
+                            "durationSeconds": 1420.6
+                        }
+                    ],
+                    "category": "long_horizon"
+                },
+                {
+                    "id": "manage-state-with-provider",
+                    "name": "manage-state-with-provider",
+                    "version": "v6",
+                    "metrics": {
+                        "resultScore": 0.93,
+                        "outcome": 1.0,
+                        "quality": 0.8,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 571176.4,
+                        "meanCost": 1.7364,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.875,
+                            "cost": 1.3877175,
+                            "status": "failed",
+                            "reward": 0.9563,
+                            "runId": 7053493,
+                            "tokens": 330882,
+                            "durationSeconds": 186.6
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 1.0,
+                            "quality": 0.8125,
+                            "cost": 1.9879170000000004,
+                            "status": "failed",
+                            "reward": 0.9344,
+                            "runId": 7053494,
+                            "tokens": 717525,
+                            "durationSeconds": 256.9
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 1.0,
+                            "quality": 0.6875,
+                            "cost": 1.7402844999999998,
+                            "status": "failed",
+                            "reward": 0.8906,
+                            "runId": 7053495,
+                            "tokens": 607620,
+                            "durationSeconds": 216.4
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 1.0,
+                            "quality": 0.75,
+                            "cost": 1.7545894999999998,
+                            "status": "failed",
+                            "reward": 0.9125,
+                            "runId": 7053496,
+                            "tokens": 594779,
+                            "durationSeconds": 218.7
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 1.0,
+                            "quality": 0.875,
+                            "cost": 1.8112540000000001,
+                            "status": "failed",
+                            "reward": 0.9563,
+                            "runId": 7053497,
+                            "tokens": 605076,
+                            "durationSeconds": 263.3
+                        }
+                    ],
+                    "category": "short_horizon"
+                },
+                {
+                    "id": "overflow-bug",
+                    "name": "overflow-bug",
+                    "version": "v8",
+                    "metrics": {
+                        "resultScore": 0.8092,
+                        "outcome": 0.7926,
+                        "quality": 0.84,
+                        "passedTrialCount": 0,
+                        "passedAnyTrial": false,
+                        "passedAllTrials": false,
+                        "meanTokens": 1180368.2,
+                        "meanCost": 2.4454,
+                        "trialCount": 5,
+                        "keptTrialCount": 5,
+                        "excludedFromTaskAverage": false
+                    },
+                    "trials": [
+                        {
+                            "trialIndex": 1,
+                            "outcome": 1.0,
+                            "quality": 0.8,
+                            "cost": 3.1284285000000005,
+                            "status": "failed",
+                            "reward": 0.93,
+                            "runId": 7051722,
+                            "tokens": 1510672,
+                            "durationSeconds": 434.1
+                        },
+                        {
+                            "trialIndex": 2,
+                            "outcome": 0.7407,
+                            "quality": 0.9,
+                            "cost": 2.006679,
+                            "status": "failed",
+                            "reward": 0.7965,
+                            "runId": 7051723,
+                            "tokens": 944427,
+                            "durationSeconds": 199.6
+                        },
+                        {
+                            "trialIndex": 3,
+                            "outcome": 0.7407,
+                            "quality": 0.9,
+                            "cost": 1.988693,
+                            "status": "failed",
+                            "reward": 0.7965,
+                            "runId": 7051724,
+                            "tokens": 894597,
+                            "durationSeconds": 214.0
+                        },
+                        {
+                            "trialIndex": 4,
+                            "outcome": 0.7407,
+                            "quality": 0.8,
+                            "cost": 2.9716489999999998,
+                            "status": "failed",
+                            "reward": 0.7615,
+                            "runId": 7051725,
+                            "tokens": 1603161,
+                            "durationSeconds": 340.7
+                        },
+                        {
+                            "trialIndex": 5,
+                            "outcome": 0.7407,
+                            "quality": 0.8,
+                            "cost": 2.131586,
+                            "status": "failed",
+                            "reward": 0.7615,
+                            "runId": 7051726,
+                            "tokens": 948984,
+                            "durationSeconds": 244.8
+                        }
+                    ],
+                    "category": "short_horizon"
+                }
+            ]
+        }
+    ]
+}

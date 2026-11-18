@@ -93,12 +93,11 @@ visit the [Dataset](/flutterbench/dataset) page.
 
 <StoryChapter number="03" title="Grading and scoring design" id="grading-scoring-design">
 
-We run each task *K* independent times,
+We run each task several independent times,
 each from a clean workspace,
 to account for nondeterministic model output.
-The value of *K* can increase between leaderboard snapshots.
-The leaderboard's Pass@*K* column shows
-the value used for the current snapshot.
+The number of trials can vary between tasks and snapshots,
+so the leaderboard uses metrics that don't depend on it.
 
 ### Two-dimension evaluation rubric
 
@@ -164,29 +163,43 @@ Three complementary verification tiers assign grades:
 
 ### Rollup metrics
 
-The leaderboard aggregates task-level trials into three primary metrics:
+The leaderboard aggregates task-level trials into these metrics:
 
 <div class="table-wrapper">
 <table class="rollup-metrics-table">
   <tbody>
     <tr>
-      <td><strong>Pass Rate (%)</strong></td>
-      <td><code>pass^K</code></td>
-      <td>Pass Rate = (Tasks where all <em>K</em> trials passed ÷ Total Tasks) × 100</td>
-    </tr>
-    <tr>
-      <td><strong>Pass@<em>K</em> Rate (%)</strong></td>
-      <td><code>pass@K</code></td>
-      <td>Pass@<em>K</em> = (Tasks with at least 1 of <em>K</em> trials passed ÷ Total Tasks) × 100</td>
-    </tr>
-    <tr>
       <td><strong>Average Score (%)</strong></td>
       <td><code>± SD</code></td>
       <td>Average Score = (Sum of Task Result Scores ÷ Total Tasks) × 100 (± Standard Deviation)</td>
     </tr>
+    <tr>
+      <td><strong>Pass@1 (%)</strong></td>
+      <td><code>pass@1</code></td>
+      <td>Pass@1 = (Sum over tasks of (Passed Trials ÷ Trials Run) ÷ Total Tasks) × 100</td>
+    </tr>
+    <tr>
+      <td><strong>Pass Rate (%)</strong></td>
+      <td><code>pass^K</code></td>
+      <td>Pass Rate = (Tasks where every trial passed ÷ Total Tasks) × 100</td>
+    </tr>
+    <tr>
+      <td><strong>Pass@<em>K</em> Rate (%)</strong></td>
+      <td><code>pass@K</code></td>
+      <td>Pass@<em>K</em> = (Tasks where at least one trial passed ÷ Total Tasks) × 100</td>
+    </tr>
   </tbody>
 </table>
 </div>
+
+A trial passes only when its Result Score is `1.0`,
+meaning both Outcome and Quality are perfect.
+Pass@1 estimates the share of tasks a model passes on a single attempt.
+Because it averages each task's own pass rate,
+it stays comparable when tasks run different numbers of trials.
+Pass Rate and Pass@*K* depend on how many trials each task ran:
+fewer trials make Pass Rate easier to reach and Pass@*K* harder.
+The leaderboard ranks models by Average Score by default.
 
 </StoryChapter>
 

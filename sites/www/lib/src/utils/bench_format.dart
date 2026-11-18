@@ -13,14 +13,18 @@ library;
 /// The placeholder shown when a value isn't available.
 const String missingValue = '—';
 
-/// Formats a percentage value, such as `85.4%`.
-String formatPercent(double? value, {int decimals = 1}) =>
-    value == null ? missingValue : '${value.toStringAsFixed(decimals)}%';
+/// Formats a fraction from 0 to 1 as a percentage, such as `85.4%`.
+String formatPercent(double? fraction, {int decimals = 1}) => fraction == null
+    ? missingValue
+    : '${(fraction * 100).toStringAsFixed(decimals)}%';
 
 /// Formats a score with its standard deviation, such as `85.4% ± 4.2%`.
+///
+/// Both [mean] and [sd] are fractions from 0 to 1.
 String formatScoreWithSd(double? mean, double? sd) {
   if (mean == null || sd == null) return missingValue;
-  return '${mean.toStringAsFixed(1)}% ± ${sd.toStringAsFixed(1)}%';
+  return '${(mean * 100).toStringAsFixed(1)}% ± '
+      '${(sd * 100).toStringAsFixed(1)}%';
 }
 
 /// Formats a token count with thousands separators, such as `1,234,567`.

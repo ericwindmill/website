@@ -53,8 +53,8 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
 
   String? _selectedAgent;
   String? _selectedModel;
-  SortColumn _sortColumn = SortColumn.passRate;
-  bool _sortAscending = false; // default Pass Rate descending
+  SortColumn _sortColumn = SortColumn.avgScore;
+  bool _sortAscending = false; // default Avg Score descending
   BenchComparisonEntry? _selectedRow;
   bool _drawerOpen = false;
 
@@ -187,9 +187,10 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
       final metrics = entry.metricsFor(sortVariant);
       return switch (_sortColumn) {
         SortColumn.agentModel => null,
+        SortColumn.avgScore => metrics?.avgScore,
+        SortColumn.passAt1 => metrics?.passAt1Rate,
         SortColumn.passRate => metrics?.passRate,
         SortColumn.passAtK => metrics?.passAtKRate,
-        SortColumn.avgScore => metrics?.avgScore,
         SortColumn.tokens => metrics?.avgTokens,
         SortColumn.cost => metrics?.avgCost,
       };

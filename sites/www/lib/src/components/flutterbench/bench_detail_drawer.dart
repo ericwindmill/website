@@ -34,7 +34,7 @@ class BenchDetailDrawer extends StatelessComponent {
 
   final BenchComparisonEntry? entry;
 
-  /// Snapshot metadata, used for the Pass@K label and scoring weights.
+  /// Snapshot metadata, used for the scoring weights.
   final BenchSnapshot snapshot;
 
   final DisplayVariant variant;
@@ -47,7 +47,6 @@ class BenchDetailDrawer extends StatelessComponent {
   /// to reveal the description.
   final Map<String, String> taskEvaluations;
 
-  int get _k => snapshot.trialsPerTask;
   BenchScoring get _scoring => snapshot.scoring;
 
   @override
@@ -123,7 +122,6 @@ class BenchDetailDrawer extends StatelessComponent {
           _TaskBreakdownTable(
             key: ValueKey(currentEntry.displayKey),
             rows: taskRows,
-            trialsPerTask: _k,
             taskEvaluations: taskEvaluations,
           ),
         ]),
@@ -206,16 +204,12 @@ class BenchDetailDrawer extends StatelessComponent {
   Component _buildSummaryCards(BenchRunMetrics? metrics) {
     return div(classes: 'metric-cards-grid', [
       _buildSummaryCard(
-        label: 'Pass Rate',
-        value: formatPercent(metrics?.passRate),
-      ),
-      _buildSummaryCard(
-        label: 'Pass@$_k Rate',
-        value: formatPercent(metrics?.passAtKRate),
-      ),
-      _buildSummaryCard(
         label: 'Avg Score',
         value: formatScoreWithSd(metrics?.avgScore, metrics?.scoreSd),
+      ),
+      _buildSummaryCard(
+        label: 'Pass@1',
+        value: formatPercent(metrics?.passAt1Rate),
       ),
       _buildSummaryCard(
         label: 'Avg Tokens',
@@ -272,13 +266,11 @@ class BenchDetailDrawer extends StatelessComponent {
 class _TaskBreakdownTable extends StatefulComponent {
   const _TaskBreakdownTable({
     required this.rows,
-    required this.trialsPerTask,
     required this.taskEvaluations,
     super.key,
   });
 
   final List<_TaskRow> rows;
-  final int trialsPerTask;
   final Map<String, String> taskEvaluations;
 
   @override
@@ -297,18 +289,20 @@ class _TaskBreakdownTableState extends State<_TaskBreakdownTable> {
 
   @override
   Component build(BuildContext context) {
-    final k = component.trialsPerTask;
-
     return div(classes: 'per-task-table-wrapper', [
       table(classes: 'per-task-table', [
-        thead([
+        const thead([
           tr([
-            const th([.text('Task Name')]),
-            const th(classes: 'num', [.text('Result Score')]),
-            const th(classes: 'num', [.text('Outcome')]),
-            const th(classes: 'num', [.text('Quality')]),
-            th(classes: 'num', [.text('Passed / $k')]),
-            const th(classes: 'num', [.text('Avg Tokens')]),
+            th([.text('Task Name')]),
+            th(classes: 'num', [.text('Result Score')]),
+            th(classes: 'num', [.text('Outcome')]),
+            th(classes: 'num', [.text('Quality')]),
+            th(
+              classes: 'num',
+              attributes: {'title': 'Trials passed out of trials run'},
+              [.text('Trials Passed')],
+            ),
+            th(classes: 'num', [.text('Avg Tokens')]),
           ]),
         ]),
         tbody([
@@ -320,13 +314,13 @@ class _TaskBreakdownTableState extends State<_TaskBreakdownTable> {
               ),
             ]),
           for (final (index, row) in component.rows.indexed)
-            ..._buildTaskRows(row, index, k),
+            ..._buildTaskRows(row, index),
         ]),
       ]),
     ]);
   }
 
-  List<Component> _buildTaskRows(_TaskRow row, int index, int k) {
+  List<Component> _buildTaskRows(_TaskRow row, int index) {
     final evaluation =
         component.taskEvaluations[row.id] ??
         component.taskEvaluations[row.name];
@@ -370,24 +364,27 @@ class _TaskBreakdownTableState extends State<_TaskBreakdownTable> {
           td(classes: 'num', [
             _buildTaskCell(
               row,
-              (m) => formatPercent(m.resultScore),
+              (t) => formatPercent(t.metrics.resultScore),
               bold: true,
             ),
           ]),
           td(classes: 'num', [
-            _buildTaskCell(row, (m) => formatPercent(m.outcome)),
+            _buildTaskCell(row, (t) => formatPercent(t.metrics.outcome)),
           ]),
           td(classes: 'num', [
-            _buildTaskCell(row, (m) => formatPercent(m.quality)),
+            _buildTaskCell(row, (t) => formatPercent(t.metrics.quality)),
           ]),
           td(classes: 'num', [
             _buildTaskCell(
               row,
-              (m) => formatFraction(m.passedTrialCount, k),
+              // Tasks can run fewer trials than planned,
+              // so use each task's own trial count.
+              (t) =>
+                  formatFraction(t.metrics.passedTrialCount, t.trials.length),
             ),
           ]),
           td(classes: 'num', [
-            _buildTaskCell(row, (m) => formatTokens(m.meanTokens)),
+            _buildTaskCell(row, (t) => formatTokens(t.metrics.meanTokens)),
           ]),
         ],
       ),
@@ -419,11 +416,11 @@ class _TaskBreakdownTableState extends State<_TaskBreakdownTable> {
   /// as the leaderboard table's Both mode.
   Component _buildTaskCell(
     _TaskRow row,
-    String Function(BenchTaskMetrics) format, {
+    String Function(BenchTask) format, {
     bool bold = false,
   }) {
     String formatTask(BenchTask? task) =>
-        task == null ? missingValue : format(task.metrics);
+        task == null ? missingValue : format(task);
 
     Component value(String text) => bold ? strong([.text(text)]) : .text(text);
 

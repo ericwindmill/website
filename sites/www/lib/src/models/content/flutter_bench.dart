@@ -187,18 +187,21 @@ class BenchModelRun {
     required this.tasks,
   });
 
-  factory BenchModelRun.fromJson(Map<String, Object?> json) => BenchModelRun(
-    agentId: json['agentId'] as String,
-    agent: json['agent'] as String,
-    modelId: json['modelId'] as String,
-    model: json['model'] as String,
-    modelProvider: json['modelProvider'] as String,
-    variant: BenchVariant.fromString(json['variant'] as String),
-    startedAt: _dateTimeOrNull(json['startedAt']),
-    completedAt: _dateTimeOrNull(json['completedAt']),
-    metrics: BenchRunMetrics.fromJson(_map(json['metrics'])),
-    tasks: _list(json['tasks'], BenchTask.fromJson),
-  );
+  factory BenchModelRun.fromJson(Map<String, Object?> json) {
+    final tasks = _list(json['tasks'], BenchTask.fromJson);
+    return BenchModelRun(
+      agentId: json['agentId'] as String,
+      agent: json['agent'] as String,
+      modelId: json['modelId'] as String,
+      model: json['model'] as String,
+      modelProvider: json['modelProvider'] as String,
+      variant: BenchVariant.fromString(json['variant'] as String),
+      startedAt: _dateTimeOrNull(json['startedAt']),
+      completedAt: _dateTimeOrNull(json['completedAt']),
+      metrics: BenchRunMetrics.fromJson(_map(json['metrics']), tasks: tasks),
+      tasks: tasks,
+    );
+  }
 
   final String agentId;
   final String agent;
@@ -228,7 +231,7 @@ class BenchModelRun {
 
 /// Pre-aggregated metrics for a [BenchModelRun].
 ///
-/// Scores and rates are percentages from 0 to 100.
+/// Scores and rates are fractions from 0 to 1, such as `0.854` for 85.4%.
 /// Every nullable value is `null` when the run has no results.
 class BenchRunMetrics {
   const BenchRunMetrics({
@@ -237,6 +240,7 @@ class BenchRunMetrics {
     required this.passAtKTaskCount,
     required this.passRate,
     required this.passAtKRate,
+    required this.passAt1Rate,
     required this.avgScore,
     required this.scoreSd,
     required this.avgOutcome,
@@ -245,20 +249,27 @@ class BenchRunMetrics {
     required this.avgCost,
   });
 
-  factory BenchRunMetrics.fromJson(Map<String, Object?> json) =>
-      BenchRunMetrics(
-        totalTasks: (json['totalTasks'] as num).toInt(),
-        passedTaskCount: (json['passedTaskCount'] as num).toInt(),
-        passAtKTaskCount: (json['passAtKTaskCount'] as num).toInt(),
-        passRate: _doubleOrNull(json['passRate']),
-        passAtKRate: _doubleOrNull(json['passAtKRate']),
-        avgScore: _doubleOrNull(json['avgScore']),
-        scoreSd: _doubleOrNull(json['scoreSd']),
-        avgOutcome: _doubleOrNull(json['avgOutcome']),
-        avgQuality: _doubleOrNull(json['avgQuality']),
-        avgTokens: (json['avgTokens'] as num?)?.round(),
-        avgCost: _doubleOrNull(json['avgCost']),
-      );
+  /// Creates metrics from [json].
+  ///
+  /// If [json] doesn't include `passAt1Rate`,
+  /// it's calculated from [tasks] with [passAt1RateOf].
+  factory BenchRunMetrics.fromJson(
+    Map<String, Object?> json, {
+    List<BenchTask> tasks = const [],
+  }) => BenchRunMetrics(
+    totalTasks: (json['totalTasks'] as num).toInt(),
+    passedTaskCount: (json['passedTaskCount'] as num).toInt(),
+    passAtKTaskCount: (json['passAtKTaskCount'] as num).toInt(),
+    passRate: _doubleOrNull(json['passRate']),
+    passAtKRate: _doubleOrNull(json['passAtKRate']),
+    passAt1Rate: _doubleOrNull(json['passAt1Rate']) ?? passAt1RateOf(tasks),
+    avgScore: _doubleOrNull(json['avgScore']),
+    scoreSd: _doubleOrNull(json['scoreSd']),
+    avgOutcome: _doubleOrNull(json['avgOutcome']),
+    avgQuality: _doubleOrNull(json['avgQuality']),
+    avgTokens: (json['avgTokens'] as num?)?.round(),
+    avgCost: _doubleOrNull(json['avgCost']),
+  );
 
   final int totalTasks;
 
@@ -268,8 +279,18 @@ class BenchRunMetrics {
   /// The number of tasks where at least one trial passed.
   final int passAtKTaskCount;
 
+  /// The fraction of tasks where every trial passed.
   final double? passRate;
+
+  /// The fraction of tasks where at least one trial passed.
   final double? passAtKRate;
+
+  /// The expected fraction of tasks a single attempt passes.
+  ///
+  /// Unlike [passRate] and [passAtKRate], this doesn't depend on
+  /// how many trials each task ran.
+  final double? passAt1Rate;
+
   final double? avgScore;
 
   /// The sample standard deviation of task result scores.
@@ -284,6 +305,21 @@ class BenchRunMetrics {
   /// The mean cost in USD per task run,
   /// or `null` if pricing isn't available for this model.
   final double? avgCost;
+
+  /// Calculates Pass@1 for [tasks]: the mean, across tasks,
+  /// of the fraction of each task's trials that passed.
+  ///
+  /// Tasks without trials are skipped.
+  /// Returns `null` if no task has trials.
+  static double? passAt1RateOf(List<BenchTask> tasks) {
+    final rates = [
+      for (final task in tasks)
+        if (task.trials.isNotEmpty)
+          task.metrics.passedTrialCount / task.trials.length,
+    ];
+    if (rates.isEmpty) return null;
+    return rates.reduce((a, b) => a + b) / rates.length;
+  }
 }
 
 /// A benchmark task, its pre-aggregated metrics, and its raw trials.
@@ -313,7 +349,7 @@ class BenchTask {
 
 /// Pre-aggregated metrics for a [BenchTask].
 ///
-/// Scores are percentages from 0 to 100.
+/// Scores are fractions from 0 to 1, such as `0.854` for 85.4%.
 class BenchTaskMetrics {
   const BenchTaskMetrics({
     required this.resultScore,
@@ -456,6 +492,10 @@ class BenchComparisonEntry {
   /// Enhanced minus baseline Pass@K rate.
   double? get passAtKDelta =>
       _delta(baselineMetrics?.passAtKRate, enhancedMetrics?.passAtKRate);
+
+  /// Enhanced minus baseline Pass@1 rate.
+  double? get passAt1Delta =>
+      _delta(baselineMetrics?.passAt1Rate, enhancedMetrics?.passAt1Rate);
 
   /// Enhanced minus baseline average score.
   double? get avgScoreDelta =>

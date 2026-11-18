@@ -24,19 +24,35 @@ void main() {
       final [baseline, enhanced] = results.runs;
       expect(baseline.variant, BenchVariant.baseline);
       expect(enhanced.variant, BenchVariant.enhanced);
-      expect(enhanced.metrics.passAtKRate, 100.0);
+      expect(enhanced.metrics.passAtKRate, 1.0);
       expect(enhanced.metrics.avgTokens, 1500);
       expect(enhanced.metrics.avgCost, isNull);
 
       final task = enhanced.tasks.single;
       expect(task.category, TaskCategory.longHorizon);
-      expect(task.metrics.resultScore, 90.0);
+      expect(task.metrics.resultScore, 0.9);
       expect(task.metrics.meanCost, isNull);
 
       final errored = task.trials.last;
       expect(errored.status, TrialStatus.errored);
       expect(errored.outcome, isNull);
       expect(errored.quality, isNull);
+    });
+
+    test('calculates Pass@1 from tasks when the export omits it', () {
+      final [baseline, enhanced] = BenchResults.fromJson(_resultsJson()).runs;
+
+      // Baseline: 0 of 1 trials passed.
+      expect(baseline.metrics.passAt1Rate, 0.0);
+      // Enhanced: 1 of 2 trials passed. Errored trials count as not passing.
+      expect(enhanced.metrics.passAt1Rate, 0.5);
+    });
+
+    test('prefers an exported Pass@1 rate', () {
+      final json = _resultsJson();
+      (_runs(json).first['metrics'] as Map)['passAt1Rate'] = 0.25;
+      final results = BenchResults.fromJson(json);
+      expect(results.runs.first.metrics.passAt1Rate, 0.25);
     });
 
     test('throws on an unknown variant', () {
@@ -59,6 +75,53 @@ void main() {
     });
   });
 
+  group('BenchRunMetrics.passAt1RateOf', () {
+    BenchTask task(int passed, int trials) => BenchTask(
+      id: 'task-$passed-$trials',
+      name: 'Task',
+      category: TaskCategory.shortHorizon,
+      metrics: BenchTaskMetrics(
+        resultScore: 0,
+        outcome: 0,
+        quality: 0,
+        passedTrialCount: passed,
+        passedAnyTrial: passed > 0,
+        passedAllTrials: passed == trials,
+        meanTokens: 0,
+        meanCost: null,
+      ),
+      trials: [
+        for (var i = 0; i < trials; i++)
+          BenchTrial(
+            trialIndex: i + 1,
+            outcome: 0,
+            quality: 0,
+            tokens: 0,
+            cost: null,
+            status: i < passed ? TrialStatus.passed : TrialStatus.failed,
+            durationSeconds: 0,
+          ),
+      ],
+    );
+
+    test('averages each task by its own trial count', () {
+      // 3/5 and 1/1 average to 0.8, regardless of trials per task.
+      expect(
+        BenchRunMetrics.passAt1RateOf([task(3, 5), task(1, 1)]),
+        closeTo(0.8, 1e-9),
+      );
+    });
+
+    test('skips tasks without trials', () {
+      expect(BenchRunMetrics.passAt1RateOf([task(2, 4), task(0, 0)]), 0.5);
+    });
+
+    test('returns null without trials', () {
+      expect(BenchRunMetrics.passAt1RateOf(const []), isNull);
+      expect(BenchRunMetrics.passAt1RateOf([task(0, 0)]), isNull);
+    });
+  });
+
   group('BenchComparisonEntry', () {
     test('pairs baseline and enhanced runs and computes deltas', () {
       final results = BenchResults.fromJson(_resultsJson());
@@ -67,7 +130,7 @@ void main() {
       expect(entry.agent, 'Antigravity');
       expect(entry.model, 'Gemini 4 Argon');
       expect(entry.passRateDelta, 0.0);
-      expect(entry.passAtKDelta, 100.0);
+      expect(entry.passAtKDelta, 1.0);
       expect(entry.tokensDelta, 500);
       expect(entry.costDelta, isNull, reason: 'enhanced cost is unavailable');
     });
@@ -152,8 +215,8 @@ void main() {
                     t.status == TrialStatus.failed,
               )
               .toList();
-          final outcome = _mean(scored.map((t) => t.outcome!)) * 100;
-          final quality = _mean(scored.map((t) => t.quality!)) * 100;
+          final outcome = _mean(scored.map((t) => t.outcome!));
+          final quality = _mean(scored.map((t) => t.quality!));
           final passed = task.trials
               .where((t) => t.status == TrialStatus.passed)
               .length;
@@ -216,11 +279,11 @@ void main() {
         expect(metrics.passAtKTaskCount, passedAny);
         expect(
           metrics.passRate,
-          closeTo(passedAll / tasks.length * 100, _tolerance),
+          closeTo(passedAll / tasks.length, _tolerance),
         );
         expect(
           metrics.passAtKRate,
-          closeTo(passedAny / tasks.length * 100, _tolerance),
+          closeTo(passedAny / tasks.length, _tolerance),
         );
         expect(metrics.avgScore, closeTo(_mean(scores), _tolerance));
         expect(metrics.scoreSd, closeTo(_sampleSd(scores), _tolerance));
@@ -237,8 +300,9 @@ void main() {
   });
 }
 
-/// Allows for rounding in the published metrics.
-const _tolerance = 0.01;
+/// Allows for rounding in the published metrics,
+/// which are fractions from 0 to 1 rounded to 4 decimal places.
+const _tolerance = 0.0005;
 
 double _mean(Iterable<double> values) =>
     values.reduce((a, b) => a + b) / values.length;
@@ -295,10 +359,10 @@ const Map<String, Object?> _fixture = {
         'passAtKTaskCount': 0,
         'passRate': 0.0,
         'passAtKRate': 0.0,
-        'avgScore': 50.0,
+        'avgScore': 0.5,
         'scoreSd': 0.0,
-        'avgOutcome': 50.0,
-        'avgQuality': 50.0,
+        'avgOutcome': 0.5,
+        'avgQuality': 0.5,
         'avgTokens': 1000.0,
         'avgCost': 1.25,
       },
@@ -308,9 +372,9 @@ const Map<String, Object?> _fixture = {
           'name': 'Add Web Support',
           'category': 'long_horizon',
           'metrics': {
-            'resultScore': 50.0,
-            'outcome': 50.0,
-            'quality': 50.0,
+            'resultScore': 0.5,
+            'outcome': 0.5,
+            'quality': 0.5,
             'passedTrialCount': 0,
             'passedAnyTrial': false,
             'passedAllTrials': false,
@@ -345,11 +409,11 @@ const Map<String, Object?> _fixture = {
         'passedTaskCount': 0,
         'passAtKTaskCount': 1,
         'passRate': 0.0,
-        'passAtKRate': 100.0,
-        'avgScore': 90.0,
+        'passAtKRate': 1.0,
+        'avgScore': 0.9,
         'scoreSd': 0.0,
-        'avgOutcome': 90.0,
-        'avgQuality': 90.0,
+        'avgOutcome': 0.9,
+        'avgQuality': 0.9,
         'avgTokens': 1500.0,
         'avgCost': null,
       },
@@ -359,9 +423,9 @@ const Map<String, Object?> _fixture = {
           'name': 'Add Web Support',
           'category': 'long_horizon',
           'metrics': {
-            'resultScore': 90.0,
-            'outcome': 90.0,
-            'quality': 90.0,
+            'resultScore': 0.9,
+            'outcome': 0.9,
+            'quality': 0.9,
             'passedTrialCount': 1,
             'passedAnyTrial': true,
             'passedAllTrials': false,

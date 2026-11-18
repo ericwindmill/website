@@ -42,10 +42,9 @@ visit the [methodology](/flutterbench/methodology) page.
 
 <StoryChapter number="02" title="Tasks" id="tasks">
 
-For each task, **Developer request** summarizes
-what a developer asks the agent to do,
-and **What we evaluate** describes what the task grades
-and, where relevant, what's out of scope.
+For each task, **developer intent** summarizes
+what a developer wants to achieve with an agent,
+and **evaluates** describes what the task is judging the agent on at a high-level.
 
 The following 14 tasks make up our "MVP dataset". We're actively working
 on covering more CUJs.

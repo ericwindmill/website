@@ -12,15 +12,18 @@ description: >-
 
 #### Metric definitions and formulas
 
-- **Pass Rate (%)**
-  Percentage of benchmark tasks where every trial passed
-  (`Outcome == 1.0` in all *K* trials).
-- **Pass@*K* Rate (%)** Reliability metric representing the percentage of tasks
-  where at least 1 of *K* trials passed.
-  *K* is the number of trials run per task.
 - **Avg Score (%)** Mean Result Score across all tasks, computed as
   `Outcome (65%) + Quality (35%)`,
   shown with standard deviation (± SD).
+  The leaderboard is sorted by this column by default.
+- **Pass@1 (%)** Expected percentage of tasks a model passes
+  on a single attempt.
+  For each task, this is the share of its trials that passed,
+  averaged across all tasks.
+  A trial passes only when its Result Score is `1.0`.
+- **Pass Rate (%)** Percentage of tasks where every trial passed.
+- **Pass@*K* Rate (%)** Percentage of tasks where at least one trial passed.
+  *K* is the number of trials a task ran, which can vary between tasks.
 - **Avg Tokens & Cost** Mean token consumption and USD cost per task run.
   Cost shows `—` when pricing isn't available for a model.
 

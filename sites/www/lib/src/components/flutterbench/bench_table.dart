@@ -11,9 +11,10 @@ import 'bench_controls.dart';
 
 enum SortColumn {
   agentModel,
+  avgScore,
+  passAt1,
   passRate,
   passAtK,
-  avgScore,
   tokens,
   cost,
 }
@@ -34,7 +35,7 @@ class BenchTable extends StatelessComponent {
 
   final List<BenchComparisonEntry> entries;
 
-  /// Snapshot metadata, used for the Pass@K label and scoring weights.
+  /// Snapshot metadata, used for the scoring weights.
   final BenchSnapshot snapshot;
 
   final DisplayVariant variant;
@@ -45,7 +46,8 @@ class BenchTable extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final k = snapshot.trialsPerTask;
+    // Labels don't include `snapshot.trialsPerTask`, because some tasks
+    // run fewer trials than planned.
     final scoring = snapshot.scoring;
 
     return div(classes: 'bench-table-card', [
@@ -59,25 +61,32 @@ class BenchTable extends StatelessComponent {
                 isNum: false,
               ),
               _buildHeader(
-                label: 'Pass Rate (%)',
-                column: SortColumn.passRate,
-                isNum: true,
-                title: 'Percentage of tasks where all $k trials passed',
-              ),
-              _buildHeader(
-                label: 'Pass@$k Rate (%)',
-                column: SortColumn.passAtK,
-                isNum: true,
-                title:
-                    'Percentage of tasks where at least 1 of $k trials passed',
-              ),
-              _buildHeader(
                 label: 'Avg Score (%)',
                 column: SortColumn.avgScore,
                 isNum: true,
                 title:
                     'Mean Result Score: Outcome (${scoring.outcomePercent}%) + '
                     'Quality (${scoring.qualityPercent}%) (mean ± SD)',
+              ),
+              _buildHeader(
+                label: 'Pass@1 (%)',
+                column: SortColumn.passAt1,
+                isNum: true,
+                title:
+                    'Expected percentage of tasks passed on a single attempt '
+                    '(average share of passing trials per task)',
+              ),
+              _buildHeader(
+                label: 'Pass Rate (%)',
+                column: SortColumn.passRate,
+                isNum: true,
+                title: 'Percentage of tasks where every trial passed',
+              ),
+              _buildHeader(
+                label: 'Pass@K Rate (%)',
+                column: SortColumn.passAtK,
+                isNum: true,
+                title: 'Percentage of tasks where at least one trial passed',
               ),
               _buildHeader(
                 label: 'Avg Tokens',
@@ -105,6 +114,22 @@ class BenchTable extends StatelessComponent {
                     span(classes: 'model-name', [.text(entry.model)]),
                   ]),
 
+                  // Avg Score
+                  td(classes: 'num', [
+                    _buildMetricCell(
+                      entry,
+                      (m) => formatScoreWithSd(m?.avgScore, m?.scoreSd),
+                    ),
+                  ]),
+
+                  // Pass@1
+                  td(classes: 'num', [
+                    _buildMetricCell(
+                      entry,
+                      (m) => formatPercent(m?.passAt1Rate),
+                    ),
+                  ]),
+
                   // Pass Rate
                   td(classes: 'num', [
                     _buildMetricCell(
@@ -118,14 +143,6 @@ class BenchTable extends StatelessComponent {
                     _buildMetricCell(
                       entry,
                       (m) => formatPercent(m?.passAtKRate),
-                    ),
-                  ]),
-
-                  // Avg Score
-                  td(classes: 'num', [
-                    _buildMetricCell(
-                      entry,
-                      (m) => formatScoreWithSd(m?.avgScore, m?.scoreSd),
                     ),
                   ]),
 

@@ -7,14 +7,17 @@ import 'package:test/test.dart';
 
 void main() {
   test('formatPercent', () {
-    expect(formatPercent(85.4), '85.4%');
-    expect(formatPercent(85.426, decimals: 2), '85.43%');
+    expect(formatPercent(0.854), '85.4%');
+    expect(formatPercent(0.85426, decimals: 2), '85.43%');
+    expect(formatPercent(0.1429), '14.3%');
+    expect(formatPercent(0), '0.0%');
+    expect(formatPercent(1), '100.0%');
     expect(formatPercent(null), missingValue);
   });
 
   test('formatScoreWithSd', () {
-    expect(formatScoreWithSd(85.4, 4.2), '85.4% ± 4.2%');
-    expect(formatScoreWithSd(null, 4.2), missingValue);
+    expect(formatScoreWithSd(0.854, 0.042), '85.4% ± 4.2%');
+    expect(formatScoreWithSd(null, 0.042), missingValue);
   });
 
   test('formatTokens', () {
