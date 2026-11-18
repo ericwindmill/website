@@ -40,8 +40,8 @@ class DatasetTable extends StatelessComponent {
         const thead([
           tr([
             th([.text('Name')]),
-            th([.text('Developer request')]),
-            th([.text('What we evaluate')]),
+            th([.text('Developer intent')]),
+            th([.text('Evaluates')]),
           ]),
         ]),
         tbody([
@@ -49,7 +49,7 @@ class DatasetTable extends StatelessComponent {
             tr([
               td([.text(task.name)]),
               td(classes: 'developer-request', [
-                .text('“${task.developerRequest}”'),
+                .text(task.developerRequest),
               ]),
               td(withInlineCode(task.evaluates)),
             ]),

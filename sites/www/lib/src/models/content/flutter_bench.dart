@@ -152,7 +152,7 @@ class BenchEnvironment {
     required this.flutterVersion,
     required this.dartVersion,
     required this.suiteVersion,
-    required this.harnessVersion,
+    this.harnessVersion,
   });
 
   factory BenchEnvironment.fromJson(Map<String, Object?> json) =>
@@ -160,13 +160,16 @@ class BenchEnvironment {
         flutterVersion: json['flutterVersion'] as String,
         dartVersion: json['dartVersion'] as String,
         suiteVersion: json['suiteVersion'] as String,
-        harnessVersion: json['harnessVersion'] as String,
+        harnessVersion: json['harnessVersion'] as String?,
       );
 
   final String flutterVersion;
   final String dartVersion;
   final String suiteVersion;
-  final String harnessVersion;
+
+  /// The version of the evaluation harness,
+  /// or `null` if the results file doesn't record it.
+  final String? harnessVersion;
 }
 
 /// An evaluation run for a specific agent and model under a single variant.
