@@ -74,7 +74,13 @@ class FlutterBenchPage extends StatelessComponent {
       ]),
 
       // Client-hydrated interactive leaderboard
-      FlutterBenchInteractive(rawResultsJson: rawJson),
+      FlutterBenchInteractive(
+        rawResultsJson: rawJson,
+        rawDatasetJson: context.decodeJsonObject(
+          'flutterbench.dataset_tasks',
+          (json) => json,
+        ),
+      ),
 
       // Static content from Markdown, such as the methodology card and legend.
       if (child case final child?) div(classes: 'container', [child]),

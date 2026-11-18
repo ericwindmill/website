@@ -626,6 +626,88 @@
           tbody tr:last-child td {
             border-bottom: none;
           }
+
+          // Expandable task rows
+          tr.task-row.expandable {
+            cursor: pointer;
+
+            &:hover td {
+              background: var(--grey-1);
+            }
+
+            // Collapse the border between a task and its open description.
+            &.expanded td {
+              border-bottom-color: transparent;
+            }
+          }
+
+          .task-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0;
+            border: none;
+            background: none;
+            color: inherit;
+            font: inherit;
+            text-align: left;
+            cursor: pointer;
+
+            &:focus-visible {
+              outline: 2px solid var(--blue-6, currentColor);
+              outline-offset: 2px;
+              border-radius: 2px;
+            }
+
+            .task-toggle-icon {
+              flex-shrink: 0;
+              transition: transform 0.2s ease;
+            }
+
+            &[aria-expanded='true'] .task-toggle-icon {
+              transform: rotate(180deg);
+            }
+          }
+
+          tr.task-detail-row {
+            td {
+              padding-top: 0;
+              background: var(--grey-1);
+            }
+
+            .task-detail {
+              // Stay readable on narrow screens even when the
+              // table itself is wider than the viewport.
+              position: sticky;
+              left: 14px;
+              max-width: min(60ch, calc(100vw - 80px));
+              padding: 10px 0 2px 26px;
+              line-height: 1.5;
+
+              p {
+                margin: 4px 0 0;
+              }
+            }
+
+            .task-detail-label {
+              font-family: var(--font-ui);
+              font-size: 11px;
+              font-weight: var(--font-weight-bold);
+              letter-spacing: 0.04em;
+              text-transform: uppercase;
+              color: var(--blue-10);
+            }
+          }
+
+          tr.task-row.expanded td {
+            background: var(--grey-1);
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .task-toggle .task-toggle-icon {
+              transition: none;
+            }
+          }
         }
       }
 

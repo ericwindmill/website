@@ -7,6 +7,8 @@ import 'package:jaspr/jaspr.dart';
 
 import '../../models/content/flutter_bench.dart';
 import '../../utils/bench_format.dart';
+import '../../utils/inline_code.dart';
+import '../common/icon.dart';
 import 'bench_controls.dart';
 
 /// Slide-over detail drawer for in-depth inspection of a selected model/agent run.
@@ -14,7 +16,8 @@ import 'bench_controls.dart';
 /// Displays:
 /// 1. Top-level metric summary cards.
 /// 2. Outcome / Quality breakdown cards, weighted by the snapshot's scoring.
-/// 3. Per-task breakdown table respecting the active variant.
+/// 3. Per-task breakdown table respecting the active variant,
+///    with rows that expand to show what each task evaluates.
 ///
 /// The drawer renders whichever [variant] it's given and doesn't
 /// display a [BenchVariantToggle] while only baseline results are shown.
@@ -25,6 +28,7 @@ class BenchDetailDrawer extends StatelessComponent {
     required this.variant,
     required this.isOpen,
     required this.onClose,
+    this.taskEvaluations = const {},
     super.key,
   });
 
@@ -36,6 +40,12 @@ class BenchDetailDrawer extends StatelessComponent {
   final DisplayVariant variant;
   final bool isOpen;
   final VoidCallback onClose;
+
+  /// What each task evaluates, keyed by [BenchTask.id] or [BenchTask.name].
+  ///
+  /// Tasks with an entry can be expanded in the per-task table
+  /// to reveal the description.
+  final Map<String, String> taskEvaluations;
 
   int get _k => snapshot.trialsPerTask;
   BenchScoring get _scoring => snapshot.scoring;
@@ -110,57 +120,12 @@ class BenchDetailDrawer extends StatelessComponent {
           const h3(classes: 'section-heading', [
             .text('Benchmark Tasks Breakdown'),
           ]),
-          div(classes: 'per-task-table-wrapper', [
-            table(classes: 'per-task-table', [
-              thead([
-                tr([
-                  const th([.text('Task Name')]),
-                  const th(classes: 'num', [.text('Result Score')]),
-                  const th(classes: 'num', [.text('Outcome')]),
-                  const th(classes: 'num', [.text('Quality')]),
-                  th(classes: 'num', [.text('Passed / $_k')]),
-                  const th(classes: 'num', [.text('Avg Tokens')]),
-                ]),
-              ]),
-              tbody([
-                if (taskRows.isEmpty)
-                  const tr([
-                    td(
-                      attributes: {'colspan': '6'},
-                      [.text('No results yet for this agent and model.')],
-                    ),
-                  ]),
-                for (final row in taskRows)
-                  tr([
-                    td([
-                      strong([.text(row.name)]),
-                    ]),
-                    td(classes: 'num', [
-                      _buildTaskCell(
-                        row,
-                        (m) => formatPercent(m.resultScore),
-                        bold: true,
-                      ),
-                    ]),
-                    td(classes: 'num', [
-                      _buildTaskCell(row, (m) => formatPercent(m.outcome)),
-                    ]),
-                    td(classes: 'num', [
-                      _buildTaskCell(row, (m) => formatPercent(m.quality)),
-                    ]),
-                    td(classes: 'num', [
-                      _buildTaskCell(
-                        row,
-                        (m) => formatFraction(m.passedTrialCount, _k),
-                      ),
-                    ]),
-                    td(classes: 'num', [
-                      _buildTaskCell(row, (m) => formatTokens(m.meanTokens)),
-                    ]),
-                  ]),
-              ]),
-            ]),
-          ]),
+          _TaskBreakdownTable(
+            key: ValueKey(currentEntry.displayKey),
+            rows: taskRows,
+            trialsPerTask: _k,
+            taskEvaluations: taskEvaluations,
+          ),
         ]),
       ]),
     ]);
@@ -278,6 +243,176 @@ class BenchDetailDrawer extends StatelessComponent {
     ]);
   }
 
+  Component _buildSummaryCard({required String label, required String value}) {
+    return div(classes: 'summary-metric-card', [
+      span(classes: 'card-label', [.text(label)]),
+      span(classes: 'card-value', [.text(value)]),
+    ]);
+  }
+
+  Component _buildBreakdownCard(
+    String label,
+    String pillClass,
+    String value,
+  ) {
+    return div(classes: 'breakdown-card', [
+      span(classes: 'pill-label $pillClass', [.text(label)]),
+      span(classes: 'large-value', [.text(value)]),
+    ]);
+  }
+}
+
+/// The per-task breakdown table in [BenchDetailDrawer].
+///
+/// Each task with a description in `taskEvaluations` acts as
+/// an expansion panel: tapping anywhere on its row reveals
+/// a full-width row beneath it describing what the task evaluates.
+/// A full-width row is used rather than a tooltip so the description
+/// stays readable on narrow screens, where the table scrolls horizontally.
+class _TaskBreakdownTable extends StatefulComponent {
+  const _TaskBreakdownTable({
+    required this.rows,
+    required this.trialsPerTask,
+    required this.taskEvaluations,
+    super.key,
+  });
+
+  final List<_TaskRow> rows;
+  final int trialsPerTask;
+  final Map<String, String> taskEvaluations;
+
+  @override
+  State<_TaskBreakdownTable> createState() => _TaskBreakdownTableState();
+}
+
+class _TaskBreakdownTableState extends State<_TaskBreakdownTable> {
+  /// The IDs of the tasks whose descriptions are expanded.
+  final Set<String> _expandedTaskIds = {};
+
+  static const _columnCount = 6;
+
+  void _toggle(String taskId) => setState(() {
+    if (!_expandedTaskIds.remove(taskId)) _expandedTaskIds.add(taskId);
+  });
+
+  @override
+  Component build(BuildContext context) {
+    final k = component.trialsPerTask;
+
+    return div(classes: 'per-task-table-wrapper', [
+      table(classes: 'per-task-table', [
+        thead([
+          tr([
+            const th([.text('Task Name')]),
+            const th(classes: 'num', [.text('Result Score')]),
+            const th(classes: 'num', [.text('Outcome')]),
+            const th(classes: 'num', [.text('Quality')]),
+            th(classes: 'num', [.text('Passed / $k')]),
+            const th(classes: 'num', [.text('Avg Tokens')]),
+          ]),
+        ]),
+        tbody([
+          if (component.rows.isEmpty)
+            const tr([
+              td(
+                attributes: {'colspan': '$_columnCount'},
+                [.text('No results yet for this agent and model.')],
+              ),
+            ]),
+          for (final (index, row) in component.rows.indexed)
+            ..._buildTaskRows(row, index, k),
+        ]),
+      ]),
+    ]);
+  }
+
+  List<Component> _buildTaskRows(_TaskRow row, int index, int k) {
+    final evaluation =
+        component.taskEvaluations[row.id] ??
+        component.taskEvaluations[row.name];
+    final expandable = evaluation != null;
+    final expanded = expandable && _expandedTaskIds.contains(row.id);
+    final detailId = 'task-detail-$index';
+
+    return [
+      tr(
+        classes: [
+          'task-row',
+          if (expandable) 'expandable',
+          if (expanded) 'expanded',
+        ].join(' '),
+        // The whole row is the tap target. The button inside the
+        // first cell provides keyboard and screen reader access;
+        // its click bubbles up to this handler.
+        events: expandable ? events(onClick: () => _toggle(row.id)) : null,
+        [
+          td([
+            if (expandable)
+              button(
+                classes: 'task-toggle',
+                attributes: {
+                  'type': 'button',
+                  'aria-expanded': '$expanded',
+                  'aria-controls': detailId,
+                },
+                [
+                  const Icon(
+                    symbol: 'expand_more',
+                    size: .sm,
+                    classes: ['task-toggle-icon'],
+                  ),
+                  strong([.text(row.name)]),
+                ],
+              )
+            else
+              strong([.text(row.name)]),
+          ]),
+          td(classes: 'num', [
+            _buildTaskCell(
+              row,
+              (m) => formatPercent(m.resultScore),
+              bold: true,
+            ),
+          ]),
+          td(classes: 'num', [
+            _buildTaskCell(row, (m) => formatPercent(m.outcome)),
+          ]),
+          td(classes: 'num', [
+            _buildTaskCell(row, (m) => formatPercent(m.quality)),
+          ]),
+          td(classes: 'num', [
+            _buildTaskCell(
+              row,
+              (m) => formatFraction(m.passedTrialCount, k),
+            ),
+          ]),
+          td(classes: 'num', [
+            _buildTaskCell(row, (m) => formatTokens(m.meanTokens)),
+          ]),
+        ],
+      ),
+      if (expandable)
+        tr(
+          id: detailId,
+          classes: 'task-detail-row',
+          attributes: {if (!expanded) 'hidden': ''},
+          [
+            td(
+              attributes: const {'colspan': '$_columnCount'},
+              [
+                div(classes: 'task-detail', [
+                  const span(classes: 'task-detail-label', [
+                    .text('What we evaluate'),
+                  ]),
+                  p(withInlineCode(evaluation)),
+                ]),
+              ],
+            ),
+          ],
+        ),
+    ];
+  }
+
   /// Renders a per-task cell.
   ///
   /// Paired rows use the same stacked "Enhanced" / "Base" layout
@@ -307,24 +442,6 @@ class BenchDetailDrawer extends StatelessComponent {
       ]),
     ]);
   }
-
-  Component _buildSummaryCard({required String label, required String value}) {
-    return div(classes: 'summary-metric-card', [
-      span(classes: 'card-label', [.text(label)]),
-      span(classes: 'card-value', [.text(value)]),
-    ]);
-  }
-
-  Component _buildBreakdownCard(
-    String label,
-    String pillClass,
-    String value,
-  ) {
-    return div(classes: 'breakdown-card', [
-      span(classes: 'pill-label $pillClass', [.text(label)]),
-      span(classes: 'large-value', [.text(value)]),
-    ]);
-  }
 }
 
 /// A row in the per-task table, holding a task from one or both variants.
@@ -340,5 +457,6 @@ class _TaskRow {
 
   BenchTask get _primary => (enhanced ?? baseline)!;
 
+  String get id => _primary.id;
   String get name => _primary.name;
 }

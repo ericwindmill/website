@@ -6,6 +6,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import '../../utils/data_utils.dart';
+import '../../utils/inline_code.dart';
 
 /// The table of tasks in the Flutter Bench dataset,
 /// showing what a developer asks for in each task and what's evaluated.
@@ -50,7 +51,7 @@ class DatasetTable extends StatelessComponent {
               td(classes: 'developer-request', [
                 .text('“${task.developerRequest}”'),
               ]),
-              td(_withInlineCode(task.evaluates)),
+              td(withInlineCode(task.evaluates)),
             ]),
         ]),
       ]),
@@ -93,14 +94,4 @@ final class _DatasetTask {
   ///
   /// Backtick-delimited spans render as inline code.
   final String evaluates;
-}
-
-/// Splits [text] on backticks, rendering odd segments as inline `code`.
-List<Component> _withInlineCode(String text) {
-  final segments = text.split('`');
-  return [
-    for (final (i, segment) in segments.indexed)
-      if (segment.isNotEmpty)
-        if (i.isOdd) code([.text(segment)]) else .text(segment),
-  ];
 }

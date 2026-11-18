@@ -181,7 +181,7 @@ Map<String, Object?> __tabsTabs(_tabs.Tabs c) => {
 };
 Map<String, Object?> __flutterbench_interactiveFlutterBenchInteractive(
   _flutterbench_interactive.FlutterBenchInteractive c,
-) => {'rawResultsJson': c.rawResultsJson};
+) => {'rawResultsJson': c.rawResultsJson, 'rawDatasetJson': c.rawDatasetJson};
 Map<String, Object?> __interactive_detail_cardInteractiveDetailCard(
   _interactive_detail_card.InteractiveDetailCard c,
 ) => {

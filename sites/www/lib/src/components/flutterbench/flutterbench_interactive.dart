@@ -26,11 +26,16 @@ import 'bench_table.dart';
 class FlutterBenchInteractive extends StatefulComponent {
   const FlutterBenchInteractive({
     required this.rawResultsJson,
+    required this.rawDatasetJson,
     super.key,
   });
 
   /// The contents of the results file, decoded with [BenchResults.fromJson].
   final Map<String, Object?> rawResultsJson;
+
+  /// The contents of `content/flutterbench/dataset_tasks.json`,
+  /// used to describe what each task evaluates in the detail drawer.
+  final Map<String, Object?> rawDatasetJson;
 
   @override
   State<FlutterBenchInteractive> createState() =>
@@ -56,12 +61,29 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
   late BenchSnapshot _snapshot;
   late List<BenchComparisonEntry> _allComparisons;
 
+  /// What each task evaluates, keyed by both the dataset task's CUJ ID
+  /// (which matches [BenchTask.id]) and its name.
+  late Map<String, String> _taskEvaluations;
+
   @override
   void initState() {
     super.initState();
     final results = BenchResults.fromJson(component.rawResultsJson);
     _snapshot = results.snapshot;
     _allComparisons = BenchComparisonEntry.fromRuns(results.runs);
+    _taskEvaluations = _parseTaskEvaluations(component.rawDatasetJson);
+  }
+
+  static Map<String, String> _parseTaskEvaluations(Map<String, Object?> json) {
+    final tasks = (json['tasks'] as List<Object?>? ?? const [])
+        .whereType<Map<String, Object?>>();
+    return {
+      for (final task in tasks)
+        if (task['evaluates'] case final String evaluates) ...{
+          if (task['name'] case final String name) name: evaluates,
+          if (task['cuj'] case final String cuj when cuj != '-') cuj: evaluates,
+        },
+    };
   }
 
   @override
@@ -145,6 +167,7 @@ class _FlutterBenchInteractiveState extends State<FlutterBenchInteractive> {
         entry: _selectedRow,
         snapshot: _snapshot,
         variant: _variant,
+        taskEvaluations: _taskEvaluations,
         isOpen: _drawerOpen,
         onClose: () => setState(() => _drawerOpen = false),
       ),
